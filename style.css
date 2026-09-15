@@ -1,40 +1,107 @@
+/* =========================================
+   تنظیمات پایه
+========================================= */
+
 * {
     box-sizing: border-box;
 }
 
-html,
-body {
-    margin: 0;
-    padding: 0;
+html {
+    scroll-behavior: smooth;
 }
 
 body {
+    margin: 0;
+    padding: 0;
+
     direction: rtl;
-    font-family: Tahoma, Arial, sans-serif;
-    background: #071018;
+
+    font-family:
+        Tahoma,
+        Arial,
+        sans-serif;
+
+    background:
+        radial-gradient(
+            circle at top,
+            #152432 0%,
+            #071018 55%,
+            #050b10 100%
+        );
+
     color: #f4e4bd;
+
+    min-height: 100vh;
 }
+
+
+/* =========================================
+   کانتینر
+========================================= */
 
 .container {
     width: min(1100px, 92%);
     margin: 0 auto;
 }
 
+
+/* =========================================
+   Header
+========================================= */
+
 .site-header {
-    padding: 35px 20px;
+    padding: 28px 15px;
+
     text-align: center;
-    border-bottom: 1px solid #b88935;
+
+    border-bottom:
+        1px solid #a8792d;
+
+    background:
+        rgba(5, 12, 18, 0.85);
 }
 
 .site-header h1 {
-    margin: 0 0 12px;
+    margin: 12px 0 8px;
+
     font-size: 28px;
+
+    color: #f3d58a;
 }
 
 .site-header p {
     margin: 0;
-    color: #c9b27d;
+
+    color: #bda878;
+
+    font-size: 14px;
 }
+
+
+/* =========================================
+   لینک بازگشت
+========================================= */
+
+.back-link {
+    display: inline-block;
+
+    margin-bottom: 10px;
+
+    color: #d9b86c;
+
+    text-decoration: none;
+
+    font-size: 14px;
+}
+
+.back-link:hover {
+    color: #fff0c5;
+}
+
+
+/* =========================================
+   صفحه اصلی
+========================================= */
 
 .welcome {
     padding: 50px 0;
@@ -42,27 +109,441 @@ body {
 
 .welcome h2 {
     text-align: center;
+
     margin-bottom: 30px;
+
+    color: #e6c77d;
 }
+
+
+/* =========================================
+   کارت خاندان
+========================================= */
 
 .family-card {
     max-width: 500px;
-    margin: auto;
+
+    margin: 20px auto;
+
     padding: 25px;
+
     text-align: center;
-    border: 1px solid #b88935;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101e29,
+            #09131c
+        );
+
+    border:
+        1px solid #a8792d;
+
     border-radius: 18px;
-    background: #0c1822;
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.35);
 }
 
 .family-card h3 {
     margin-top: 0;
+
+    color: #f0d58f;
 }
+
+
+/* =========================================
+   دکمه
+========================================= */
+
+.family-button {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 11px 22px;
+
+    border-radius: 10px;
+
+    background: #9b712b;
+
+    color: #fff4d2;
+
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.family-button:hover {
+    background: #bd9141;
+
+    transform: translateY(-2px);
+}
+
+
+/* =========================================
+   بخش شجره‌نامه
+========================================= */
+
+.tree-section {
+    padding: 40px 0 20px;
+
+    overflow-x: auto;
+}
+
+.section-title {
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    font-size: 20px;
+
+    color: #e6c77d;
+}
+
+
+/* =========================================
+   خود درخت
+========================================= */
+
+.tree {
+    width: max-content;
+
+    min-width: 100%;
+
+    padding: 20px 10px 40px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   کارت افراد
+========================================= */
+
+.person-card {
+    position: relative;
+
+    display: inline-flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    min-width: 135px;
+
+    min-height: 70px;
+
+    padding: 12px 16px;
+
+    border:
+        1px solid #a8792d;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #132431,
+            #0a151e
+        );
+
+    color: #f4e4bd;
+
+    box-shadow:
+        0 7px 20px rgba(0, 0, 0, 0.25);
+}
+
+
+/* =========================================
+   سرشاخه
+========================================= */
+
+.root-person {
+    border-color: #d1a548;
+
+    min-width: 190px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #263a49,
+            #101d27
+        );
+}
+
+.root-person .person-name {
+    font-size: 17px;
+
+    font-weight: bold;
+
+    color: #f6d98e;
+}
+
+
+/* =========================================
+   نام شخص
+========================================= */
+
+.person-name {
+    font-size: 15px;
+
+    font-weight: bold;
+
+    color: #ead39a;
+}
+
+
+/* =========================================
+   توضیح کارت
+========================================= */
+
+.person-role {
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color: #a99773;
+}
+
+
+/* =========================================
+   فرزندان
+========================================= */
+
+.children-row {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    gap: 14px;
+
+    flex-wrap: nowrap;
+}
+
+.child-person {
+    cursor: pointer;
+
+    border: 1px solid #98702e;
+
+    transition:
+        transform 0.2s,
+        border-color 0.2s,
+        background 0.2s;
+}
+
+.child-person:hover {
+    transform: translateY(-4px);
+
+    border-color: #e2bd62;
+
+    background:
+        linear-gradient(
+            145deg,
+            #1c3444,
+            #0d1d28
+        );
+}
+
+
+/* =========================================
+   راهنمای کلیک
+========================================= */
+
+.click-hint {
+    margin-top: 6px;
+
+    font-size: 9px;
+
+    color: #9d8c6a;
+
+    opacity: 0.8;
+}
+
+
+/* =========================================
+   خطوط درخت
+========================================= */
+
+.tree-line {
+    width: 2px;
+
+    height: 30px;
+
+    margin: 0 auto;
+
+    background: #a8792d;
+}
+
+
+/* =========================================
+   خانواده انتخاب شده
+========================================= */
+
+.selected-family {
+    margin:
+        10px auto
+        50px;
+
+    max-width: 800px;
+
+    padding: 25px;
+
+    border:
+        1px solid #a8792d;
+
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #101e29,
+            #09131c
+        );
+
+    box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.35);
+}
+
+
+/* =========================================
+   مخفی
+========================================= */
+
+.hidden {
+    display: none;
+}
+
+
+/* =========================================
+   اطلاعات شخص انتخاب شده
+========================================= */
+
+.selected-person {
+    text-align: center;
+}
+
+.selected-person h2 {
+    margin-top: 0;
+
+    color: #f1d58b;
+}
+
+.family-info {
+    margin-top: 18px;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background: rgba(255, 255, 255, 0.03);
+
+    color: #d8c79f;
+}
+
+
+/* =========================================
+   فرزندان کوچک
+========================================= */
+
+.mini-children {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-top: 12px;
+}
+
+.mini-person {
+    display: inline-block;
+
+    padding: 7px 12px;
+
+    border:
+        1px solid #806126;
+
+    border-radius: 8px;
+
+    color: #e4cd95;
+
+    background: #0b1720;
+}
+
+
+/* =========================================
+   Loading
+========================================= */
+
+.loading {
+    text-align: center;
+
+    padding: 40px;
+
+    color: #a99773;
+}
+
+
+/* =========================================
+   Footer
+========================================= */
 
 .site-footer {
     margin-top: 80px;
+
     padding: 25px;
+
     text-align: center;
-    border-top: 1px solid #b88935;
-    color: #a9956c;
+
+    border-top:
+        1px solid #806126;
+
+    color: #8f8163;
+}
+
+
+/* =========================================
+   موبایل
+========================================= */
+
+@media (max-width: 600px) {
+
+    .site-header h1 {
+        font-size: 21px;
+    }
+
+    .container {
+        width: 94%;
+    }
+
+    .tree {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+
+    .person-card {
+        min-width: 120px;
+
+        padding: 10px 12px;
+    }
+
+    .root-person {
+        min-width: 160px;
+    }
+
+    .children-row {
+        gap: 8px;
+    }
+
+    .selected-family {
+        padding: 18px;
+    }
+
 }
