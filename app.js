@@ -83,23 +83,24 @@ document.addEventListener("DOMContentLoaded", function () {
     // مثال: پریزاد → قاسم
     function getChildrenWithPartner(personId, spouseId) {
 
-        return relationships
-            .filter(function (r) {
-                return r.type === "parent" &&
-                    r.spouse === spouseId &&
-                    (
-                        r.parent === personId ||
-                        r.parent === spouseId
-                    );
-            })
-            .map(function (r) {
-                return {
-                    id: r.child,
-                    person: getPerson(r.child)
-                };
-            })
-            .filter(function (item) {
-                return item.person;
+    return relationships
+        .filter(function (r) {
+            return r.type === "parent" &&
+                (
+                    (r.parent === personId && r.spouse === spouseId) ||
+                    (r.parent === spouseId && r.spouse === personId)
+                );
+        })
+        .map(function (r) {
+            return {
+                id: r.child,
+                person: getPerson(r.child)
+            };
+        })
+        .filter(function (item) {
+            return item.person;
+        });
+    }
             });
     }
 
