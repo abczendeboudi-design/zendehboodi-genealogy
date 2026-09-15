@@ -2,106 +2,71 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const familiesBox = document.getElementById("families");
 
-    // =====================================
-    // صفحه اصلی
-    // =====================================
-
     if (familiesBox) {
-
         const families = window.GENEALOGY_DATA?.families || [];
 
-        if (families.length === 0) {
-            familiesBox.innerHTML =
-                `<div class="family-card">اطلاعاتی ثبت نشده است.</div>`;
-        } else {
-
-            familiesBox.innerHTML = families.map(function (family) {
+        familiesBox.innerHTML = families.length
+            ? families.map(function (family) {
                 return `
                     <div class="family-card">
                         <h3>${family.name}</h3>
                         <p>خاندان شماره ${family.number}</p>
-
-                        <a
-                            href="family.html?family=${family.id}"
-                            class="family-button"
-                        >
+                        <a href="family.html?family=${family.id}" class="family-button">
                             مشاهده شجره‌نامه
                         </a>
                     </div>
                 `;
-            }).join("");
-        }
+            }).join("")
+            : `<div class="family-card">اطلاعاتی ثبت نشده است.</div>`;
 
         return;
     }
 
-
-    // =====================================
-    // صفحه شجره‌نامه
-    // =====================================
-
     const treeBox = document.getElementById("family-tree");
-
     if (!treeBox) return;
 
     const people = window.PEOPLE || {};
     const relationships = window.RELATIONSHIPS || [];
-
     const ROOT_ID = "gholamhossein-root";
 
-    const rootPerson = people[ROOT_ID];
-
-    if (!rootPerson) {
-        treeBox.innerHTML =
-            `<div class="loading">سرشاخه پیدا نشد.</div>`;
+    if (!people[ROOT_ID]) {
+        treeBox.innerHTML = `<div class="loading">سرشاخه پیدا نشد.</div>`;
         return;
     }
-
-
-    // =====================================
-    // توابع اصلی
-    // =====================================
 
     function getPerson(id) {
         return people[id] || null;
     }
 
-
-    function getSpouseIds(personId) {
-
+    // همه همسرهای یک فرد
+    function getSpouses(personId) {
         return relationships
             .filter(function (r) {
                 return r.type === "spouse" &&
-                    (
-                        r.person1 === personId ||
-                        r.person2 === personId
-                    );
+                    (r.person1 === personId || r.person2 === personId);
             })
             .map(function (r) {
-
-                return r.person1 === personId
+                const id = r.person1 === personId
                     ? r.person2
                     : r.person1;
 
+                return {
+                    id: id,
+                    person: getPerson(id)
+                };
+            })
+            .filter(function (item) {
+                return item.person;
             });
     }
 
-
-    function getChildren(personId, spouseId) {
-
+    // فرزندان یک فرد در ازدواج مشخص
+    function getChildrenFromMarriage(parentId, spouseId) {
         return relationships
             .filter(function (r) {
-
-                if (r.type !== "parent") return false;
-
-                if (r.parent !== personId) return false;
-
-                // اگر همسر مشخص شده، فقط فرزندان همان ازدواج
-                if (spouseId && r.spouse !== spouseId) {
-                    return false;
-                }
-
-                return true;
+                return r.type === "parent" &&
+                    r.parent === parentId &&
+                    r.spouse === spouseId;
             })
             .map(function (r) {
                 return {
@@ -114,186 +79,144 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
+    // پیدا کردن فرزندان یک همسر
+    // مثال: پریزاد → قاسم
+    function getChildrenWithPartner(personId, spouseId) {
 
-    // =====================================
-    // کارت شخص
-    // =====================================
+        return relationships
+            .filter(function (r) {
+                return r.type === "parent" &&
+                    r.spouse === spouseId &&
+                    (
+                        r.parent === personId ||
+                        r.parent === spouseId
+                    );
+            })
+            .map(function (r) {
+                return {
+                    id: r.child,
+                    person: getPerson(r.child)
+                };
+            })
+            .filter(function (item) {
+                return item.person;
+            });
+    }
 
-    function personCard(personId, extraClass = "") {
-
-        const person = getPerson(personId);
-
+    function personButton(id, className) {
+        const person = getPerson(id);
         if (!person) return "";
 
         return `
             <button
                 type="button"
-                class="person-card ${extraClass}"
-                data-person-id="${personId}"
+                class="person-card ${className || ""}"
+                data-person-id="${id}"
             >
-                <span class="person-name">
-                    ${person.name}
-                </span>
-
-                <span class="click-hint">
-                    مشاهده خانواده
-                </span>
+                <span class="person-name">${person.name}</span>
+                <span class="click-hint">مشاهده خانواده</span>
             </button>
         `;
     }
 
+    // ساخت یک خانواده بر اساس ازدواج
+    function buildMarriage(parentId, spouseId) {
 
-    // =====================================
-    // ساخت خانواده‌های یک شخص
-    // =====================================
+        const spouse = getPerson(spouseId);
+        if (!spouse) return "";
 
-    function buildFamilies(personId) {
+        const children = getChildrenWithPartner(parentId, spouseId);
 
-        const spouses = getSpouseIds(personId);
+        return `
+            <div class="family-block">
 
-        // اگر همسر ندارد
-        if (spouses.length === 0) {
+                <div class="family-info">
+                    <strong>همسر:</strong>
 
-            const children = getChildren(personId);
+                    <button
+                        type="button"
+                        class="mini-person spouse-button"
+                        data-person-id="${spouseId}"
+                    >
+                        ${spouse.name}
+                    </button>
+                </div>
 
+                ${
+                    children.length
+                        ? `
+                            <div class="family-info">
+                                <strong>فرزندان:</strong>
+                            </div>
+
+                            <div class="children-row">
+                                ${children.map(function (child) {
+                                    return personButton(
+                                        child.id,
+                                        "child-person"
+                                    );
+                                }).join("")}
+                            </div>
+                        `
+                        : `
+                            <div class="family-info">
+                                فرزندی ثبت نشده است.
+                            </div>
+                        `
+                }
+
+            </div>
+        `;
+    }
+
+    // خانواده‌های یک شخص
+    function buildPersonFamily(personId) {
+
+        const spouses = getSpouses(personId);
+
+        if (!spouses.length) {
             return `
-                <div class="family-block">
-
-                    <div class="family-info">
-                        ${children.length
-                            ? `<strong>فرزندان:</strong>`
-                            : `فرزندی ثبت نشده است.`}
-                    </div>
-
-                    ${
-                        children.length
-                            ? `
-                                <div class="children-row">
-                                    ${children.map(function (child) {
-                                        return personCard(
-                                            child.id,
-                                            "child-person"
-                                        );
-                                    }).join("")}
-                                </div>
-                            `
-                            : ""
-                    }
-
+                <div class="family-info">
+                    فرزندی ثبت نشده است.
                 </div>
             `;
         }
 
-
-        // هر همسر یک خانواده جدا
-        return spouses.map(function (spouseId) {
-
-            const spouse = getPerson(spouseId);
-
-            if (!spouse) return "";
-
-            const children =
-                getChildren(personId, spouseId);
-
-            return `
-                <div class="family-block">
-
-                    <div class="family-info">
-
-                        <strong>همسر:</strong>
-
-                        <button
-                            type="button"
-                            class="mini-person spouse-button"
-                            data-person-id="${spouseId}"
-                        >
-                            ${spouse.name}
-                        </button>
-
-                    </div>
-
-
-                    ${
-                        children.length
-                            ? `
-                                <div class="family-info">
-                                    <strong>فرزندان:</strong>
-                                </div>
-
-                                <div class="children-row">
-
-                                    ${children.map(function (child) {
-                                        return personCard(
-                                            child.id,
-                                            "child-person"
-                                        );
-                                    }).join("")}
-
-                                </div>
-                            `
-                            : `
-                                <div class="family-info">
-                                    فرزندی ثبت نشده است.
-                                </div>
-                            `
-                    }
-
-                </div>
-            `;
-
+        return spouses.map(function (spouse) {
+            return buildMarriage(personId, spouse.id);
         }).join("");
     }
 
-
-    // =====================================
-    // نمایش سرشاخه
-    // =====================================
+    // ساخت سرشاخه
+    const root = getPerson(ROOT_ID);
+    const rootSpouses = getSpouses(ROOT_ID);
 
     treeBox.innerHTML = `
-
         <div class="tree">
 
             <div
                 class="person-card root-person"
                 data-person-id="${ROOT_ID}"
             >
-
-                <div class="person-name">
-                    ${rootPerson.name}
-                </div>
-
-                <div class="person-role">
-                    سرشاخه خاندان
-                </div>
-
-                <div class="click-hint">
-                    مشاهده خانواده
-                </div>
-
+                <div class="person-name">${root.name}</div>
+                <div class="person-role">سرشاخه خاندان</div>
+                <div class="click-hint">مشاهده خانواده</div>
             </div>
-
 
             <div class="tree-line"></div>
 
-
             <div class="root-families">
-
-                ${buildFamilies(ROOT_ID)}
-
+                ${rootSpouses.map(function (spouse) {
+                    return buildMarriage(ROOT_ID, spouse.id);
+                }).join("")}
             </div>
 
         </div>
     `;
 
-
-    // =====================================
-    // نمایش خانواده فرد انتخاب‌شده
-    // =====================================
-
     function showPersonFamily(personId) {
 
         const person = getPerson(personId);
-
         if (!person) return;
 
         const selectedBox =
@@ -304,157 +227,19 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!selectedBox || !content) return;
 
-
-        const spouses = getSpouseIds(personId);
-
-
-        let familyHtml = "";
-
-
-        // -------------------------------------
-        // همسر ندارد
-        // -------------------------------------
-
-        if (spouses.length === 0) {
-
-            const children = getChildren(personId);
-
-            familyHtml = `
-
-                <div class="family-block">
-
-                    <div class="family-info">
-
-                        ${
-                            children.length
-                                ? `<strong>فرزندان:</strong>`
-                                : `فرزندی ثبت نشده است.`
-                        }
-
-                    </div>
-
-
-                    ${
-                        children.length
-                            ? `
-                                <div class="mini-children">
-
-                                    ${children.map(function (child) {
-                                        return `
-                                            <button
-                                                type="button"
-                                                class="mini-person child-button"
-                                                data-person-id="${child.id}"
-                                            >
-                                                ${child.person.name}
-                                            </button>
-                                        `;
-                                    }).join("")}
-
-                                </div>
-                            `
-                            : ""
-                    }
-
-                </div>
-            `;
-
-        }
-
-
-        // -------------------------------------
-        // همسر دارد
-        // -------------------------------------
-
-        else {
-
-            familyHtml = spouses.map(function (spouseId) {
-
-                const spouse = getPerson(spouseId);
-
-                if (!spouse) return "";
-
-                const children =
-                    getChildren(personId, spouseId);
-
-                return `
-
-                    <div class="family-block">
-
-                        <div class="family-info">
-
-                            <strong>همسر:</strong>
-
-                            <button
-                                type="button"
-                                class="mini-person spouse-button"
-                                data-person-id="${spouseId}"
-                            >
-                                ${spouse.name}
-                            </button>
-
-                        </div>
-
-
-                        ${
-                            children.length
-                                ? `
-                                    <div class="family-info">
-                                        <strong>فرزندان:</strong>
-                                    </div>
-
-                                    <div class="mini-children">
-
-                                        ${children.map(function (child) {
-                                            return `
-                                                <button
-                                                    type="button"
-                                                    class="mini-person child-button"
-                                                    data-person-id="${child.id}"
-                                                >
-                                                    ${child.person.name}
-                                                </button>
-                                            `;
-                                        }).join("")}
-
-                                    </div>
-                                `
-                                : `
-                                    <div class="family-info">
-                                        فرزندی ثبت نشده است.
-                                    </div>
-                                `
-                        }
-
-                    </div>
-                `;
-
-            }).join("");
-        }
-
-
-        // -------------------------------------
-        // قرار دادن در صفحه
-        // -------------------------------------
-
         content.innerHTML = `
-
             <div class="selected-person">
 
                 <h2>${person.name}</h2>
 
-                ${familyHtml}
+                ${buildPersonFamily(personId)}
 
             </div>
         `;
 
-
         selectedBox.classList.remove("hidden");
 
-
-        // رویدادهای دکمه‌های جدید
-        attachPersonEvents();
-
+        attachEvents();
 
         selectedBox.scrollIntoView({
             behavior: "smooth",
@@ -462,51 +247,34 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    function attachEvents() {
 
-    // =====================================
-    // فعال کردن کلیک روی افراد
-    // =====================================
+        document.querySelectorAll("[data-person-id]").forEach(function (element) {
 
-    function attachPersonEvents() {
+            if (element.dataset.listenerAttached === "true") {
+                return;
+            }
 
-        document
-            .querySelectorAll("[data-person-id]")
-            .forEach(function (element) {
+            element.dataset.listenerAttached = "true";
 
-                // جلوگیری از ثبت چندباره
-                if (element.dataset.listenerAttached === "true") {
-                    return;
-                }
+            element.addEventListener("click", function () {
 
-                element.dataset.listenerAttached = "true";
-
-                element.addEventListener("click", function () {
-
-                    const personId =
-                        this.dataset.personId;
-
-                    showPersonFamily(personId);
-                });
+                showPersonFamily(
+                    this.dataset.personId
+                );
 
             });
+        });
     }
 
-
-    attachPersonEvents();
-
-
-    // =====================================
-    // عنوان صفحه
-    // =====================================
+    attachEvents();
 
     const familyTitle =
         document.getElementById("family-title");
 
     if (familyTitle) {
-
         familyTitle.textContent =
             "شجره‌نامه خاندان زنده‌بودی‌ها";
-
     }
 
 });
