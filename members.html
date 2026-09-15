@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>شجره‌نامه خاندان غلامحسین قاسم زائر غلامحسین</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f0e6;
+            color: #183b2b;
+            font-family: Tahoma, Arial, sans-serif;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* نوار بالا */
+
+        .topbar {
+            background: #173f2c;
+            color: white;
+            padding: 14px 5%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            box-shadow: 0 3px 15px rgba(0,0,0,.15);
+        }
+
+        .topbar strong {
+            font-size: 14px;
+        }
+
+        .home {
+            color: white;
+            background: rgba(255,255,255,.1);
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+        }
+
+        /* صفحه */
+
+        .container {
+            width: 94%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .page {
+            padding: 35px 0 70px;
+        }
+
+        .title-box {
+            background: #fffdf8;
+            border: 1px solid #ded5c4;
+            border-radius: 22px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+
+            box-shadow: 0 10px 30px rgba(24,59,43,.08);
+        }
+
+        .title-box h1 {
+            margin: 5px 0 10px;
+            font-size: clamp(24px, 5vw, 38px);
+        }
+
+        .title-box p {
+            margin: 0;
+            color: #68756d;
+            font-size: 14px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e7d2a6;
+            color: #173f2c;
+            padding: 4px 13px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* ریشه */
+
+        .root {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .root-card {
+            display: inline-block;
+            min-width: 260px;
+
+            background: #173f2c;
+            color: white;
+
+            padding: 18px 25px;
+            border-radius: 18px;
+
+            box-shadow: 0 10px 25px rgba(23,63,44,.25);
+        }
+
+        .root-card h2 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .root-card p {
+            margin: 5px 0 0;
+            font-size: 13px;
+            opacity: .85;
+        }
+
+        /* شاخه اصلی */
+
+        .branch-section {
+            margin-top: 35px;
+        }
+
+        .branch-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            margin-bottom: 18px;
+        }
+
+        .branch-title h2 {
+            margin: 0;
+            font-size: 21px;
+        }
+
+        .branch-title::before {
+            content: "";
+            width: 7px;
+            height: 30px;
+            background: #b99a68;
+            border-radius: 10px;
+        }
+
+        /* شبکه افراد */
+
+        .people-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(240px, 1fr));
+
+            gap: 18px;
+        }
+
+        /* کارت شخص */
+
+        .person-card {
+            display: block;
+
+            background: #fffdf8;
+            color: #183b2b;
+
+            border: 1px solid #ded5c4;
+            border-radius: 18px;
+
+            padding: 18px;
+
+            box-shadow: 0 7px 22px rgba(24,59,43,.07);
+
+            transition: .2s;
+        }
+
+        .person-card:hover {
+            transform: translateY(-4px);
+            border-color: #b99a68;
+
+            box-shadow: 0 12px 28px rgba(24,59,43,.13);
+        }
+
+        .person-name {
+            font-size: 19px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .person-info {
+            color: #69756e;
+            font-size: 13px;
+        }
+
+        .person-link {
+            display: inline-block;
+
+            margin-top: 12px;
+
+            background: #edf2e9;
+            color: #216547;
+
+            border-radius: 9px;
+
+            padding: 5px 9px;
+
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        /* همسر */
+
+        .spouse {
+            margin-top: 12px;
+
+            padding-top: 10px;
+
+            border-top: 1px dashed #d7cebd;
+
+            color: #657168;
+
+            font-size: 12px;
+        }
+
+        /* فرزندان */
+
+        .children {
+            margin-top: 13px;
+        }
+
+        .children-title {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 6px;
+        }
+
+        .children-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .child {
+            background: #f0eadf;
+            border-radius: 8px;
+            padding: 3px 8px;
+            font-size: 12px;
+        }
+
+        /* کارت غیرقابل کلیک */
+
+        .simple-card {
+            cursor: default;
+        }
+
+        .simple-card:hover {
+            transform: none;
+        }
+
+        /* خط جداکننده */
+
+        .divider {
+            height: 1px;
+            background: #ddd3c1;
+            margin: 40px 0;
+        }
+
+        /* توضیح */
+
+        .note {
+            background: #edf2e9;
+            border: 1px solid #d5ddcf;
+
+            border-radius: 17px;
+
+            padding: 17px;
+
+            text-align: center;
+
+            color: #59685e;
+
+            font-size: 13px;
+
+            margin-top: 35px;
+        }
+
+        .note strong {
+            color: #173f2c;
+        }
+
+        /* پایین */
+
+        footer {
+            text-align: center;
+            color: #788178;
+            font-size: 13px;
+            padding: 25px;
+        }
+
+        /* موبایل */
+
+        @media (max-width: 650px) {
+
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .people-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .root-card {
+                width: 100%;
+            }
+
+            .title-box {
+                padding: 18px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <a href="index.html" class="home">
+        ← صفحه اصلی
+    </a>
+
+    <strong>
+        خاندان غلامحسین قاسم زائر غلامحسین
+    </strong>
+
+</header>
+
+
+<main class="container page">
+
+
+    <!-- عنوان -->
+
+    <section class="title-box">
+
+        <span class="tag">
+            شجره‌نامه دیجیتال
+        </span>
+
+        <h1>
+            🌳 خاندان غلامحسین قاسم زائر غلامحسین
+        </h1>
+
+        <p>
+            نمایش نسل‌های خاندان تا نوه‌ها
+        </p>
+
+    </section>
+
+
+    <!-- ریشه خاندان -->
+
+    <section class="root">
+
+        <div class="root-card">
+
+            <h2>
+                غلامحسین قاسم زائر غلامحسین
+            </h2>
+
+            <p>
+                نسل اول
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+         همسر اول
+    ========================== -->
+
+    <section class="branch-section">
+
+        <div class="branch-title">
+            <h2>
+                همسر: پریزاد
+            </h2>
+        </div>
+
+
+        <div class="people-grid">
+
+
+            <!-- قاسم -->
+
+            <a href="person.html?name=قاسم" class="person-card">
+
+                <div class="person-name">
+                    قاسم
+                </div>
+
+                <div class="person-info">
+                    فرزند غلامحسین قاسم زائر غلامحسین
+                </div>
+
+                <div class="spouse">
+                    همسران:
+                    ایران ولی،
+                    سکینه حیدری
+                </div>
+
+                <div class="children">
+
+                    <div class="children-title">
+                        فرزندان:
+                    </div>
+
+                    <div class="children-list">
+
+                        <span class="child">اصغر</span>
+                        <span class="child">اکبر</span>
+                        <span class="child">پرویز</span>
+                        <span class="child">جهانگیر</span>
+                        <span class="child">شیرین</span>
+                        <span class="child">غلامحسین</span>
+                        <span class="child">مریم</span>
+
+                    </div>
+
+                </div>
+
+                <span class="person-link">
+                    مشاهده شجره قاسم ←
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </section>
+
+
+    <div class="divider"></div>
+
+
+    <!-- =========================
+         فرزندان قاسم
+    ========================== -->
+
+    <section class="branch-section">
+
+        <div class="branch-title">
+
+            <h2>
+                فرزندان قاسم
+            </h2>
+
+        </div>
+
+
+        <div class="people-grid">
+
+
+            <!-- اصغر -->
+
+            <a href="person.html?name=اصغر" class="person-card">
+
+                <div class="person-name">
+                    اصغر
+                </div>
+
+                <div class="person-info">
+                    فرزند قاسم
+                </div>
+
+                <div class="spouse">
+                    همسر: حکیمه حاج محمد
+                </div>
+
+                <div class="children">
+
+                    <div class="children-title">
+                        فرزندان:
+                    </div>
+
+                    <div class="children-list">
+                        <span class="child">علی</span>
+                        <span class="child">رباب</span>
+                        <span class="child">زینب</span>
+                    </div>
+
+                </div>
+
+                <span class="person-link">
+                    مشاهده خانواده ←
+                </span>
+
+            </a>
+
+
+            <!-- اکبر -->
+
+            <a href="person.html?name=اکبر" class="person-card">
+
+                <div class="person-name">
+                    اکبر
+                </div>
+
+                <div class="person-info">
+                    فرزند قاسم
+                </div>
+
+                <div class="spouse">
+                    همسر: روشن میش علی بهادر
+                </div>
+
+                <div class="children">
+
+                    <div class="children-title">
+                        فرزندان:
+                    </div>
+
+                    <div class="children-list">
+                        <span class="child">علی
