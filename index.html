@@ -1,562 +1,584 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>شجره‌نامه روستای قباکلکی</title>
-
-    <meta
-        name="description"
-        content="شجره‌نامه خاندان‌های روستای قباکلکی"
-    >
-
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            padding: 0;
-            background: #f5f0e6;
-            color: #183b2b;
-            font-family: Tahoma, Arial, sans-serif;
-        }
-
-        a {
-            text-decoration: none;
-        }
-
-        .header {
-            background: #173f2c;
-            color: white;
-            padding: 50px 20px 40px;
-            text-align: center;
-            border-bottom: 5px solid #c69a52;
-        }
-
-        .small-title {
-            display: inline-block;
-            background: #e7d2a6;
-            color: #173f2c;
-            padding: 6px 16px;
-            border-radius: 30px;
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-
-        .header h1 {
-            margin: 0;
-            font-size: 38px;
-            line-height: 1.6;
-        }
-
-        .header p {
-            margin: 10px 0 25px;
-            color: #e8eee9;
-            font-size: 16px;
-        }
-
-        .container {
-            width: 92%;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .content {
-            padding: 35px 0 70px;
-        }
-
-        /* جستجو */
-
-        .search-box {
-            max-width: 750px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            height: 58px;
-
-            padding: 0 55px 0 20px;
-
-            border: 1px solid #d7cebd;
-            border-radius: 18px;
-
-            background: #fffdf8;
-
-            color: #183b2b;
-
-            font-family: Tahoma, Arial, sans-serif;
-            font-size: 16px;
-
-            outline: none;
-
-            box-shadow: 0 8px 25px rgba(24, 59, 43, 0.08);
-
-            transition: 0.2s;
-        }
-
-        .search-box input:focus {
-            border-color: #216547;
-            box-shadow: 0 8px 28px rgba(33, 101, 71, 0.16);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 18px;
-            top: 50%;
-
-            transform: translateY(-50%);
-
-            font-size: 23px;
-            color: #216547;
-
-            pointer-events: none;
-        }
-
-        .search-result {
-            max-width: 750px;
-            margin: -25px auto 30px;
-
-            background: #fffdf8;
-
-            border: 1px solid #ded5c4;
-            border-radius: 15px;
-
-            padding: 12px 16px;
-
-            color: #66736b;
-
-            display: none;
-        }
-
-        /* عنوان بخش */
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .section-title h2 {
-            margin: 0 0 8px;
-            font-size: 28px;
-        }
-
-        .section-title p {
-            margin: 0;
-            color: #66736b;
-        }
-
-        /* کارت خاندان */
-
-        .family-card {
-            display: flex;
-            align-items: center;
-
-            gap: 20px;
-
-            background: #fffdf8;
-
-            border: 1px solid #ded5c4;
-            border-radius: 24px;
-
-            padding: 25px;
-
-            color: #183b2b;
-
-            box-shadow:
-                0 12px 35px rgba(24, 59, 43, 0.10);
-
-            transition: all 0.2s ease;
-        }
-
-        .family-card:hover {
-            transform: translateY(-4px);
-
-            box-shadow:
-                0 18px 40px rgba(24, 59, 43, 0.16);
-
-            border-color: #b99a68;
-        }
-
-        .tree-icon {
-            width: 70px;
-            height: 70px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            background: #edf2e9;
-
-            border-radius: 20px;
-
-            font-size: 40px;
-
-            flex-shrink: 0;
-        }
-
-        .family-info {
-            flex: 1;
-        }
-
-        .family-info h3 {
-            margin: 0 0 8px;
-
-            font-size: 22px;
-
-            line-height: 1.7;
-        }
-
-        .family-info p {
-            margin: 0;
-
-            color: #66736b;
-
-            font-size: 15px;
-        }
-
-        .arrow {
-            font-size: 30px;
-
-            color: #216547;
-
-            flex-shrink: 0;
-        }
-
-        .not-found {
-            display: none;
-
-            text-align: center;
-
-            background: #fffdf8;
-
-            border: 1px solid #ded5c4;
-
-            border-radius: 18px;
-
-            padding: 25px;
-
-            color: #66736b;
-        }
-
-        .footer {
-            text-align: center;
-
-            padding: 25px 15px;
-
-            color: #788178;
-
-            font-size: 13px;
-        }
-
-        /* موبایل */
-
-        @media (max-width: 700px) {
-
-            .header {
-                padding: 40px 18px 35px;
-            }
-
-            .header h1 {
-                font-size: 29px;
-            }
-
-            .header p {
-                font-size: 14px;
-            }
-
-            .content {
-                padding-top: 30px;
-            }
-
-            .section-title h2 {
-                font-size: 23px;
-            }
-
-            .search-box input {
-                height: 54px;
-                font-size: 14px;
-            }
-
-            .family-card {
-                padding: 18px;
-
-                gap: 14px;
-            }
-
-            .tree-icon {
-                width: 55px;
-                height: 55px;
-
-                font-size: 30px;
-
-                border-radius: 15px;
-            }
-
-            .family-info h3 {
-                font-size: 18px;
-            }
-
-            .family-info p {
-                font-size: 13px;
-            }
-
-            .arrow {
-                font-size: 24px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شجره‌نامه قباکلکی</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: #f4f0e6;
+      color: #173f2b;
+    }
+
+    header {
+      background: #174d36;
+      color: white;
+      padding: 28px 18px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.8;
+    }
+
+    header p {
+      margin: 8px 0 0;
+      color: #dcebdd;
+      font-size: 14px;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 850px;
+      margin: 25px auto 50px;
+    }
+
+    .search-box {
+      background: white;
+      padding: 18px;
+      border-radius: 18px;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+      margin-bottom: 22px;
+    }
+
+    .search-box label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+      color: #174d36;
+    }
+
+    #searchInput {
+      width: 100%;
+      padding: 15px 17px;
+      border: 2px solid #d7dfd5;
+      border-radius: 13px;
+      outline: none;
+      font-size: 16px;
+      font-family: inherit;
+      background: #fafbf8;
+    }
+
+    #searchInput:focus {
+      border-color: #43815f;
+      background: white;
+    }
+
+    .family-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: #fffdf8;
+      border: 1px solid #e2dfd2;
+      border-radius: 22px;
+      padding: 24px;
+      margin-bottom: 18px;
+      box-shadow: 0 7px 22px rgba(0,0,0,0.08);
+      transition: 0.2s;
+    }
+
+    .family-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+    }
+
+    .family-icon {
+      font-size: 42px;
+      margin-bottom: 8px;
+    }
+
+    .family-card h2 {
+      margin: 5px 0 10px;
+      font-size: 21px;
+      color: #174d36;
+      line-height: 1.8;
+    }
+
+    .family-card p {
+      margin: 6px 0;
+      color: #5e6d62;
+      line-height: 1.9;
+      font-size: 14px;
+    }
+
+    .open-button {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 11px 20px;
+      border-radius: 12px;
+      background: #286747;
+      color: white;
+      font-size: 14px;
+    }
+
+    #searchResults {
+      display: none;
+      margin-bottom: 22px;
+    }
+
+    .results-title {
+      font-weight: bold;
+      margin: 0 0 12px;
+      color: #174d36;
+    }
+
+    .person-result {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      background: white;
+      border-radius: 15px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      text-decoration: none;
+      color: #173f2b;
+      border: 1px solid #e3e7df;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+    }
+
+    .person-result:hover {
+      background: #f7faf5;
+      border-color: #9ab69f;
+    }
+
+    .person-name {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .person-type {
+      font-size: 12px;
+      color: #718076;
+      margin-top: 4px;
+    }
+
+    .arrow {
+      font-size: 20px;
+      color: #286747;
+    }
+
+    .no-result {
+      background: white;
+      padding: 18px;
+      border-radius: 15px;
+      color: #777;
+      text-align: center;
+      border: 1px solid #e5e5e5;
+    }
+
+    footer {
+      text-align: center;
+      color: #718076;
+      font-size: 12px;
+      margin-top: 35px;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 21px;
+      }
+
+      .container {
+        width: 94%;
+      }
+
+      .family-card {
+        padding: 20px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <!-- سربرگ -->
-
-    <header class="header">
-
-        <div class="small-title">
-            شجره‌نامه روستای قباکلکی
-        </div>
-
-        <h1>
-            خاندان‌های قباکلکی
-        </h1>
-
-        <p>
-            نام فرد یا خاندان مورد نظر را جست‌وجو کنید.
-        </p>
-
-        <!-- جست‌وجو -->
-
-        <div class="search-box">
-
-            <span class="search-icon">
-                🔍
-            </span>
-
-            <input
-                type="search"
-                id="searchInput"
-                placeholder="مثلاً غلامحسین، قاسم، بگم..."
-                autocomplete="off"
-            >
-
-        </div>
-
-    </header>
-
-
-    <!-- محتوای اصلی -->
-
-    <main class="container content">
-
-        <div class="section-title">
-
-            <h2>
-                خاندان‌ها
-            </h2>
-
-            <p>
-                برای شروع، خاندان مورد نظر را انتخاب کنید.
-            </p>
-
-        </div>
-
-
-        <!-- نتیجه جست‌وجو -->
-
-        <div
-            id="searchResult"
-            class="search-result"
-        ></div>
-
-
-        <!-- خاندان غلامحسین قاسم -->
-
-        <div id="familyList">
-
-            <a
-                href="family.html"
-                class="family-card"
-                data-search="
-                    غلامحسین
-                    قاسم
-                    زائر
-                    خاندان
-                    غلامحسین قاسم زائر غلامحسین
-                    پریزاد
-                    خیر محمد
-                    عبدالرشید
-                "
-            >
-
-                <div class="tree-icon">
-                    🌳
-                </div>
-
-
-                <div class="family-info">
-
-                    <h3>
-                        خاندان غلامحسین قاسم زائر غلامحسین
-                    </h3>
-
-                    <p>
-                        مشاهده شجره‌نامه ←
-                    </p>
-
-                </div>
-
-
-                <div class="arrow">
-                    ←
-                </div>
-
-            </a>
-
-        </div>
-
-
-        <!-- وقتی چیزی پیدا نشد -->
-
-        <div
-            id="notFound"
-            class="not-found"
-        >
-
-            🔎
-
-            <br>
-
-            موردی با این نام پیدا نشد.
-
-            <br>
-
-            <small>
-                نام را دوباره بررسی کنید.
-            </small>
-
-        </div>
-
-    </main>
-
-
-    <!-- پایین صفحه -->
-
-    <footer class="footer">
-
-        شجره‌نامه روستای قباکلکی
-
-    </footer>
-
-
-    <!-- کد جست‌وجو -->
-
-    <script>
-
-        const searchInput =
-            document.getElementById("searchInput");
-
-        const familyList =
-            document.getElementById("familyList");
-
-        const familyCards =
-            document.querySelectorAll(".family-card");
-
-        const searchResult =
-            document.getElementById("searchResult");
-
-        const notFound =
-            document.getElementById("notFound");
-
-
-        searchInput.addEventListener("input", function () {
-
-            const searchText =
-                this.value
-                .trim()
-                .toLowerCase();
-
-
-            /*
-             * اگر کادر جست‌وجو خالی باشد
-             */
-
-            if (searchText === "") {
-
-                familyCards.forEach(function (card) {
-
-                    card.style.display = "flex";
-
-                });
-
-                searchResult.style.display = "none";
-
-                notFound.style.display = "none";
-
-                return;
-            }
-
-
-            let found = false;
-
-
-            familyCards.forEach(function (card) {
-
-                const searchableText =
-                    card
-                    .getAttribute("data-search")
-                    .toLowerCase();
-
-
-                if (
-                    searchableText.includes(searchText)
-                ) {
-
-                    card.style.display = "flex";
-
-                    found = true;
-
-                } else {
-
-                    card.style.display = "none";
-
-                }
-
-            });
-
-
-            /*
-             * نمایش نتیجه جست‌وجو
-             */
-
-            if (found) {
-
-                searchResult.style.display = "block";
-
-                searchResult.innerHTML =
-                    "نتیجه جست‌وجو برای: <strong>"
-                    + this.value
-                    + "</strong>";
-
-                notFound.style.display = "none";
-
-            } else {
-
-                searchResult.style.display = "none";
-
-                notFound.style.display = "block";
-
-            }
-
-        });
-
-    </script>
+<header>
+  <h1>🌳 شجره‌نامه خاندان غلامحسین قاسم زائر غلامحسین</h1>
+  <p>شجره‌نامه خاندان‌های روستای قباکلکی</p>
+</header>
+
+<div class="container">
+
+  <div class="search-box">
+    <label for="searchInput">🔎 جستجو در شجره‌نامه</label>
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="نام شخص یا خاندان را وارد کنید..."
+      autocomplete="off"
+    >
+  </div>
+
+  <div id="searchResults"></div>
+
+  <div id="familyList">
+
+    <a
+      href="family.html"
+      class="family-card"
+      data-search="غلامحسین قاسم زائر غلامحسین پریزاد قاسم خیر محمد زائر عبدالرشید خاندان قباکلکی"
+    >
+
+      <div class="family-icon">🌳</div>
+
+      <h2>
+        خاندان غلامحسین قاسم زائر غلامحسین
+      </h2>
+
+      <p>
+        شجره‌نامه خاندان غلامحسین قاسم زائر غلامحسین
+      </p>
+
+      <p>
+        برای مشاهده شجره‌نامه و افراد این خاندان وارد شوید.
+      </p>
+
+      <span class="open-button">
+        مشاهده شجره‌نامه ←
+      </span>
+
+    </a>
+
+  </div>
+
+  <footer>
+    شجره‌نامه قباکلکی
+  </footer>
+
+</div>
+
+<script>
+  /*
+    فهرست نام‌های موجود در شجره‌نامه
+
+    نام‌ها عمداً بر اساس اطلاعات واردشده در پروژه نگه داشته شده‌اند.
+    در این مرحله هدف اصلی، پیدا کردن نام افراد از طریق جستجو است.
+  */
+
+  const people = [
+
+    "غلامحسین قاسم زائر غلامحسین",
+    "پریزاد",
+    "قاسم",
+    "ایران ولی",
+    "سکینه حیدری",
+
+    "اصغر",
+    "حکیمه حاج محمد",
+    "علی",
+    "رباب",
+    "زینب",
+    "طالب بهادر",
+    "شاهین",
+    "شاهرخ",
+
+    "اکبر",
+    "روشن میش علی بهادر",
+    "لاله",
+    "فاطمه",
+    "بهاره بهادر",
+    "موسی جعفر میش محمدعلی",
+    "مهراوه",
+    "محمد",
+    "مارال",
+    "سعید امرالله",
+
+    "پرویز",
+    "مژگان",
+    "کوثر",
+
+    "جهانگیر",
+    "ماه‌بگم جمالی",
+
+    "شیرین",
+
+    "غلامحسین",
+    "رباب کنگانی",
+    "رضا",
+    "ساواش",
+    "رادمهر",
+
+    "مریم",
+    "رضا حاج عبدالرشید",
+    "ابراهیم",
+    "ریحانه",
+
+    "خیر محمد زائر عبدالرشید",
+
+    "امیر",
+    "مهین حاج محمد",
+    "صدیقه",
+    "منصور محمدعلی زائرعباس",
+    "محمدعلی",
+    "ژاله",
+    "یکتا",
+    "علی جبرئیل",
+    "صادق",
+    "فریده احمد",
+    "کاملیا",
+    "صمد",
+    "زهرا محمدعلی زائرعباس",
+    "نیلوفر",
+    "مریلا",
+
+    "احمد",
+    "شیرین حاج عبدالرشید",
+    "فجر",
+    "باران",
+    "سمیه عبدالکریم",
+    "لیانا",
+    "فیض",
+    "سمیه اسپرغم",
+    "پدرام",
+
+    "ناصر",
+    "سکینه رحمت",
+    "ساجد",
+    "فاطمه حسین معلی",
+    "سما",
+    "فاطمه",
+    "سعید",
+    "مریم جعفری",
+    "حسین",
+    "هما یوسف نوشاد",
+    "مریم غلامی",
+    "محمد",
+    "هیراد",
+    "آراد",
+    "ابوالفضل",
+
+    "بگم",
+    "محمدعلی عبدالله",
+    "عبدالمجید",
+    "حکیمه جعفری",
+    "ماهان",
+    "مهرداد",
+    "زهرا موسی",
+    "عیسی",
+    "زبیده جعفر",
+    "مهدی",
+    "سکینه",
+    "غلامرضا نوربخش",
+    "امیرحسین",
+    "عرفان",
+    "یلدا",
+    "خشایار بهادر",
+    "خدیجه",
+    "موسی",
+    "مریم نوربخش",
+    "هادی",
+    "راضیه",
+    "حسین نوربخش",
+    "علی‌اصغر",
+    "روح‌الله",
+    "محمدعلی",
+    "زینب",
+    "حاج عبدالله زارعی",
+    "سارا",
+    "نازنین",
+    "میلاد",
+
+    "سوگل",
+    "حسین علی‌اکبر",
+    "غلامرضا",
+    "زینت معلی مصطفی",
+    "مهران",
+    "زینب ترازویی",
+    "لیا",
+    "علی",
+    "شیرین قاسم",
+    "حسن",
+    "سوسن",
+    "پوران",
+    "طالب",
+    "رباب",
+    "عابد",
+    "صفیحه رحیم ارمات",
+    "امیرارسلان",
+    "نازگل",
+    "اسماعیل بزرگ",
+    "گلبهار",
+    "داریوش عبدالرسول",
+    "ازیتا",
+    "مهدی عبدالکریم",
+    "گلسا",
+    "عزیزه",
+    "علی عبدالجبار",
+    "داریوش",
+
+    "منیجه",
+    "جعفر حاج عبدالرشید",
+    "علی",
+    "فاطمه",
+    "احسان",
+    "زبیده",
+    "عیسی محمدعلی",
+
+    "حلیمه",
+    "خدابخش حاج جعفر عباس",
+    "مژگان",
+    "پرویز قاسم",
+    "فاطمه",
+    "فجر احمد",
+    "عباس"
+  ];
+
+
+  /*
+    حذف نام‌های تکراری برای نمایش نتایج مرتب‌تر
+  */
+  const uniquePeople = [...new Set(people)];
+
+
+  const searchInput = document.getElementById("searchInput");
+  const searchResults = document.getElementById("searchResults");
+  const familyList = document.getElementById("familyList");
+
+
+  /*
+    چند نام اصلی که در person.html فعلاً صفحه اختصاصی دارند.
+    برای این نام‌ها لینک مستقیم ساخته می‌شود.
+  */
+  const profileNames = new Set([
+    "قاسم",
+    "اصغر",
+    "اکبر",
+    "پرویز",
+    "جهانگیر",
+    "شیرین",
+    "غلامحسین",
+    "مریم",
+    "امیر",
+    "احمد",
+    "ناصر",
+    "بگم",
+    "سوگل",
+    "منیجه",
+    "حلیمه"
+  ]);
+
+
+  function normalizeText(text) {
+    return text
+      .toLowerCase()
+      .replace(/ي/g, "ی")
+      .replace(/ى/g, "ی")
+      .replace(/ك/g, "ک")
+      .replace(/ۀ/g, "ه")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+
+  function createResult(person) {
+
+    const result = document.createElement("a");
+
+    result.className = "person-result";
+
+    /*
+      فقط افرادی که در person.html صفحه اختصاصی دارند
+      فعلاً قابل ورود مستقیم هستند.
+    */
+    if (profileNames.has(person)) {
+      result.href =
+        "person.html?name=" + encodeURIComponent(person);
+    } else {
+      result.href = "members.html";
+    }
+
+    const textBox = document.createElement("div");
+
+    const name = document.createElement("div");
+    name.className = "person-name";
+    name.textContent = person;
+
+    const type = document.createElement("div");
+    type.className = "person-type";
+
+    if (profileNames.has(person)) {
+      type.textContent = "مشاهده صفحه این شخص";
+    } else {
+      type.textContent = "مشاهده در شجره‌نامه";
+    }
+
+    textBox.appendChild(name);
+    textBox.appendChild(type);
+
+    const arrow = document.createElement("div");
+    arrow.className = "arrow";
+    arrow.textContent = "←";
+
+    result.appendChild(textBox);
+    result.appendChild(arrow);
+
+    return result;
+  }
+
+
+  searchInput.addEventListener("input", function () {
+
+    const query = normalizeText(this.value);
+
+    searchResults.innerHTML = "";
+
+    if (!query) {
+      searchResults.style.display = "none";
+      familyList.style.display = "block";
+      return;
+    }
+
+    familyList.style.display = "none";
+    searchResults.style.display = "block";
+
+    const matches = uniquePeople.filter(function(person) {
+      return normalizeText(person).includes(query);
+    });
+
+
+    const title = document.createElement("div");
+    title.className = "results-title";
+    title.textContent =
+      matches.length + " نتیجه برای جستجوی شما";
+
+    searchResults.appendChild(title);
+
+
+    if (matches.length === 0) {
+
+      const noResult = document.createElement("div");
+
+      noResult.className = "no-result";
+
+      noResult.textContent =
+        "شخصی با این نام پیدا نشد.";
+
+      searchResults.appendChild(noResult);
+
+      return;
+    }
+
+
+    matches.forEach(function(person) {
+      searchResults.appendChild(
+        createResult(person)
+      );
+    });
+
+  });
+
+</script>
 
 </body>
 </html>
