@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>شجره‌نامه خاندان</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <header class="site-header">
+
+        <div class="container">
+
+            <a href="index.html" class="back-link">
+                ← بازگشت به خاندان‌ها
+            </a>
+
+            <h1 id="family-title">
+                شجره‌نامه خاندان
+            </h1>
+
+        </div>
+
+    </header>
+
+
+    <main class="container">
+
+        <!-- سرشاخه -->
+        <section class="tree-section">
+
+            <div class="section-title">
+                شجره‌نامه
+            </div>
+
+            <div id="family-tree">
+
+                <div class="loading">
+                    در حال بارگذاری...
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- خانواده فرد انتخاب شده -->
+        <section
+            id="selected-family"
+            class="selected-family hidden"
+        >
+
+            <div class="section-title">
+                خانواده
+            </div>
+
+            <div id="selected-content">
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- اطلاعات خاندان -->
+    <script src="data/families.js"></script>
+
+    <!-- افراد -->
+    <script src="data/people.js"></script>
+
+    <!-- روابط -->
+    <script src="data/relationships.js"></script>
+
+    <!-- برنامه -->
+    <script src="app.js"></script>
+
+</body>
+
+</html>
