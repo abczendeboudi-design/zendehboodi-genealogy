@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>اعضای خاندان | شجره‌نامه قباکلکی</title>
+  <title>شجره‌نامه خاندان غلامحسین قاسم</title>
 
   <style>
     * {
@@ -15,519 +14,314 @@
     body {
       margin: 0;
       font-family: Tahoma, Arial, sans-serif;
-      background: #f4f0e6;
-      color: #173f2b;
+      background: #f4eedf;
+      color: #243b2a;
     }
 
     header {
-      background: #174d36;
+      background: #174b32;
       color: white;
-      padding: 22px 15px;
+      padding: 22px 16px;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, .15);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.15);
     }
 
     header h1 {
-      margin: 0;
-      font-size: 22px;
-      line-height: 1.8;
+      margin: 0 0 10px;
+      font-size: 23px;
     }
 
     header p {
-      margin: 8px 0 0;
-      color: #dcebdd;
+      margin: 0;
       font-size: 14px;
-      line-height: 1.8;
+      opacity: 0.9;
     }
 
     .back {
       display: inline-block;
-      margin-top: 10px;
-      color: #e7f0e8;
+      margin-top: 15px;
+      padding: 9px 18px;
+      background: #f4eedf;
+      color: #174b32;
       text-decoration: none;
+      border-radius: 20px;
       font-size: 14px;
+      font-weight: bold;
     }
 
     .container {
-      width: 94%;
       max-width: 900px;
-      margin: 25px auto 50px;
-    }
-
-    .intro {
-      background: #fffdf8;
-      border-radius: 20px;
-      padding: 20px;
-      margin-bottom: 20px;
-      box-shadow: 0 6px 20px rgba(0, 0, 0, .07);
-      text-align: center;
-    }
-
-    .intro h2 {
-      margin: 0 0 10px;
-      color: #174d36;
-      font-size: 21px;
-      line-height: 1.8;
-    }
-
-    .intro p {
-      margin: 0;
-      color: #68766d;
-      line-height: 1.9;
-      font-size: 14px;
-    }
-
-    .branch {
-      background: #fffdf8;
-      border-radius: 22px;
-      padding: 22px;
-      margin-bottom: 20px;
-      box-shadow: 0 7px 22px rgba(0, 0, 0, .08);
-    }
-
-    .branch-title {
-      color: #174d36;
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 18px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid #e1e6dc;
-    }
-
-    .spouse {
-      background: #f5eee0;
-      border-radius: 15px;
-      padding: 14px;
-      margin-bottom: 15px;
-      line-height: 1.9;
-    }
-
-    .spouse-title {
-      font-weight: bold;
-      color: #76552c;
-      margin-bottom: 4px;
+      margin: 25px auto;
+      padding: 0 15px 40px;
     }
 
     .root-card {
-      display: block;
-      background: #eef5ed;
-      color: #173f2b;
-      text-decoration: none;
-      border-radius: 16px;
-      padding: 15px;
-      margin-bottom: 15px;
-      border: 1px solid #d5e1d3;
+      background: white;
+      border-radius: 18px;
+      padding: 22px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      border: 1px solid #ddd2bc;
+      margin-bottom: 25px;
     }
 
-    .root-card strong {
-      font-size: 18px;
+    .root-card h2 {
+      margin: 0;
+      color: #174b32;
+      font-size: 22px;
+    }
+
+    .family-section {
+      background: rgba(255,255,255,0.65);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 22px;
+      border: 1px solid #ddd2bc;
+    }
+
+    .spouse-title {
+      background: #174b32;
+      color: white;
+      border-radius: 14px;
+      padding: 13px 16px;
+      margin-bottom: 16px;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    .mother-info {
+      text-align: center;
+      margin-bottom: 15px;
+      color: #555;
+      font-size: 14px;
     }
 
     .person-card {
-      display: block;
-      background: #f8f8f4;
-      color: #173f2b;
-      text-decoration: none;
-      border: 1px solid #e0e5dc;
+      background: white;
       border-radius: 15px;
       padding: 15px;
-      margin-bottom: 10px;
-      transition: .2s;
+      margin: 10px 0;
+      border: 1px solid #ded5c5;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
     }
 
-    .person-card:hover {
-      background: #eef4ed;
-      transform: translateY(-2px);
-      border-color: #a9bea9;
-    }
-
-    .person-card strong {
+    .person-link {
       display: block;
+      text-decoration: none;
+      color: #174b32;
       font-size: 17px;
-      margin-bottom: 5px;
+      font-weight: bold;
+      text-align: center;
+      padding: 8px;
     }
 
-    .person-card small {
-      color: #718076;
-      line-height: 1.8;
+    .person-link:hover {
+      background: #f4eedf;
+      border-radius: 10px;
     }
 
     .children {
-      margin-top: 8px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .child {
+      background: #f8f4ea;
+      border: 1px solid #ddd2bc;
+      border-radius: 12px;
+      padding: 10px;
+    }
+
+    .child a {
+      display: block;
+      text-decoration: none;
+      color: #285f40;
+      font-weight: bold;
+      text-align: center;
     }
 
     .note {
-      background: #f7f7f3;
-      color: #707970;
-      border-radius: 13px;
-      padding: 13px;
-      line-height: 1.8;
+      text-align: center;
+      margin-top: 25px;
+      color: #666;
       font-size: 13px;
     }
 
-    footer {
-      text-align: center;
-      color: #718076;
-      font-size: 12px;
-      margin-top: 30px;
-    }
-
     @media (max-width: 600px) {
-
       header h1 {
         font-size: 19px;
       }
 
-      .branch {
-        padding: 18px;
-      }
-
-      .intro h2 {
-        font-size: 19px;
+      .children {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
   </style>
 </head>
 
-
 <body>
 
 <header>
-
-  <h1>
-    🌳 خاندان غلامحسین قاسم زائر غلامحسین
-  </h1>
-
-  <p>
-    فهرست افراد و شاخه‌های شجره‌نامه
-  </p>
+  <h1>شجره‌نامه خاندان غلامحسین قاسم زائر غلامحسین</h1>
+  <p>نمایش اعضای خانواده و فرزندان</p>
 
   <a class="back" href="family.html">
     ← بازگشت
   </a>
-
 </header>
 
 
 <div class="container">
 
-
-  <div class="intro">
-
-    <h2>
-      شجره‌نامه خاندان غلامحسین قاسم زائر غلامحسین
-    </h2>
-
-    <p>
-      روی نام هر شخص بزنید تا صفحه اختصاصی او و ادامه شجره‌نامه نمایش داده شود.
-    </p>
-
+  <!-- نفر اصلی -->
+  <div class="root-card">
+    <h2>غلامحسین قاسم زائر غلامحسین</h2>
   </div>
 
 
+  <!-- همسر اول -->
+  <section class="family-section">
 
-  <!-- =================================================
-       نسل اول
-  ================================================== -->
-
-  <div class="branch">
-
-    <div class="branch-title">
-      🌳 نسل اصلی
+    <div class="spouse-title">
+      همسر: پریزاد
     </div>
 
-    <a
-      class="root-card"
-      href="person.html?id=gh_golhossein"
-    >
-
-      <strong>
-        غلامحسین قاسم زائر غلامحسین
-      </strong>
-
-      <small>
-        مشاهده صفحه و دو شاخه خانوادگی ←
-      </small>
-
-    </a>
-
-  </div>
-
-
-
-  <!-- =================================================
-       شاخه قاسم
-  ================================================== -->
-
-  <div class="branch">
-
-    <div class="branch-title">
-      🌿 شاخه قاسم
+    <div class="mother-info">
+      مادر قاسم
     </div>
 
-    <a
-      class="root-card"
-      href="person.html?id=qasim"
-    >
-
-      <strong>
+    <div class="person-card">
+      <a class="person-link" href="person.html?id=qasim">
         قاسم
-      </strong>
+      </a>
+    </div>
 
-      <small>
-        فرزند غلامحسین قاسم زائر غلامحسین
-      </small>
-
-    </a>
+  </section>
 
 
-    <div class="spouse">
+  <!-- فرزندان قاسم -->
+  <section class="family-section">
 
-      <div class="spouse-title">
-        همسران قاسم
+    <div class="spouse-title">
+      خانواده قاسم
+    </div>
+
+    <div class="mother-info">
+      همسران: ایران ولی و سکینه حیدری
+    </div>
+
+    <div class="children">
+
+      <div class="child">
+        <a href="person.html?id=asghar">
+          اصغر
+        </a>
       </div>
 
-      ایران ولی
-      <br>
-      سکینه حیدری
+      <div class="child">
+        <a href="person.html?id=akbar">
+          اکبر
+        </a>
+      </div>
+
+      <div class="child">
+        <a href="person.html?id=parviz">
+          پرویز
+        </a>
+      </div>
+
+      <div class="child">
+        <a href="person.html?id=jahangir">
+          جهانگیر
+        </a>
+      </div>
+
+      <div class="child">
+        <a href="person.html?id=shirin_qasim">
+          شیرین
+        </a>
+      </div>
+
+      <div class="child">
+        <a href="person.html?id=gholamhossein_qasim">
+          غلامحسین
+        </a>
+      </div>
+
+      <div class="child">
+        <a href="person.html?id=maryam_qasim">
+          مریم
+        </a>
+      </div>
 
     </div>
 
+  </section>
+
+
+  <!-- همسر دوم -->
+  <section class="family-section">
+
+    <div class="spouse-title">
+      همسر: خیر محمد زائر عبدالرشید
+    </div>
 
     <div class="children">
 
-      <a
-        class="person-card"
-        href="person.html?id=asghar"
-      >
-        <strong>اصغر</strong>
-        <small>مشاهده فرزندان و ادامه شجره‌نامه ←</small>
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=akbar"
-      >
-        <strong>اکبر</strong>
-        <small>مشاهده فرزندان و ادامه شجره‌نامه ←</small>
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=parviz"
-      >
-        <strong>پرویز</strong>
-        <small>مشاهده فرزندان و ادامه شجره‌نامه ←</small>
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=jahangir"
-      >
-        <strong>جهانگیر</strong>
-        <small>مشاهده فرزندان و ادامه شجره‌نامه ←</small>
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=shirin_qasim"
-      >
-        <strong>شیرین</strong>
-        <small>مشاهده صفحه این شخص ←</small>
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=gholamhossein_qasim"
-      >
-        <strong>غلامحسین</strong>
-        <small>مشاهده فرزندان و ادامه شجره‌نامه ←</small>
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=maryam_qasim"
-      >
-        <strong>مریم</strong>
-        <small>مشاهده فرزندان و ادامه شجره‌نامه ←</small>
-      </a>
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =================================================
-       شاخه خیر محمد
-  ================================================== -->
-
-  <div class="branch">
-
-    <div class="branch-title">
-      🌿 شاخه خیر محمد
-    </div>
-
-
-    <a
-      class="root-card"
-      href="person.html?id=kheyrmohammad"
-    >
-
-      <strong>
-        خیر محمد زائر عبدالرشید
-      </strong>
-
-      <small>
-        مشاهده هفت فرزند و ادامه شجره‌نامه ←
-      </small>
-
-    </a>
-
-
-    <div class="children">
-
-
-      <a
-        class="person-card"
-        href="person.html?id=amir"
-      >
-
-        <strong>
+      <div class="child">
+        <a href="person.html?id=amir">
           امیر
-        </strong>
+        </a>
+      </div>
 
-        <small>
-          ۵ فرزند
-        </small>
-
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=ahmad"
-      >
-
-        <strong>
+      <div class="child">
+        <a href="person.html?id=ahmad">
           احمد
-        </strong>
+        </a>
+      </div>
 
-        <small>
-          ۵ فرزند
-        </small>
-
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=naser"
-      >
-
-        <strong>
+      <div class="child">
+        <a href="person.html?id=naser">
           ناصر
-        </strong>
+        </a>
+      </div>
 
-        <small>
-          دارای دو همسر و فرزندان متعدد
-        </small>
-
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=begom"
-      >
-
-        <strong>
+      <div class="child">
+        <a href="person.html?id=begom">
           بگم
-        </strong>
+        </a>
+      </div>
 
-        <small>
-          ۹ فرزند
-        </small>
-
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=sogol"
-      >
-
-        <strong>
+      <div class="child">
+        <a href="person.html?id=sogol">
           سوگل
-        </strong>
+        </a>
+      </div>
 
-        <small>
-          ۶ فرزند
-        </small>
-
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=manijeh"
-      >
-
-        <strong>
+      <div class="child">
+        <a href="person.html?id=manijeh">
           منیجه
-        </strong>
+        </a>
+      </div>
 
-        <small>
-          ۲ فرزند
-        </small>
-
-      </a>
-
-
-      <a
-        class="person-card"
-        href="person.html?id=halimeh"
-      >
-
-        <strong>
+      <div class="child">
+        <a href="person.html?id=halimeh">
           حلیمه
-        </strong>
-
-        <small>
-          ۳ فرزند
-        </small>
-
-      </a>
-
+        </a>
+      </div>
 
     </div>
 
-  </div>
-
+  </section>
 
 
   <div class="note">
-
-    💡 برای دیدن جزئیات هر فرد، روی نام او بزنید.
-    <br>
-    افراد دارای نام مشابه با شناسه جداگانه در سیستم ثبت شده‌اند تا شاخه‌های خانوادگی با یکدیگر اشتباه نشوند.
-
+    برای مشاهده جزئیات هر فرد، روی نام او کلیک کنید.
   </div>
-
 
 </div>
 
-
-<footer>
-  شجره‌نامه قباکلکی
-</footer>
-
 </body>
-
 </html>
