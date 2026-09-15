@@ -312,4 +312,41 @@ window.RELATIONSHIPS = [
     { type: "parent", parent: "azita", child: "golsa", spouse: "mehdi-abdolkarim" },
 
     { type: "spouse", person1: "azizeh", person2: "ali-abdoljabbar" },
-    { type: "parent", parent: "azize
+    { type: "parent", parent: "azizeh", child: "dariush-azizeh", spouse: "ali-abdoljabbar" },
+    { type: "parent", parent: "azizeh", child: "hossein-azizeh", spouse: "ali-abdoljabbar" },
+
+
+    // =========================
+    // منیجه
+    // =========================
+
+    { type: "spouse", person1: "monijeh", person2: "jafar-hajabdorrashid" },
+
+    { type: "parent", parent: "monijeh", child: "ali-monijeh", spouse: "jafar-hajabdorrashid" },
+    { type: "parent", parent: "monijeh", child: "zobeydeh-monijeh", spouse: "jafar-hajabdorrashid" },
+
+    { type: "spouse", person1: "ali-monijeh", person2: "fatemeh-ali-monijeh" },
+    { type: "parent", parent: "ali-monijeh", child: "amirhossein-ali-monijeh", spouse: "fatemeh-ali-monijeh" },
+    { type: "parent", parent: "ali-monijeh", child: "ehsan", spouse: "fatemeh-ali-monijeh" },
+
+    { type: "spouse", person1: "zobeydeh-monijeh", person2: "isa-mohammadali" },
+    { type: "parent", parent: "zobeydeh-monijeh", child: "mehdi-zobeydeh", spouse: "isa-mohammadali" },
+    { type: "parent", parent: "zobeydeh-monijeh", child: "mohammad-zobeydeh", spouse: "isa-mohammadali" },
+
+
+    // =========================
+    // حلیمه
+    // =========================
+
+    { type: "spouse", person1: "halimeh", person2: "khodabakhsh-hajjafarabbas" },
+
+    { type: "parent", parent: "halimeh", child: "mojgan-halimeh", spouse: "khodabakhsh-hajjafarabbas" },
+    { type: "parent", parent: "halimeh", child: "fatemeh-halimeh", spouse: "khodabakhsh-hajjafarabbas" },
+    { type: "parent", parent: "halimeh", child: "abbas-halimeh", spouse: "khodabakhsh-hajjafarabbas" },
+
+    { type: "spouse", person1: "mojgan-halimeh", person2: "parviz-qasem" },
+
+    { type: "spouse", person1: "fatemeh-halimeh", person2: "fajr-ahmad" },
+    { type: "parent", parent: "fatemeh-halimeh", child: "baran", spouse: "fajr-ahmad" }
+
+];
