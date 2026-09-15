@@ -6,7 +6,10 @@
 
     <title>شجره‌نامه روستای قباکلکی</title>
 
-    <meta name="description" content="شجره‌نامه خاندان‌های روستای قباکلکی">
+    <meta
+        name="description"
+        content="شجره‌نامه خاندان‌های روستای قباکلکی"
+    >
 
     <style>
         * {
@@ -28,12 +31,12 @@
         .header {
             background: #173f2c;
             color: white;
-            padding: 55px 20px;
+            padding: 50px 20px 40px;
             text-align: center;
             border-bottom: 5px solid #c69a52;
         }
 
-        .header .small-title {
+        .small-title {
             display: inline-block;
             background: #e7d2a6;
             color: #173f2c;
@@ -51,7 +54,7 @@
         }
 
         .header p {
-            margin: 10px 0 0;
+            margin: 10px 0 25px;
             color: #e8eee9;
             font-size: 16px;
         }
@@ -63,16 +66,83 @@
         }
 
         .content {
-            padding: 45px 0 70px;
+            padding: 35px 0 70px;
         }
+
+        /* جستجو */
+
+        .search-box {
+            max-width: 750px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 58px;
+
+            padding: 0 55px 0 20px;
+
+            border: 1px solid #d7cebd;
+            border-radius: 18px;
+
+            background: #fffdf8;
+
+            color: #183b2b;
+
+            font-family: Tahoma, Arial, sans-serif;
+            font-size: 16px;
+
+            outline: none;
+
+            box-shadow: 0 8px 25px rgba(24, 59, 43, 0.08);
+
+            transition: 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: #216547;
+            box-shadow: 0 8px 28px rgba(33, 101, 71, 0.16);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            font-size: 23px;
+            color: #216547;
+
+            pointer-events: none;
+        }
+
+        .search-result {
+            max-width: 750px;
+            margin: -25px auto 30px;
+
+            background: #fffdf8;
+
+            border: 1px solid #ded5c4;
+            border-radius: 15px;
+
+            padding: 12px 16px;
+
+            color: #66736b;
+
+            display: none;
+        }
+
+        /* عنوان بخش */
 
         .section-title {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
 
         .section-title h2 {
-            margin: 0 0 10px;
+            margin: 0 0 8px;
             font-size: 28px;
         }
 
@@ -81,12 +151,16 @@
             color: #66736b;
         }
 
+        /* کارت خاندان */
+
         .family-card {
             display: flex;
             align-items: center;
+
             gap: 20px;
 
             background: #fffdf8;
+
             border: 1px solid #ded5c4;
             border-radius: 24px;
 
@@ -94,14 +168,18 @@
 
             color: #183b2b;
 
-            box-shadow: 0 12px 35px rgba(24, 59, 43, 0.10);
+            box-shadow:
+                0 12px 35px rgba(24, 59, 43, 0.10);
 
             transition: all 0.2s ease;
         }
 
         .family-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 18px 40px rgba(24, 59, 43, 0.16);
+
+            box-shadow:
+                0 18px 40px rgba(24, 59, 43, 0.16);
+
             border-color: #b99a68;
         }
 
@@ -114,6 +192,7 @@
             justify-content: center;
 
             background: #edf2e9;
+
             border-radius: 20px;
 
             font-size: 40px;
@@ -127,33 +206,60 @@
 
         .family-info h3 {
             margin: 0 0 8px;
+
             font-size: 22px;
+
             line-height: 1.7;
         }
 
         .family-info p {
             margin: 0;
+
             color: #66736b;
+
             font-size: 15px;
         }
 
         .arrow {
             font-size: 30px;
+
             color: #216547;
+
             flex-shrink: 0;
+        }
+
+        .not-found {
+            display: none;
+
+            text-align: center;
+
+            background: #fffdf8;
+
+            border: 1px solid #ded5c4;
+
+            border-radius: 18px;
+
+            padding: 25px;
+
+            color: #66736b;
         }
 
         .footer {
             text-align: center;
+
             padding: 25px 15px;
+
             color: #788178;
+
             font-size: 13px;
         }
+
+        /* موبایل */
 
         @media (max-width: 700px) {
 
             .header {
-                padding: 40px 18px;
+                padding: 40px 18px 35px;
             }
 
             .header h1 {
@@ -172,15 +278,23 @@
                 font-size: 23px;
             }
 
+            .search-box input {
+                height: 54px;
+                font-size: 14px;
+            }
+
             .family-card {
                 padding: 18px;
+
                 gap: 14px;
             }
 
             .tree-icon {
                 width: 55px;
                 height: 55px;
+
                 font-size: 30px;
+
                 border-radius: 15px;
             }
 
@@ -201,7 +315,8 @@
 
 <body>
 
-    <!-- سربرگ اصلی -->
+    <!-- سربرگ -->
+
     <header class="header">
 
         <div class="small-title">
@@ -213,13 +328,31 @@
         </h1>
 
         <p>
-            برای مشاهده شجره‌نامه، خاندان مورد نظر را انتخاب کنید.
+            نام فرد یا خاندان مورد نظر را جست‌وجو کنید.
         </p>
+
+        <!-- جست‌وجو -->
+
+        <div class="search-box">
+
+            <span class="search-icon">
+                🔍
+            </span>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="مثلاً غلامحسین، قاسم، بگم..."
+                autocomplete="off"
+            >
+
+        </div>
 
     </header>
 
 
     <!-- محتوای اصلی -->
+
     <main class="container content">
 
         <div class="section-title">
@@ -229,52 +362,201 @@
             </h2>
 
             <p>
-                برای شروع، خاندان زیر را انتخاب کنید.
+                برای شروع، خاندان مورد نظر را انتخاب کنید.
             </p>
 
         </div>
 
 
+        <!-- نتیجه جست‌وجو -->
+
+        <div
+            id="searchResult"
+            class="search-result"
+        ></div>
+
+
         <!-- خاندان غلامحسین قاسم -->
-        <a
-            href="family.html"
-            class="family-card"
-            aria-label="مشاهده شجره‌نامه خاندان غلامحسین قاسم زائر غلامحسین"
+
+        <div id="familyList">
+
+            <a
+                href="family.html"
+                class="family-card"
+                data-search="
+                    غلامحسین
+                    قاسم
+                    زائر
+                    خاندان
+                    غلامحسین قاسم زائر غلامحسین
+                    پریزاد
+                    خیر محمد
+                    عبدالرشید
+                "
+            >
+
+                <div class="tree-icon">
+                    🌳
+                </div>
+
+
+                <div class="family-info">
+
+                    <h3>
+                        خاندان غلامحسین قاسم زائر غلامحسین
+                    </h3>
+
+                    <p>
+                        مشاهده شجره‌نامه ←
+                    </p>
+
+                </div>
+
+
+                <div class="arrow">
+                    ←
+                </div>
+
+            </a>
+
+        </div>
+
+
+        <!-- وقتی چیزی پیدا نشد -->
+
+        <div
+            id="notFound"
+            class="not-found"
         >
 
-            <div class="tree-icon">
-                🌳
-            </div>
+            🔎
 
+            <br>
 
-            <div class="family-info">
+            موردی با این نام پیدا نشد.
 
-                <h3>
-                    خاندان غلامحسین قاسم زائر غلامحسین
-                </h3>
+            <br>
 
-                <p>
-                    مشاهده شجره‌نامه ←
-                </p>
+            <small>
+                نام را دوباره بررسی کنید.
+            </small>
 
-            </div>
-
-
-            <div class="arrow">
-                ←
-            </div>
-
-        </a>
+        </div>
 
     </main>
 
 
     <!-- پایین صفحه -->
+
     <footer class="footer">
 
         شجره‌نامه روستای قباکلکی
 
     </footer>
+
+
+    <!-- کد جست‌وجو -->
+
+    <script>
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const familyList =
+            document.getElementById("familyList");
+
+        const familyCards =
+            document.querySelectorAll(".family-card");
+
+        const searchResult =
+            document.getElementById("searchResult");
+
+        const notFound =
+            document.getElementById("notFound");
+
+
+        searchInput.addEventListener("input", function () {
+
+            const searchText =
+                this.value
+                .trim()
+                .toLowerCase();
+
+
+            /*
+             * اگر کادر جست‌وجو خالی باشد
+             */
+
+            if (searchText === "") {
+
+                familyCards.forEach(function (card) {
+
+                    card.style.display = "flex";
+
+                });
+
+                searchResult.style.display = "none";
+
+                notFound.style.display = "none";
+
+                return;
+            }
+
+
+            let found = false;
+
+
+            familyCards.forEach(function (card) {
+
+                const searchableText =
+                    card
+                    .getAttribute("data-search")
+                    .toLowerCase();
+
+
+                if (
+                    searchableText.includes(searchText)
+                ) {
+
+                    card.style.display = "flex";
+
+                    found = true;
+
+                } else {
+
+                    card.style.display = "none";
+
+                }
+
+            });
+
+
+            /*
+             * نمایش نتیجه جست‌وجو
+             */
+
+            if (found) {
+
+                searchResult.style.display = "block";
+
+                searchResult.innerHTML =
+                    "نتیجه جست‌وجو برای: <strong>"
+                    + this.value
+                    + "</strong>";
+
+                notFound.style.display = "none";
+
+            } else {
+
+                searchResult.style.display = "none";
+
+                notFound.style.display = "block";
+
+            }
+
+        });
+
+    </script>
 
 </body>
 </html>
