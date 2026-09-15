@@ -10,81 +10,561 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>شجره‌نامه خاندان</title>
+    <title>
+        خاندان غلامحسین قاسم زائر غلامحسین
+    </title>
 
-    <link rel="stylesheet" href="style.css">
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f0e6;
+            color: #183b2b;
+            font-family: Tahoma, Arial, sans-serif;
+            line-height: 1.9;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* -------------------------
+           نوار بالای صفحه
+        ------------------------- */
+
+        .topbar {
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            background: #173f2c;
+            color: white;
+
+            padding: 13px 5%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            box-shadow:
+                0 3px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .topbar a {
+
+            color: white;
+
+            background: rgba(255, 255, 255, 0.10);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 10px;
+
+            padding: 5px 12px;
+
+            font-size: 13px;
+        }
+
+        .topbar strong {
+            font-size: 14px;
+        }
+
+
+        /* -------------------------
+           بدنه
+        ------------------------- */
+
+        .container {
+
+            width: 92%;
+            max-width: 1050px;
+
+            margin: auto;
+        }
+
+        .page {
+
+            padding: 40px 0 70px;
+        }
+
+
+        /* -------------------------
+           عنوان
+        ------------------------- */
+
+        .tag {
+
+            display: inline-block;
+
+            background: #e7d2a6;
+
+            color: #173f2c;
+
+            border-radius: 30px;
+
+            padding: 4px 13px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+        .intro {
+
+            background: #fffdf8;
+
+            border: 1px solid #ded5c4;
+
+            border-radius: 24px;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            box-shadow:
+                0 10px 30px rgba(24, 59, 43, 0.08);
+        }
+
+        .intro h1 {
+
+            margin: 10px 0;
+
+            font-size: clamp(25px, 5vw, 40px);
+
+            line-height: 1.7;
+        }
+
+        .intro p {
+
+            margin: 0;
+
+            color: #66736b;
+
+            font-size: 15px;
+        }
+
+
+        /* -------------------------
+           تصویر کتاب
+        ------------------------- */
+
+        .book-card {
+
+            background: #fffdf8;
+
+            border: 1px solid #ded5c4;
+
+            border-radius: 24px;
+
+            padding: 20px;
+
+            box-shadow:
+                0 12px 35px rgba(24, 59, 43, 0.10);
+        }
+
+        .book-title {
+
+            text-align: center;
+
+            margin-bottom: 20px;
+        }
+
+        .book-title h2 {
+
+            margin: 10px 0 5px;
+
+            font-size: 23px;
+        }
+
+        .book-title p {
+
+            margin: 0;
+
+            color: #66736b;
+
+            font-size: 14px;
+        }
+
+
+        /*
+         * لینک تصویر
+         */
+
+        .book-image-link {
+
+            display: block;
+
+            position: relative;
+
+            max-width: 900px;
+
+            margin: auto;
+
+            background: #eee6d6;
+
+            border: 5px solid #e5dac5;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            cursor: pointer;
+
+            transition: 0.25s;
+        }
+
+        .book-image-link:hover {
+
+            transform: translateY(-3px);
+
+            border-color: #b99a68;
+
+            box-shadow:
+                0 12px 30px rgba(24, 59, 43, 0.15);
+        }
+
+        .book-image-link img {
+
+            display: block;
+
+            width: 100%;
+
+            height: auto;
+        }
+
+
+        /*
+         * نوشته روی تصویر
+         */
+
+        .image-button {
+
+            position: absolute;
+
+            bottom: 18px;
+            right: 18px;
+
+            background: #173f2c;
+
+            color: white;
+
+            padding: 8px 14px;
+
+            border-radius: 11px;
+
+            font-size: 13px;
+
+            box-shadow:
+                0 5px 15px rgba(0, 0, 0, 0.25);
+        }
+
+
+        /* -------------------------
+           دکمه ورود
+        ------------------------- */
+
+        .button-area {
+
+            text-align: center;
+
+            padding-top: 25px;
+        }
+
+        .main-button {
+
+            display: inline-block;
+
+            background: #216547;
+
+            color: white;
+
+            padding: 12px 22px;
+
+            border-radius: 13px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            box-shadow:
+                0 6px 18px rgba(33, 101, 71, 0.20);
+
+            transition: 0.2s;
+        }
+
+        .main-button:hover {
+
+            background: #174e36;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* -------------------------
+           راهنما
+        ------------------------- */
+
+        .guide {
+
+            margin-top: 25px;
+
+            background: #edf2e9;
+
+            border: 1px solid #d5ddcf;
+
+            border-radius: 18px;
+
+            padding: 18px;
+
+            text-align: center;
+
+            color: #53645a;
+
+            font-size: 14px;
+        }
+
+        .guide strong {
+
+            color: #173f2c;
+        }
+
+
+        /* -------------------------
+           پایین صفحه
+        ------------------------- */
+
+        .footer {
+
+            text-align: center;
+
+            padding: 25px 15px;
+
+            color: #788178;
+
+            font-size: 13px;
+        }
+
+
+        /* -------------------------
+           موبایل
+        ------------------------- */
+
+        @media (max-width: 700px) {
+
+            .topbar {
+
+                padding: 11px 4%;
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                text-align: center;
+            }
+
+            .topbar a {
+
+                text-align: center;
+            }
+
+            .intro {
+
+                padding: 18px;
+            }
+
+            .book-card {
+
+                padding: 12px;
+            }
+
+            .book-title h2 {
+
+                font-size: 19px;
+            }
+
+            .book-image-link {
+
+                border-width: 3px;
+
+                border-radius: 12px;
+            }
+
+            .image-button {
+
+                position: static;
+
+                display: block;
+
+                text-align: center;
+
+                border-radius: 0;
+
+                padding: 9px;
+            }
+
+            .main-button {
+
+                display: block;
+
+                width: 100%;
+
+                text-align: center;
+            }
+        }
+
+    </style>
 
 </head>
 
 
 <body>
 
-    <header class="site-header">
 
-        <div class="container">
+    <!-- =========================
+         نوار بالای صفحه
+    ========================== -->
 
-            <a href="index.html" class="back-link">
-                ← بازگشت به خاندان‌ها
-            </a>
+    <header class="topbar">
 
-            <h1 id="family-title">
-                شجره‌نامه خاندان
-            </h1>
+        <a href="index.html">
+            → صفحه اصلی
+        </a>
 
-        </div>
+        <strong>
+            خاندان غلامحسین قاسم زائر غلامحسین
+        </strong>
 
     </header>
 
 
-    <main class="container">
+    <!-- =========================
+         محتوای اصلی
+    ========================== -->
 
-        <!-- سرشاخه -->
-        <section class="tree-section">
+    <main class="container page">
 
-            <div class="section-title">
+
+        <!-- معرفی -->
+
+        <section class="intro">
+
+            <span class="tag">
                 شجره‌نامه
+            </span>
+
+            <h1>
+                خاندان غلامحسین قاسم زائر غلامحسین
+            </h1>
+
+            <p>
+                در این صفحه ابتدا تصویر اصلی درخت شجره‌نامه
+                از کتاب نمایش داده می‌شود.
+                برای مشاهده نسخه دیجیتال شجره‌نامه،
+                روی تصویر یا دکمه پایین صفحه بزنید.
+            </p>
+
+        </section>
+
+
+        <!-- =========================
+             تصویر کتاب
+        ========================== -->
+
+        <section class="book-card">
+
+
+            <div class="book-title">
+
+                <span class="tag">
+                    تصویر کتاب
+                </span>
+
+                <h2>
+                    درخت شجره‌نامه خاندان
+                </h2>
+
+                <p>
+                    تصویر اصلی درخت شجره‌نامه
+                </p>
+
             </div>
 
-            <div id="family-tree">
 
-                <div class="loading">
-                    در حال بارگذاری...
-                </div>
+            <!--
+                با کلیک روی تصویر
+                وارد members.html می‌شویم
+            -->
+
+            <a
+                href="members.html"
+                class="book-image-link"
+                aria-label="ورود به شجره‌نامه دیجیتال"
+            >
+
+                <img
+                    src="family_page_2_hq.png"
+                    alt="درخت شجره‌نامه خاندان زائر غلامحسین قاسم"
+                >
+
+                <span class="image-button">
+                    برای مشاهده شجره‌نامه دیجیتال کلیک کنید ←
+                </span>
+
+            </a>
+
+
+            <!-- دکمه -->
+
+            <div class="button-area">
+
+                <a
+                    href="members.html"
+                    class="main-button"
+                >
+                    مشاهده اعضای خانواده و شجره‌نامه دیجیتال ←
+                </a>
 
             </div>
+
 
         </section>
 
 
-        <!-- خانواده فرد انتخاب شده -->
-        <section
-            id="selected-family"
-            class="selected-family hidden"
-        >
+        <!-- راهنما -->
 
-            <div class="section-title">
-                خانواده
-            </div>
+        <div class="guide">
 
-            <div id="selected-content">
-            </div>
+            <strong>
+                راهنما:
+            </strong>
 
-        </section>
+            ابتدا تصویر کتاب را مشاهده کنید،
+            سپس روی تصویر یا دکمه بالا بزنید
+            تا وارد شجره‌نامه دیجیتال شوید.
+
+        </div>
+
 
     </main>
 
 
-    <!-- اطلاعات خاندان -->
-    <script src="data/families.js"></script>
+    <!-- =========================
+         پایین صفحه
+    ========================== -->
 
-    <!-- افراد -->
-    <script src="data/people.js"></script>
+    <footer class="footer">
 
-    <!-- روابط -->
-    <script src="data/relationships.js"></script>
+        شجره‌نامه روستای قباکلکی
 
-    <!-- برنامه -->
-    <script src="app.js"></script>
+    </footer>
+
 
 </body>
 
