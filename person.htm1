@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>شجره‌نامه شخص</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f0e6;
+            color: #183b2b;
+            font-family: Tahoma, Arial, sans-serif;
+            line-height: 1.8;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* نوار بالا */
+
+        .topbar {
+            background: #173f2c;
+            color: white;
+            padding: 13px 5%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            position: sticky;
+            top: 0;
+            z-index: 100;
+
+            box-shadow: 0 3px 15px rgba(0,0,0,.15);
+        }
+
+        .topbar strong {
+            font-size: 14px;
+        }
+
+        .back {
+            color: white;
+            background: rgba(255,255,255,.1);
+            padding: 5px 12px;
+            border-radius: 10px;
+            font-size: 13px;
+        }
+
+        /* صفحه */
+
+        .container {
+            width: 94%;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .page {
+            padding: 35px 0 70px;
+        }
+
+        /* عنوان */
+
+        .hero {
+            background: #fffdf8;
+            border: 1px solid #ded5c4;
+            border-radius: 23px;
+            padding: 25px;
+            text-align: center;
+
+            box-shadow: 0 10px 30px rgba(24,59,43,.08);
+
+            margin-bottom: 30px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #e7d2a6;
+            color: #173f2c;
+            padding: 4px 13px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .hero h1 {
+            margin: 10px 0 5px;
+            font-size: clamp(25px, 5vw, 38px);
+        }
+
+        .hero p {
+            margin: 0;
+            color: #68756d;
+            font-size: 14px;
+        }
+
+        /* اطلاعات شخص */
+
+        .profile {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 25px;
+
+            background: #fffdf8;
+            border: 1px solid #ded5c4;
+            border-radius: 22px;
+
+            padding: 22px;
+
+            box-shadow: 0 8px 25px rgba(24,59,43,.07);
+
+            margin-bottom: 30px;
+        }
+
+        .photo {
+            width: 190px;
+            height: 190px;
+
+            border-radius: 18px;
+
+            background: #eee7d9;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: #8a918b;
+            font-size: 13px;
+
+            border: 1px solid #ddd2bd;
+
+            overflow: hidden;
+        }
+
+        .photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .info h2 {
+            margin: 0 0 12px;
+            font-size: 24px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .info-item {
+            background: #f4efe5;
+            border-radius: 11px;
+            padding: 9px 12px;
+            font-size: 13px;
+        }
+
+        .info-item strong {
+            color: #173f2c;
+        }
+
+        /* شجره */
+
+        .tree-box {
+            background: #fffdf8;
+            border: 1px solid #ded5c4;
+            border-radius: 22px;
+
+            padding: 25px;
+
+            box-shadow: 0 8px 25px rgba(24,59,43,.07);
+        }
+
+        .tree-title {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .tree-title h2 {
+            margin: 7px 0;
+            font-size: 23px;
+        }
+
+        .tree-title p {
+            margin: 0;
+            color: #68756d;
+            font-size: 13px;
+        }
+
+        /* کارت والد */
+
+        .ancestor {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .ancestor-card {
+            display: inline-block;
+
+            background: #e7d2a6;
+            color: #173f2c;
+
+            padding: 12px 25px;
+
+            border-radius: 15px;
+
+            font-weight: bold;
+        }
+
+        /* خط عمودی */
+
+        .vertical-line {
+            width: 2px;
+            height: 25px;
+            background: #b99a68;
+            margin: auto;
+        }
+
+        /* فرزندان */
+
+        .children-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(190px, 1fr));
+
+            gap: 15px;
+        }
+
+        .child-card {
+            background: #f7f3ea;
+
+            border: 1px solid #ded5c4;
+
+            border-radius: 16px;
+
+            padding: 16px;
+
+            color: #183b2b;
+
+            transition: .2s;
+        }
+
+        .child-card:hover {
+            transform: translateY(-3px);
+            border-color: #b99a68;
+            box-shadow: 0 8px 20px rgba(24,59,43,.1);
+        }
+
+        .child-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .child-relation {
+            font-size: 12px;
+            color: #737d76;
+            margin-top: 3px;
+        }
+
+        .child-spouse {
+            border-top: 1px dashed #d5cbb9;
+            margin-top: 9px;
+            padding-top: 8px;
+
+            font-size: 12px;
+            color: #66736b;
+        }
+
+        .grandchildren {
+            margin-top: 10px;
+        }
+
+        .grandchildren-title {
+            font-size: 11px;
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+        .grandchildren-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .grandchild {
+            background: #e8eee4;
+            color: #315d46;
+
+            border-radius: 7px;
+
+            padding: 3px 7px;
+
+            font-size: 11px;
+        }
+
+        /* دکمه برگشت */
+
+        .actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .button {
+            display: inline-block;
+
+            background: #216547;
+            color: white;
+
+            padding: 11px 20px;
+
+            border-radius: 12px;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            margin: 5px;
+        }
+
+        .button.secondary {
+            background: #e7d2a6;
+            color: #173f2c;
+        }
+
+        /* خطا */
+
+        .not-found {
+            display: none;
+
+            background: #fffdf8;
+            border: 1px solid #ded5c4;
+            border-radius: 20px;
+
+            padding: 35px;
+
+            text-align: center;
+        }
+
+        /* موبایل */
+
+        @media (max-width: 700px) {
+
+            .topbar {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .photo {
+                margin: auto;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+                text-align: right;
+            }
+
+            .tree-box {
+                padding: 15px;
+            }
+
+            .children-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<header class="topbar">
+
+    <a href="members.html" class="back">
+        ← بازگشت به اعضای خانواده
+    </a>
+
+    <strong>
+        شجره‌نامه خاندان غلامحسین قاسم زائر غلامحسین
+    </strong>
+
+</header>
+
+
+<main class="container page">
+
+
+    <!-- عنوان -->
+
+    <section class="hero">
+
+        <span class="tag">
+            شجره‌نامه شخص
+        </span>
+
+        <h1 id="pageTitle">
+            در حال بارگذاری...
+        </h1>
+
+        <p id="pageSubtitle">
+            خاندان غلامحسین قاسم زائر غلامحسین
+        </p>
+
+    </section>
+
+
+    <!-- اطلاعات -->
+
+    <section class="profile">
+
+        <div class="photo">
+
+            <!--
+                وقتی عکس هر شخص را داشته باشیم
+                این قسمت را با عکس پر می‌کنیم.
+            -->
+
+            <span>
+                عکس موجود نیست
+            </span>
+
+        </div>
+
+
+        <div class="info">
+
+            <h2 id="personName">
+                —
+            </h2>
+
+            <div class="info-grid">
+
+                <div class="info-item">
+                    <strong>پدر:</strong>
+                    <span id="father">—</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>مادر:</strong>
+                    <span id="mother">—</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>همسر:</strong>
+                    <span id="spouse">—</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>فرزندان:</strong>
+                    <span id="childrenInfo">—</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>شغل:</strong>
+                    <span>اطلاعات وارد نشده</span>
+                </div>
+
+                <div class="info-item">
+                    <strong>تحصیلات:</strong>
+                    <span>اطلاعات وارد نشده</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- شجره -->
+
+    <section class="tree-box">
+
+        <div class="tree-title">
+
+            <span class="tag">
+                درخت خانوادگی
+            </span>
+
+            <h2 id="treeTitle">
+                —
+            </h2>
+
+            <p>
+                نسل‌های ثبت‌شده در اطلاعات شجره‌نامه
+            </p>
+
+        </div>
+
+
+        <!-- والد -->
+
+        <div class="ancestor">
+
+            <div class="ancestor-card" id="ancestor">
+                —
+            </div>
+
+            <div class="vertical-line"></div>
+
+        </div>
+
+
+        <!-- فرزندان -->
+
+        <div class="children-grid" id="childrenGrid">
+        </div>
+
+
+    </section>
+
+
+    <!-- دکمه‌ها -->
+
+    <div class="actions">
+
+        <a href="members.html" class="button">
+            ← بازگشت به فهرست خانواده
+        </a>
+
+        <a href="index.html" class="button secondary">
+            صفحه اصلی
+        </a>
+
+    </div>
+
+
+    <!-- اگر شخص پیدا نشد -->
+
+    <section class="not-found" id="notFound">
+
+        <h2>
+            شخص پیدا نشد
+        </h2>
+
+        <p>
+            اطلاعات این شخص هنوز در شجره‌نامه دیجیتال ثبت نشده است.
+        </p>
+
+        <a href="members.html" class="button">
+            بازگشت به اعضای خانواده
+        </a>
+
+    </section>
+
+
+</main>
+
+
+<footer>
+
+    شجره‌نامه روستای قباکلکی
+
+</footer>
+
+
+<script>
+
+    /*
+     * نام شخص از آدرس صفحه گرفته می‌شود.
+     *
+     * مثال:
+     *
+     * person.html?name=قاسم
+     *
+     */
+
+    const params = new URLSearchParams(window.location.search);
+
+    const personName = params.get("name");
+
+
+    /*
+     * اطلاعات شجره‌نامه
+     *
+     * فقط اطلاعاتی که در شجره‌نامه داده شده
+     * وارد شده است.
+     */
+
+    const familyData = {
+
+        "قاسم": {
+            father: "غلامحسین قاسم زائر غلامحسین",
+            mother: "پریزاد",
+            spouse: "ایران ولی، سکینه حیدری",
+            children: [
+                {
+                    name: "اصغر",
+                    spouse: "حکیمه حاج محمد",
+                    children: ["علی", "رباب", "زینب"]
+                },
+                {
+                    name: "اکبر",
+                    spouse: "روشن میش علی بهادر",
+                    children: ["علی", "لاله", "فاطمه"]
+                },
+                {
+                    name: "پرویز",
+                    spouse: "مژگان",
+                    children: ["کوثر"]
+                },
+                {
+                    name: "جهانگیر",
+                    spouse: "ماه‌بگم جمالی",
+                    children: ["محمد", "قاسم"]
+                },
+                {
+                    name: "شیرین",
+                    spouse: "",
+                    children: []
+                },
+                {
+                    name: "غلامحسین",
+                    spouse: "رباب کنگانی",
+                    children: ["رضا", "ساواش", "رادمهر"]
+                },
+                {
+                    name: "مریم",
+                    spouse: "رضا حاج عبدالرشید",
+                    children: ["ابراهیم", "ریحانه"]
+                }
+            ]
+        },
+
+
+        "اصغر": {
+            father: "قاسم",
+            mother: "حکیمه حاج محمد",
+            spouse: "حکیمه حاج محمد",
+            children: [
+                {
+                    name: "علی",
+                    spouse: "",
+                    children: []
+                },
+                {
+                    name: "رباب",
+                    spouse: "طالب بهادر",
+                    children: ["شاهین", "شاهرخ"]
+                },
+                {
+                    name: "زینب",
+                    spouse: "",
+                    children: []
+                }
+            ]
+        },
+
+
+        "اکبر": {
+            father: "قاسم",
+            mother: "روشن میش علی بهادر",
+            spouse: "روشن میش علی بهادر",
+            children: [
+                {
+                    name: "علی",
+                    spouse: "بهاره بهادر",
+                    children: []
+                },
+                {
+                    name: "لاله",
+                    spouse: "موسی جعفر میش محمدعلی",
+                    children: ["مهراوه", "محمد", "مارال"]
+                },
+                {
+                    name: "فاطمه",
+                    spouse: "سعید امرالله",
+                    children: []
+                }
+            ]
+        },
+
+
+        "پرویز": {
+            father: "قاسم",
+            mother: "مژگان",
+            spouse: "مژگان",
+            children: [
+                {
+                    name: "کوثر",
+                    spouse: "",
+                    children: []
+                }
+            ]
+        },
+
+
+        "جهانگیر": {
+            father: "قاسم",
+            mother: "ماه‌بگم جمالی",
+            spouse: "ماه‌بگم جمالی",
+            children: [
+                {
+                    name: "محمد",
+                    spouse: "",
+                    children: []
+                },
+                {
+                    name: "قاسم",
+                    spouse: "",
+                    children: []
+                }
+            ]
+        },
+
+
+        "غلامحسین": {
+            father: "قاسم",
+            mother: "رباب کنگانی",
+            spouse: "رباب کنگانی",
+            children: [
+                {
+                    name: "رضا",
+                    spouse: "",
+                    children: []
+                },
+                {
+                    name: "ساواش",
+                    spouse: "",
+                    children: []
+                },
+                {
+                    name: "رادمهر",
+                    spouse: "",
+                    children: []
+                }
+            ]
+        },
+
+
+        "مریم": {
+            father: "قاسم",
+            mother: "رضا حاج عبدالرشید",
+            spouse: "رضا حاج عبدالرشید",
+            children: [
+                {
+                    name: "ابراهیم",
+                    spouse: "",
+                    children: []
+                },
+                {
+                    name: "ریحانه",
+                    spouse: "",
+                    children: []
+                }
+            ]
+        },
+
+
+        "امیر": {
+            father: "غلامحسین قاسم زائر غلامحسین",
+            mother: "خیر محمد زائر عبدالرشید",
+            spouse: "مهین حاج محمد",
+            children: [
+                {
+                    name: "صدیقه",
+                    spouse: "منصور محمدعلی زائرعباس",
+                    children: ["محمدعلی", "ژاله", "یکتا"]
+                },
+                {
+                    name: "صادق",
+                    spouse: "فریده احمد",
+                    children: ["کاملیا"]
+                },
+                {
+                    name: "صمد",
+                    spouse: "زهرا محمدعلی زائرعباس",
+                    children: ["نیلوفر", "مریلا"]
+                },
+                {
+                    name: "فاطمه",
+                    spouse: "",
+                    children: []
+                },
+                {
+                    name: "مریم",
+                    spouse: "",
+                    children: []
+                }
+            ]
+        },
+
+
+        "احمد": {
+            father: "غلامحسین قاسم زائر غلامحسین",
+            mother: "خیر محمد زائر عبدالرشید",
+            spouse: "شیرین حاج عبدالرشید",
+            children: [
+                {
+                    name: "فریده",
+                    spouse: "صادق",
+                    children: ["کاملیا"]
+                },
+                {
+                    name: "فجر",
+                    spouse: "فاطمه",
+                    children: ["باران"]
+                },
+                {
+                    name: "غلامحسین",
+                    spouse: "سمیه عبدالکریم",
+                    children: ["لیانا"]
+                },
+                {
+                    name: "فیض",
+                    spouse: "سمیه اسپرغم",
+                    children: []
+                },
+                {
+                    name: "پدرام",
+                    spouse: "",
+                    children: []
+                }
+            ]
+        },
+
+
+        "ناصر": {
+            father: "غلامحسین قاسم زائر غلامحسین",
+            mother: "خیر محمد زائر عبدالرشید",
+            spouse: "سکینه رحمت، مریم غلامی",
+            children: [
+                {
+                    name: "ساجد",
+                    spouse: "فاطمه حسین معلی",
+                    children: ["شاهرخ", "سما"]
+                },
+                {
+                    name: "محمد",
+                    spouse: "فاطمه",
+                    children: ["ناصر"]
+                },
+                {
+                    name: "سعید",
+                    spouse: "مریم جعفری",
+                    children: ["ابراهیم", "ناصر"]
+                },
+                {
+                    name: "حسین",
+                    spouse: "هما یوسف نوشاد",
+                    children: []
+                },
+                {
+                    name: "علی",
+                    spouse: "",
+                    children: []
+                },
+                {
+                    name: "فاطمه",
+                    spouse: "محمد",
+                    children: ["هیراد", "آراد"]
+                },
+                {
+                    name: "ابوالفضل",
+                    spouse: "",
+                    children: []
+                }
+            ]
+        },
+
+
+        "بگم": {
+            father: "غلامحسین قاسم زائر غلامحسین",
+            mother: "خیر محمد زائر عبدالرشید",
+            spouse: "محمدعلی عبدالله",
+            children: [
+                {
+                    name: "فاطمه",
+                    spouse: "غلامحسین علی مصطفی",
+                    children: []
+                },
+                {
+                    name: "عبدالمجید",
+                    spouse: "حکیمه جعفری",
+                    children: ["علی", "ماهان", "مهرداد"]
+                },
+                {
+                    name: "عیسی",
+                    spouse: "زبیده جعفر",
+                    children: ["مهدی", "محمد"]
+                },
+                {
+                    name: "سکینه",
+                    spouse: "غلامرضا نوربخش",
+                    children: ["امیرحسین", "عرفان", "یلدا"]
+                },
+                {
+                    name: "خدیجه",
+                    spouse: "",
+                    children: []
+                },
+                {
+                    name: "موسی",
+                    spouse: "مریم نوربخش",
+                    children: ["هادی", "زهرا"]
+                },
+                {
+                    name: "راضیه",
+                    spouse: "حسین نوربخش",
+                    children: ["ابوالفضل", "علی‌اصغر"]
+                },
+                {
+                    name: "روح‌الله",
+                    spouse: "فاطمه",
+                    children: ["محمدعلی"]
+                },
+                {
+                    name: "زینب",
+                    spouse: "حاج عبدالله زارعی",
+                    children: ["سارا", "نازنین", "میلاد"]
+                }
+            ]
+        },
+
+
+        "سوگل": {
+            father: "غلامحسین قاسم زائر غلامحسین",
+            mother: "خیر محمد زائر عبدالرشید",
+            spouse: "حسین علی‌اکبر",
+            children: [
+                {
+                    name: "غلامرضا",
+                    spouse: "زینت معلی مصطفی",
+                    children: ["مهران"]
+                },
+                {
+                    name: "علی",
+                    spouse: "شیرین قاسم",
+                    children: ["حسین", "حسن", "سوسن", "پوران"]
+                },
+                {
+                    name: "طالب",
+                    spouse: "رباب",
+                    children: ["شاهرخ", "شاهین"]
+                },
+                {
+                    name: "عابد",
+                    spouse: "صفیحه رحیم ارمات",
+                    children: ["امیرارسلان", "نازگل"]
+                },
+                {
+                    name: "فاطمه",
+                    spouse: "اسماعیل بزرگ",
+                    children: []
+                },
+                {
+                    name: "گلبهار",
+                    spouse: "داریوش عبدالرسول",
+                    children: ["ازیتا", "عزیزه"]
+                }
+            ]
+        },
+
+
+        "منیجه": {
+            father: "غلامحسین قاسم زائر غلامحسین",
+            mother: "خیر محمد زائر عبدالرشید",
+            spouse: "جعفر حاج عبدالرشید",
+            children: [
+                {
+                    name: "علی",
+                    spouse: "فاطمه",
+                    children: ["امیرحسین", "احسان"]
+                },
+                {
+                    name: "زبیده",
+                    spouse: "عیسی محمدعلی",
+                    children: ["مهدی", "محمد"]
+                }
+            ]
+        },
+
+
+        "حلیمه": {
+            father: "غلامحسین قاسم زائر غلامحسین",
+            mother: "خیر محمد زائر عبدالرشید",
+            spouse: "خدابخش حاج جعفر عباس",
+            children: [
+                {
+                    name: "مژگان",
+                    spouse: "پرویز قاسم",
+                    children: ["کوثر"]
+                },
+                {
+                    name: "فاطمه",
+                    spouse: "فجر احمد",
+                    children: ["باران"]
+                },
+                {
+                    name: "عباس",
+                    spouse: "",
+                    children: []
+                }
+            ]
+        }
+
+    };
+
+
+    /*
+     * اگر نام پیدا نشد
+     */
+
+    if (!personName || !familyData[personName]) {
+
+        document.querySelector(".hero").style.display = "none";
+        document.querySelector(".profile").style.display = "none";
+        document.querySelector(".tree-box").style.display = "none";
+
+        document.getElementById("notFound").style.display = "block";
+
+    } else {
+
+        const person = familyData[personName];
+
+
+        /* عنوان */
+
+        document.getElementById("pageTitle").textContent =
+            "🌳 شجره‌نامه " + personName;
+
+        document.getElementById("personName").textContent =
+            personName;
+
+        document.getElementById("treeTitle").textContent =
+            "خانواده " + personName;
+
+
+        /* اطلاعات */
+
+        document.getElementById("father").textContent =
+            person.father || "ثبت نشده";
+
+        document.getElementById("mother").textContent =
+            person.mother || "ثبت نشده";
+
+        document.getElementById("spouse").textContent =
+            person.spouse || "ثبت نشده";
+
+        document.getElementById("childrenInfo").textContent =
+            person.children.length
+                ? person.children.map(x => x.name).join("، ")
+                : "فرزندی ثبت نشده";
+
+
+        /* والد */
+
+        document.getElementById("ancestor").textContent =
+            personName;
+
+
+        /* فرزندان */
+
+        const grid =
+            document.getElementById("childrenGrid");
+
+
+        person.children.forEach(child => {
+
+            const card =
+                document.createElement("a");
+
+            card.className = "child-card";
+
+            card.href =
+                "person.html?name=" +
+                encodeURIComponent(child.name);
+
+
+            let html = "";
+
+            html += `
+                <div class="child-name">
+                    ${child.name}
+                </div>
+            `;
+
+            html += `
+                <div class="child-relation">
+                    فرزند ${personName}
+                </div>
+            `;
+
+
+            if (child.spouse) {
+
+                html += `
+                    <div class="child-spouse">
+                        همسر: ${child.spouse}
+                    </div>
+                `;
+
+            }
+
+
+            if (child.children.length) {
+
+                html += `
+                    <div class="grandchildren">
+
+                        <div class="grandchildren-title">
+                            فرزندان:
+                        </div>
+
+                        <div class="grandchildren-list">
+
+                            ${child.children.map(
+                                name =>
+                                `<span class="grandchild">${name}</span>`
+                            ).join("")}
+
+                        </div>
+
+                    </div>
+                `;
+
+            }
+
+
+            card.innerHTML = html;
+
+            grid.appendChild(card);
+
+        });
+
+    }
+
+</script>
+
+
+</body>
+</html>
