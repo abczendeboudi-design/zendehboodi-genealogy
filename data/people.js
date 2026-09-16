@@ -2375,5 +2375,925 @@ window.PEOPLE = {
         notes: "",
         image: ""
     }
+    // =========================================
+    // خاندان حاج محمدجواد برفی زاموسین قاسم
+    // =========================================
 
+    "mohammadjavad_barfi": {
+        name: "حاج محمد جواد برفی زاموسین قاسم",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    // -----------------------------------------
+    // فرزندان حاج محمدجواد
+    // -----------------------------------------
+
+    "parvin_mj": {
+        name: "پروین",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "jamshid_mj": {
+        name: "حاج جمشید",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "dariush_mj": {
+        name: "داریوش",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "ali_mj": {
+        name: "علی",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "hakimeh_mj": {
+        name: "حکیمه",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "qasem_mj": {
+        name: "قاسم",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "siavash_mj": {
+        name: "سیاوش",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "yousef_mj": {
+        name: "یوسف",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "mahin_mj": {
+        name: "مهین",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+
+    // =========================================
+    // خانواده پروین
+    // =========================================
+
+    "jahanbakhsh_mj": {
+        name: "جهانبخش",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "hossein_mj": {
+        name: "حسین",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "aliakbar_mj": {
+        name: "علی اکبر",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "parvaneh_mj": {
+        name: "پروانه",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "farzaneh_mj": {
+        name: "فرزانه",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "afsaneh_mj": {
+        name: "افسانه",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "anahita_aliakbar_mj": {
+        name: "آناهیتا",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "adrina_aliakbar_mj": {
+        name: "ادرینا",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "sina_parvaneh_mj": {
+        name: "سینا",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "sepideh_parvaneh_mj": {
+        name: "سپیده",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "nima_farzaneh_mj": {
+        name: "نیما",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "paria_farzaneh_mj": {
+        name: "پریا",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+
+    // =========================================
+    // همسران خانواده پروین
+    // =========================================
+
+    "khorshid_shahriyar_mj": {
+        name: "خورشید شهریار",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "fatemeh_jamali_mj": {
+        name: "فاطمه جمالی",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "abbasali_mahal_mj": {
+        name: "عباسعلی محلی زائر عباس",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "roozbeh_monfared_mj": {
+        name: "روزبه منفرد",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "yousef_moali_mj": {
+        name: "یوسف معلی زائر عباس",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "mehrdad_ahmadi_mj": {
+        name: "مهرداد احمدی",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+
+    // =========================================
+    // خانواده حاج جمشید
+    // =========================================
+
+    "fatemeh_jamshid_mj": {
+        name: "فهیمه اردشیری",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "mohammadmahdi_mj": {
+        name: "محمد مهدی",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "mohammadjavad_mj": {
+        name: "محمد جواد",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+
+    // =========================================
+    // خانواده داریوش
+    // =========================================
+
+    "elham_mohandes_mj": {
+        name: "الهام مهدس",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "maryam_dariush_mj": {
+        name: "مریم",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "mohammadreza_dariush_mj": {
+        name: "محمدرضا",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+
+    // =========================================
+    // خانواده علی
+    // =========================================
+
+    "maryam_afshoon_mj": {
+        name: "مریم افشون",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "parsa_ali_mj": {
+        name: "پارسا",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "mohammad_ali_mj": {
+        name: "محمد",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+
+    // =========================================
+    // خانواده حکیمه
+    // =========================================
+
+    "asghar_hakimeh_mj": {
+        name: "اصغر",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "robbab_hakimeh_mj": {
+        name: "رباب",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "taleb_robbab_mj": {
+        name: "طالب",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "shahin_robbab_mj": {
+        name: "شاهین",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "shahrokh_robbab_mj": {
+        name: "شاهرخ",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "alireza_hakimeh_mj": {
+        name: "علیرضا",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "zeynab_hakimeh_mj": {
+        name: "زینب",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+
+    // =========================================
+    // خانواده قاسم
+    // =========================================
+
+    "fatemeh_pardel_mj": {
+        name: "فاطمه پردل",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "aylin_qasem_mj": {
+        name: "آیلین",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "arian_qasem_mj": {
+        name: "آرین",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+
+    // =========================================
+    // خانواده سیاوش
+    // =========================================
+
+    "elham_daneshpajoh_mj": {
+        name: "الهام دانش پژوه",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "shervin_siavash_mj": {
+        name: "شروین",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "nastaran_siavash_mj": {
+        name: "نسترن",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+
+    // =========================================
+    // خانواده یوسف
+    // =========================================
+
+    "shokoofeh_soleimani_mj": {
+        name: "شکوفه سلیمانی",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "hakhamesh_yousef_mj": {
+        name: "هخامنش",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "hourmazd_yousef_mj": {
+        name: "هورمزد",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+
+    // =========================================
+    // خانواده مهین
+    // =========================================
+
+    "amir_gholamhossein_qasem_mj": {
+        name: "امیر غلامحسین قاسم",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "seddigheh_mahin_mj": {
+        name: "صدیقه",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "mansour_mohammadali_mj": {
+        name: "منصور محمد علی",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "jafar_seddigheh_mj": {
+        name: "ژاله",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "mohammadali_seddigheh_mj": {
+        name: "محمد علی",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "yekta_seddigheh_mj": {
+        name: "یکتا",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "ali_pardel_mj": {
+        name: "علی پردل",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "sadegh_mahin_mj": {
+        name: "صادق",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "farideh_ahmad_mj": {
+        name: "فریده احمد",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "kamelia_sadegh_mj": {
+        name: "کاملیا",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "samad_mahin_mj": {
+        name: "صمد",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "zahra_moali_mj": {
+        name: "زهرا معلی زائر عباس",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "marila_samad_mj": {
+        name: "مریلا",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "neyloofar_samad_mj": {
+        name: "نیلوفر",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "kheiri_mahin_mj": {
+        name: "خیری",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "vahid_shirifard_mj": {
+        name: "وحید شیری فرد",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "armina_kheiri_mj": {
+        name: "آرمینا",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "fatemeh_mahin_mj": {
+        name: "فاطمه",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    },
+
+    "maryam_mahin_mj": {
+        name: "مریم",
+        gender: "",
+        occupation: "",
+        education: "",
+        birthDate: "",
+        deathDate: "",
+        residence: "",
+        notes: "",
+        image: ""
+    }
 };
