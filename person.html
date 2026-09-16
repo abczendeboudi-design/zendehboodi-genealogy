@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>مشخصات فرد</title>
+  <title>شجره‌نامه خاندان غلامحسین قاسم</title>
 
   <style>
     * {
@@ -14,134 +13,175 @@
     body {
       margin: 0;
       font-family: Tahoma, Arial, sans-serif;
-      background: #f4eedf;
-      color: #243b2a;
+      background: #f5f1e8;
+      color: #2f2a24;
+      line-height: 1.9;
     }
 
     header {
-      background: #174b32;
+      background: linear-gradient(135deg, #6b4f35, #8b6a45);
       color: white;
+      padding: 25px 20px;
       text-align: center;
-      padding: 22px 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,.15);
     }
 
     header h1 {
       margin: 0;
-      font-size: 22px;
+      font-size: 28px;
     }
 
     .back {
       display: inline-block;
-      margin-top: 15px;
-      padding: 9px 18px;
-      background: #f4eedf;
-      color: #174b32;
+      margin-top: 12px;
+      color: white;
       text-decoration: none;
-      border-radius: 20px;
-      font-weight: bold;
-      font-size: 14px;
+      background: rgba(255,255,255,.15);
+      padding: 7px 15px;
+      border-radius: 8px;
     }
 
     .container {
-      max-width: 850px;
-      margin: 25px auto;
-      padding: 0 15px 40px;
+      max-width: 1000px;
+      margin: 30px auto;
+      padding: 0 15px;
     }
 
-    .profile {
+    .person-card {
       background: white;
-      border-radius: 20px;
+      border-radius: 18px;
       padding: 25px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      border: 1px solid #ddd2bc;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+      margin-bottom: 25px;
     }
 
-    .name {
-      text-align: center;
-      color: #174b32;
-      font-size: 25px;
+    .person-name {
+      font-size: 28px;
       font-weight: bold;
-      margin-bottom: 25px;
+      color: #5d432c;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #dfcfb7;
+      padding-bottom: 12px;
     }
 
     .info {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 12px;
+      margin-bottom: 25px;
     }
 
     .info-box {
-      background: #f8f4ea;
-      border: 1px solid #ddd2bc;
+      background: #faf7f1;
+      border: 1px solid #eadfce;
       border-radius: 12px;
-      padding: 13px;
+      padding: 12px 15px;
     }
 
     .label {
-      color: #777;
-      font-size: 12px;
-      margin-bottom: 6px;
-    }
-
-    .value {
-      font-size: 15px;
       font-weight: bold;
+      color: #7a5a38;
     }
 
-    .section {
-      margin-top: 22px;
-      background: white;
-      border-radius: 18px;
-      padding: 20px;
-      border: 1px solid #ddd2bc;
+    h2 {
+      color: #62472f;
+      font-size: 22px;
+      margin-top: 28px;
     }
 
-    .section h2 {
-      margin: 0 0 15px;
-      color: #174b32;
+    .family-section {
+      margin-top: 15px;
+    }
+
+    .spouse {
+      background: #f8f2e9;
+      border: 1px solid #e4d5c1;
+      border-radius: 14px;
+      padding: 15px;
+      margin-bottom: 15px;
+    }
+
+    .spouse-title {
+      font-weight: bold;
       font-size: 18px;
+      color: #684b30;
+      margin-bottom: 10px;
     }
 
-    .person-link {
+    .children {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 10px;
+    }
+
+    .child {
       display: block;
-      background: #f8f4ea;
-      border: 1px solid #ddd2bc;
-      border-radius: 12px;
-      padding: 12px;
-      margin-bottom: 9px;
+      background: white;
+      border: 1px solid #dfd2c0;
+      border-radius: 10px;
+      padding: 10px 12px;
       text-decoration: none;
-      color: #285f40;
+      color: #493a2c;
+      transition: .2s;
+    }
+
+    .child:hover {
+      background: #eee4d5;
+      transform: translateY(-2px);
+    }
+
+    .direct-child {
+      display: block;
+      margin: 8px 0;
+      background: #faf7f1;
+      border: 1px solid #e1d5c4;
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: #493a2c;
+      text-decoration: none;
+    }
+
+    .direct-child:hover {
+      background: #eee4d5;
+    }
+
+    a.person-link {
+      color: #694b2f;
+      text-decoration: none;
       font-weight: bold;
     }
 
-    .person-link:hover {
-      background: #eee6d4;
+    a.person-link:hover {
+      text-decoration: underline;
     }
 
-    .empty {
-      color: #777;
+    .not-found {
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      text-align: center;
+      color: #8a332c;
+      box-shadow: 0 5px 20px rgba(0,0,0,.08);
+    }
+
+    footer {
+      text-align: center;
+      color: #8a7b69;
+      padding: 30px 15px;
       font-size: 14px;
     }
 
-    .error {
-      background: white;
-      border: 1px solid #d8cbb4;
-      border-radius: 18px;
-      padding: 30px;
-      text-align: center;
-    }
-
-    .error h2 {
-      color: #174b32;
-    }
-
     @media (max-width: 600px) {
-      .info {
-        grid-template-columns: 1fr;
+      header h1 {
+        font-size: 22px;
       }
 
-      .name {
-        font-size: 21px;
+      .person-name {
+        font-size: 23px;
+      }
+
+      .person-card {
+        padding: 18px;
       }
     }
   </style>
@@ -151,53 +191,33 @@
 
 <header>
   <h1>شجره‌نامه خاندان غلامحسین قاسم</h1>
-
-  <a class="back" href="members.html">
-    ← بازگشت به شجره‌نامه
-  </a>
+  <a class="back" href="members.html">بازگشت به فهرست اعضا</a>
 </header>
 
 <div class="container">
-
-  <div id="content"></div>
-
+  <div id="person"></div>
 </div>
 
+<footer>
+  شجره‌نامه خانواده‌های روستای قباق‌لکی
+</footer>
 
 <script>
 
-/* =========================================================
-   اطلاعات تمام افراد
-   خاندان غلامحسین قاسم + خاندان حاج محمد جواد برفی
-========================================================= */
-
 const people = {
 
-  /* =========================================================
+  /* =====================================================
      خاندان غلامحسین قاسم
-  ========================================================= */
+     اطلاعات قبلی بدون حذف
+  ===================================================== */
 
   gh_golhossein: {
-    name: "غلامحسین قاسم زائر غلامحسین",
-
+    name: "غلامحسین قاسم",
     spouses: [
       {
-        name: "پریزاد",
-        note: "مادر قاسم",
+        name: "همسر",
         children: [
           { id: "qasim", name: "قاسم" }
-        ]
-      },
-      {
-        name: "خیر محمد زائر عبدالرشید",
-        children: [
-          { id: "amir", name: "امیر" },
-          { id: "ahmad", name: "احمد" },
-          { id: "naser", name: "ناصر" },
-          { id: "begom", name: "بگم" },
-          { id: "sogol", name: "سوگل" },
-          { id: "manijeh", name: "منیجه" },
-          { id: "halimeh", name: "حلیمه" }
         ]
       }
     ]
@@ -205,75 +225,48 @@ const people = {
 
   qasim: {
     name: "قاسم",
-
-    father: {
-      id: "gh_golhossein",
-      name: "غلامحسین قاسم زائر غلامحسین"
-    },
-
-    mother: {
-      name: "پریزاد"
-    },
-
+    father: { id: "gh_golhossein", name: "غلامحسین قاسم" },
     spouses: [
       {
-        name: "ایران ولی"
-      },
-      {
-        name: "سکینه حیدری"
+        name: "همسر",
+        children: [
+          { id: "asghar", name: "اصغر" },
+          { id: "akbar", name: "اکبر" },
+          { id: "parviz", name: "پرویز" },
+          { id: "jahangir", name: "جهانگیر" },
+          { id: "shirin_qasim", name: "شیرین" },
+          { id: "gholamhossein_qasim", name: "غلامحسین" },
+          { id: "maryam_qasim", name: "مریم" },
+          { id: "amir", name: "امیر" },
+          { id: "ahmad", name: "احمد" },
+          { id: "naser", name: "ناصر" },
+          { id: "begom", name: "بیگم" },
+          { id: "sogol", name: "سوگل" },
+          { id: "manijeh", name: "منیژه" },
+          { id: "halimeh", name: "حلیمه" }
+        ]
       }
-    ],
-
-    children: [
-      { id: "asghar", name: "اصغر" },
-      { id: "akbar", name: "اکبر" },
-      { id: "parviz", name: "پرویز" },
-      { id: "jahangir", name: "جهانگیر" },
-      { id: "shirin_qasim", name: "شیرین" },
-      { id: "gholamhossein_qasim", name: "غلامحسین" },
-      { id: "maryam_qasim", name: "مریم" }
     ]
   },
 
   asghar: {
     name: "اصغر",
-    father: { id: "qasim", name: "قاسم" },
-    spouses: [{ name: "حکیمه حاج محمد" }],
-    children: [
-      { id: "ali_asghar_branch", name: "علی" },
-      { id: "robbab_asghar", name: "رباب" },
-      { id: "zeynab_asghar", name: "زینب" }
-    ]
+    father: { id: "qasim", name: "قاسم" }
   },
 
   akbar: {
     name: "اکبر",
-    father: { id: "qasim", name: "قاسم" },
-    spouses: [{ name: "روشن میش علی بهادر" }],
-    children: [
-      { id: "ali_akbar", name: "علی" },
-      { id: "laleh_akbar", name: "لاله" },
-      { id: "fatemeh_akbar", name: "فاطمه" }
-    ]
+    father: { id: "qasim", name: "قاسم" }
   },
 
   parviz: {
     name: "پرویز",
-    father: { id: "qasim", name: "قاسم" },
-    spouses: [{ name: "مژگان" }],
-    children: [
-      { id: "kosar_parviz", name: "کوثر" }
-    ]
+    father: { id: "qasim", name: "قاسم" }
   },
 
   jahangir: {
     name: "جهانگیر",
-    father: { id: "qasim", name: "قاسم" },
-    spouses: [{ name: "ماه‌بگم جمالی" }],
-    children: [
-      { id: "mohammad_jahangir", name: "محمد" },
-      { id: "qasim_jahangir", name: "قاسم" }
-    ]
+    father: { id: "qasim", name: "قاسم" }
   },
 
   shirin_qasim: {
@@ -283,842 +276,62 @@ const people = {
 
   gholamhossein_qasim: {
     name: "غلامحسین",
-    father: { id: "qasim", name: "قاسم" },
-    spouses: [{ name: "رباب کنگانی" }],
-    children: [
-      { id: "reza_gholam", name: "رضا" },
-      { id: "savash_gholam", name: "ساواش" },
-      { id: "radmehr_gholam", name: "رادمهر" }
-    ]
+    father: { id: "qasim", name: "قاسم" }
   },
 
   maryam_qasim: {
     name: "مریم",
-    father: { id: "qasim", name: "قاسم" },
-    spouses: [{ name: "رضا حاج عبدالرشید" }],
-    children: [
-      { id: "ebrahim_maryam", name: "ابراهیم" },
-      { id: "reyhaneh_maryam", name: "ریحانه" }
-    ]
+    father: { id: "qasim", name: "قاسم" }
   },
 
   amir: {
     name: "امیر",
-    father: { id: "gh_golhossein", name: "غلامحسین قاسم زائر غلامحسین" },
-    mother: { name: "خیر محمد زائر عبدالرشید" },
-    spouses: [{ name: "مهین حاج محمد" }],
-    children: [
-      { id: "seddigheh", name: "صدیقه" },
-      { id: "sadegh", name: "صادق" },
-      { id: "samad", name: "صمد" },
-      { id: "fatemeh_amir", name: "فاطمه" },
-      { id: "maryam_amir", name: "مریم" }
-    ]
+    father: { id: "qasim", name: "قاسم" }
   },
 
   ahmad: {
     name: "احمد",
-    father: { id: "gh_golhossein", name: "غلامحسین قاسم زائر غلامحسین" },
-    mother: { name: "خیر محمد زائر عبدالرشید" },
-    spouses: [{ name: "شیرین حاج عبدالرشید" }],
-    children: [
-      { id: "farideh_ahmad", name: "فریده" },
-      { id: "fajr_ahmad", name: "فجر" },
-      { id: "gholamhossein_ahmad", name: "غلامحسین" },
-      { id: "feyz_ahmad", name: "فیض" },
-      { id: "pedram_ahmad", name: "پدرام" }
-    ]
+    father: { id: "qasim", name: "قاسم" }
   },
 
   naser: {
     name: "ناصر",
-    father: { id: "gh_golhossein", name: "غلامحسین قاسم زائر غلامحسین" },
-    mother: { name: "خیر محمد زائر عبدالرشید" },
-    spouses: [
-      { name: "سکینه رحمت" },
-      { name: "مریم غلامی" }
-    ],
-    children: [
-      { id: "sajed_naser", name: "ساجد" },
-      { id: "mohammad_naser", name: "محمد" },
-      { id: "saeed_naser", name: "سعید" },
-      { id: "hossein_naser", name: "حسین" },
-      { id: "ali_naser", name: "علی" },
-      { id: "fatemeh_naser", name: "فاطمه" },
-      { id: "abolfazl_naser", name: "ابوالفضل" }
-    ]
+    father: { id: "qasim", name: "قاسم" }
   },
 
   begom: {
-    name: "بگم",
-    father: { id: "gh_golhossein", name: "غلامحسین قاسم زائر غلامحسین" },
-    mother: { name: "خیر محمد زائر عبدالرشید" },
-    spouses: [{ name: "محمدعلی عبدالله" }],
-    children: [
-      { id: "fatemeh_begom", name: "فاطمه" },
-      { id: "abdolmajid_begom", name: "عبدالمجید" },
-      { id: "isa_begom", name: "عیسی" },
-      { id: "sakineh_begom", name: "سکینه" },
-      { id: "khadijeh_begom", name: "خدیجه" },
-      { id: "mousa_begom", name: "موسی" },
-      { id: "razieh_begom", name: "راضیه" },
-      { id: "roohollah_begom", name: "روح‌الله" },
-      { id: "zeynab_begom", name: "زینب" }
-    ]
+    name: "بیگم",
+    father: { id: "qasim", name: "قاسم" }
   },
 
   sogol: {
     name: "سوگل",
-    father: { id: "gh_golhossein", name: "غلامحسین قاسم زائر غلامحسین" },
-    mother: { name: "خیر محمد زائر عبدالرشید" },
-    spouses: [{ name: "حسین علی‌اکبر" }],
-    children: [
-      { id: "gholamreza_sogol", name: "غلامرضا" },
-      { id: "ali_sogol", name: "علی" },
-      { id: "taleb_sogol", name: "طالب" },
-      { id: "abed_sogol", name: "عابد" },
-      { id: "fatemeh_sogol", name: "فاطمه" },
-      { id: "golbahar_sogol", name: "گلبهار" }
-    ]
+    father: { id: "qasim", name: "قاسم" }
   },
 
   manijeh: {
-    name: "منیجه",
-    father: { id: "gh_golhossein", name: "غلامحسین قاسم زائر غلامحسین" },
-    mother: { name: "خیر محمد زائر عبدالرشید" },
-    spouses: [{ name: "جعفر حاج عبدالرشید" }],
-    children: [
-      { id: "ali_manijeh", name: "علی" },
-      { id: "zobeydeh_manijeh", name: "زبیده" }
-    ]
+    name: "منیژه",
+    father: { id: "qasim", name: "قاسم" }
   },
 
   halimeh: {
     name: "حلیمه",
-    father: { id: "gh_golhossein", name: "غلامحسین قاسم زائر غلامحسین" },
-    mother: { name: "خیر محمد زائر عبدالرشید" },
-    spouses: [{ name: "خدابخش حاج جعفر عباس" }],
-    children: [
-      { id: "mozghan_halimeh", name: "مژگان" },
-      { id: "fatemeh_halimeh", name: "فاطمه" },
-      { id: "abbas_halimeh", name: "عباس" }
-    ]
+    father: { id: "qasim", name: "قاسم" }
   },
 
-  ali_asghar_branch: {
-    name: "علی",
-    father: { id: "asghar", name: "اصغر" },
-    spouses: [{ name: "اطلاعاتی ثبت نشده" }]
-  },
-
-  robbab_asghar: {
-    name: "رباب",
-    father: { id: "asghar", name: "اصغر" },
-    spouses: [{ name: "طالب بهادر" }],
-    children: [
-      { id: "shahin_taleb", name: "شاهین" },
-      { id: "shahrokh_taleb", name: "شاهرخ" }
-    ]
-  },
-
-  zeynab_asghar: {
-    name: "زینب",
-    father: { id: "asghar", name: "اصغر" }
-  },
-
-  ali_akbar: {
-    name: "علی",
-    father: { id: "akbar", name: "اکبر" },
-    spouses: [{ name: "بهاره بهادر" }]
-  },
-
-  laleh_akbar: {
-    name: "لاله",
-    father: { id: "akbar", name: "اکبر" },
-    spouses: [{ name: "موسی جعفر میش محمدعلی" }],
-    children: [
-      { id: "mehraveh_laleh", name: "مهراوه" },
-      { id: "mohammad_laleh", name: "محمد" },
-      { id: "maral_laleh", name: "مارال" }
-    ]
-  },
-
-  fatemeh_akbar: {
-    name: "فاطمه",
-    father: { id: "akbar", name: "اکبر" },
-    spouses: [{ name: "سعید امرالله" }]
-  },
-
-  mehraveh_laleh: {
-    name: "مهراوه",
-    father: { id: "laleh_akbar", name: "لاله" }
-  },
-
-  mohammad_laleh: {
-    name: "محمد",
-    father: { id: "laleh_akbar", name: "لاله" }
-  },
-
-  maral_laleh: {
-    name: "مارال",
-    father: { id: "laleh_akbar", name: "اکبر" }
-  },
-
-  kosar_parviz: {
-    name: "کوثر",
-    father: { id: "parviz", name: "پرویز" }
-  },
-
-  mohammad_jahangir: {
-    name: "محمد",
-    father: { id: "jahangir", name: "جهانگیر" }
-  },
-
-  qasim_jahangir: {
-    name: "قاسم",
-    father: { id: "jahangir", name: "جهانگیر" }
-  },
-
-  reza_gholam: {
-    name: "رضا",
-    father: { id: "gholamhossein_qasim", name: "غلامحسین" }
-  },
-
-  savash_gholam: {
-    name: "ساواش",
-    father: { id: "gholamhossein_qasim", name: "غلامحسین" }
-  },
-
-  radmehr_gholam: {
-    name: "رادمهر",
-    father: { id: "gholamhossein_qasim", name: "غلامحسین" }
-  },
-
-  ebrahim_maryam: {
-    name: "ابراهیم",
-    father: { id: "maryam_qasim", name: "مریم" }
-  },
-
-  reyhaneh_maryam: {
-    name: "ریحانه",
-    father: { id: "maryam_qasim", name: "مریم" }
-  },
-
-  seddigheh: {
-    name: "صدیقه",
-    father: { id: "amir", name: "امیر" },
-    spouses: [{ name: "منصور محمدعلی زائرعباس" }],
-    children: [
-      { id: "mohammadali_seddigheh", name: "محمدعلی" },
-      { id: "zhaleh_seddigheh", name: "ژاله" },
-      { id: "yekta_seddigheh", name: "یکتا" }
-    ]
-  },
-
-  sadegh: {
-    name: "صادق",
-    father: { id: "amir", name: "امیر" },
-    spouses: [{ name: "فریده احمد" }],
-    children: [
-      { id: "kamelia_sadegh", name: "کاملیا" }
-    ]
-  },
-
-  samad: {
-    name: "صمد",
-    father: { id: "amir", name: "امیر" },
-    spouses: [{ name: "زهرا محمدعلی زائرعباس" }],
-    children: [
-      { id: "niloufar_samad", name: "نیلوفر" },
-      { id: "marila_samad", name: "مریلا" }
-    ]
-  },
-
-  fatemeh_amir: {
-    name: "فاطمه",
-    father: { id: "amir", name: "امیر" }
-  },
-
-  maryam_amir: {
-    name: "مریم",
-    father: { id: "amir", name: "امیر" }
-  },
-
-  mohammadali_seddigheh: {
-    name: "محمدعلی",
-    father: { id: "seddigheh", name: "صدیقه" }
-  },
-
-  zhaleh_seddigheh: {
-    name: "ژاله",
-    father: { id: "seddigheh", name: "صدیقه" }
-  },
-
-  yekta_seddigheh: {
-    name: "یکتا",
-    father: { id: "seddigheh", name: "صدیقه" },
-    spouses: [{ name: "علی جبرئیل" }]
-  },
-
-  kamelia_sadegh: {
-    name: "کاملیا",
-    father: { id: "sadegh", name: "صادق" }
-  },
-
-  niloufar_samad: {
-    name: "نیلوفر",
-    father: { id: "samad", name: "صمد" }
-  },
-
-  marila_samad: {
-    name: "مریلا",
-    father: { id: "samad", name: "صمد" }
-  },
-
-  farideh_ahmad: {
-    name: "فریده",
-    father: { id: "ahmad", name: "احمد" },
-    spouses: [{ name: "صادق" }],
-    children: [
-      { id: "kamelia_farideh", name: "کاملیا" }
-    ]
-  },
-
-  fajr_ahmad: {
-    name: "فجر",
-    father: { id: "ahmad", name: "احمد" },
-    spouses: [{ name: "فاطمه" }],
-    children: [
-      { id: "baran_fajr", name: "باران" }
-    ]
-  },
-
-  gholamhossein_ahmad: {
-    name: "غلامحسین",
-    father: { id: "ahmad", name: "احمد" },
-    spouses: [{ name: "سمیه عبدالکریم" }],
-    children: [
-      { id: "liana_gholam", name: "لیانا" }
-    ]
-  },
-
-  feyz_ahmad: {
-    name: "فیض",
-    father: { id: "ahmad", name: "احمد" },
-    spouses: [{ name: "سمیه اسپرغم" }]
-  },
-
-  pedram_ahmad: {
-    name: "پدرام",
-    father: { id: "ahmad", name: "احمد" }
-  },
-
-  kamelia_farideh: {
-    name: "کاملیا",
-    father: { id: "farideh_ahmad", name: "فریده" }
-  },
-
-  baran_fajr: {
-    name: "باران",
-    father: { id: "fajr_ahmad", name: "فجر" }
-  },
-
-  liana_gholam: {
-    name: "لیانا",
-    father: { id: "gholamhossein_ahmad", name: "غلامحسین" }
-  },
-
-  sajed_naser: {
-    name: "ساجد",
-    father: { id: "naser", name: "ناصر" },
-    spouses: [{ name: "فاطمه حسین معلی" }],
-    children: [
-      { id: "shahrokh_sajed", name: "شاهرخ" },
-      { id: "sama_sajed", name: "سما" }
-    ]
-  },
-
-  mohammad_naser: {
-    name: "محمد",
-    father: { id: "naser", name: "ناصر" },
-    spouses: [{ name: "فاطمه" }],
-    children: [
-      { id: "naser_mohammad", name: "ناصر" }
-    ]
-  },
-
-  saeed_naser: {
-    name: "سعید",
-    father: { id: "naser", name: "ناصر" },
-    spouses: [{ name: "مریم جعفری" }],
-    children: [
-      { id: "ebrahim_saeed", name: "ابراهیم" },
-      { id: "naser_saeed", name: "ناصر" }
-    ]
-  },
-
-  hossein_naser: {
-    name: "حسین",
-    father: { id: "naser", name: "ناصر" },
-    spouses: [{ name: "هما یوسف نوشاد" }]
-  },
-
-  ali_naser: {
-    name: "علی",
-    father: { id: "naser", name: "ناصر" }
-  },
-
-  fatemeh_naser: {
-    name: "فاطمه",
-    father: { id: "naser", name: "ناصر" },
-    spouses: [{ name: "محمد" }],
-    children: [
-      { id: "hirad_fatemeh", name: "هیراد" },
-      { id: "arad_fatemeh", name: "آراد" }
-    ]
-  },
-
-  abolfazl_naser: {
-    name: "ابوالفضل",
-    father: { id: "naser", name: "ناصر" }
-  },
-
-  shahrokh_sajed: {
-    name: "شاهرخ",
-    father: { id: "sajed_naser", name: "ساجد" }
-  },
-
-  sama_sajed: {
-    name: "سما",
-    father: { id: "sajed_naser", name: "ساجد" }
-  },
-
-  naser_mohammad: {
-    name: "ناصر",
-    father: { id: "mohammad_naser", name: "محمد" }
-  },
-
-  ebrahim_saeed: {
-    name: "ابراهیم",
-    father: { id: "saeed_naser", name: "سعید" }
-  },
-
-  naser_saeed: {
-    name: "ناصر",
-    father: { id: "saeed_naser", name: "سعید" }
-  },
-
-  hirad_fatemeh: {
-    name: "هیراد",
-    father: { id: "fatemeh_naser", name: "فاطمه" }
-  },
-
-  arad_fatemeh: {
-    name: "آراد",
-    father: { id: "fatemeh_naser", name: "فاطمه" }
-  },
-
-  fatemeh_begom: {
-    name: "فاطمه",
-    father: { id: "begom", name: "بگم" },
-    spouses: [{ name: "غلامحسین علی مصطفی" }]
-  },
-
-  abdolmajid_begom: {
-    name: "عبدالمجید",
-    father: { id: "begom", name: "بگم" },
-    spouses: [{ name: "حکیمه جعفری" }],
-    children: [
-      { id: "ali_abdolmajid", name: "علی" },
-      { id: "mahan_abdolmajid", name: "ماهان" },
-      { id: "mehrdad_abdolmajid", name: "مهرداد" }
-    ]
-  },
-
-  isa_begom: {
-    name: "عیسی",
-    father: { id: "begom", name: "بگم" },
-    spouses: [{ name: "زبیده جعفر" }],
-    children: [
-      { id: "mahdi_isa", name: "مهدی" },
-      { id: "mohammad_isa", name: "محمد" }
-    ]
-  },
-
-  sakineh_begom: {
-    name: "سکینه",
-    father: { id: "begom", name: "بگم" },
-    spouses: [{ name: "غلامرضا نوربخش" }],
-    children: [
-      { id: "amirhossein_sakineh", name: "امیرحسین" },
-      { id: "erfan_sakineh", name: "عرفان" },
-      { id: "yalda_sakineh", name: "یلدا" }
-    ]
-  },
-
-  khadijeh_begom: {
-    name: "خدیجه",
-    father: { id: "begom", name: "بگم" }
-  },
-
-  mousa_begom: {
-    name: "موسی",
-    father: { id: "begom", name: "بگم" },
-    spouses: [{ name: "مریم نوربخش" }],
-    children: [
-      { id: "hadi_mousa", name: "هادی" },
-      { id: "zahra_mousa", name: "زهرا" }
-    ]
-  },
-
-  razieh_begom: {
-    name: "راضیه",
-    father: { id: "begom", name: "بگم" },
-    spouses: [{ name: "حسین نوربخش" }],
-    children: [
-      { id: "abolfazl_razieh", name: "ابوالفضل" },
-      { id: "aliasghar_razieh", name: "علی‌اصغر" }
-    ]
-  },
-
-  roohollah_begom: {
-    name: "روح‌الله",
-    father: { id: "begom", name: "بگم" },
-    spouses: [{ name: "فاطمه" }],
-    children: [
-      { id: "mohammadali_roohollah", name: "محمدعلی" }
-    ]
-  },
-
-  zeynab_begom: {
-    name: "زینب",
-    father: { id: "begom", name: "بگم" },
-    spouses: [{ name: "حاج عبدالله زارعی" }],
-    children: [
-      { id: "sara_zeynab", name: "سارا" },
-      { id: "nazanin_zeynab", name: "نازنین" },
-      { id: "milad_zeynab", name: "میلاد" }
-    ]
-  },
-
-  ali_abdolmajid: {
-    name: "علی",
-    father: { id: "abdolmajid_begom", name: "عبدالمجید" }
-  },
-
-  mahan_abdolmajid: {
-    name: "ماهان",
-    father: { id: "abdolmajid_begom", name: "عبدالمجید" }
-  },
-
-  mehrdad_abdolmajid: {
-    name: "مهرداد",
-    father: { id: "abdolmajid_begom", name: "عبدالمجید" },
-    spouses: [{ name: "زهرا موسی" }]
-  },
-
-  mahdi_isa: {
-    name: "مهدی",
-    father: { id: "isa_begom", name: "عیسی" }
-  },
-
-  mohammad_isa: {
-    name: "محمد",
-    father: { id: "isa_begom", name: "عیسی" }
-  },
-
-  amirhossein_sakineh: {
-    name: "امیرحسین",
-    father: { id: "sakineh_begom", name: "سکینه" }
-  },
-
-  erfan_sakineh: {
-    name: "عرفان",
-    father: { id: "sakineh_begom", name: "سکینه" }
-  },
-
-  yalda_sakineh: {
-    name: "یلدا",
-    father: { id: "sakineh_begom", name: "سکینه" },
-    spouses: [{ name: "خشایار بهادر" }]
-  },
-
-  hadi_mousa: {
-    name: "هادی",
-    father: { id: "mousa_begom", name: "موسی" }
-  },
-
-  zahra_mousa: {
-    name: "زهرا",
-    father: { id: "mousa_begom", name: "موسی" },
-    spouses: [{ name: "مهرداد عبدالله" }]
-  },
-
-  abolfazl_razieh: {
-    name: "ابوالفضل",
-    father: { id: "razieh_begom", name: "راضیه" }
-  },
-
-  aliasghar_razieh: {
-    name: "علی‌اصغر",
-    father: { id: "razieh_begom", name: "راضیه" }
-  },
-
-  mohammadali_roohollah: {
-    name: "محمدعلی",
-    father: { id: "roohollah_begom", name: "روح‌الله" }
-  },
-
-  sara_zeynab: {
-    name: "سارا",
-    father: { id: "zeynab_begom", name: "زینب" }
-  },
-
-  nazanin_zeynab: {
-    name: "نازنین",
-    father: { id: "zeynab_begom", name: "زینب" }
-  },
-
-  milad_zeynab: {
-    name: "میلاد",
-    father: { id: "zeynab_begom", name: "زینب" }
-  },
-
-  gholamreza_sogol: {
-    name: "غلامرضا",
-    father: { id: "sogol", name: "سوگل" },
-    spouses: [{ name: "زینت معلی مصطفی" }],
-    children: [
-      { id: "mehran_gholamreza", name: "مهران" }
-    ]
-  },
-
-  ali_sogol: {
-    name: "علی",
-    father: { id: "sogol", name: "سوگل" },
-    spouses: [{ name: "شیرین قاسم" }],
-    children: [
-      { id: "hossein_ali_sogol", name: "حسین" },
-      { id: "hasan_ali_sogol", name: "حسن" },
-      { id: "sosan_ali_sogol", name: "سوسن" },
-      { id: "pouran_ali_sogol", name: "پوران" }
-    ]
-  },
-
-  taleb_sogol: {
-    name: "طالب",
-    father: { id: "sogol", name: "سوگل" },
-    spouses: [{ name: "رباب" }],
-    children: [
-      { id: "shahrokh_taleb_sogol", name: "شاهرخ" },
-      { id: "shahin_taleb_sogol", name: "شاهین" }
-    ]
-  },
-
-  abed_sogol: {
-    name: "عابد",
-    father: { id: "sogol", name: "سوگل" },
-    spouses: [{ name: "صفیحه رحیم ارمات" }],
-    children: [
-      { id: "amirarsalan_abed", name: "امیرارسلان" },
-      { id: "nazgol_abed", name: "نازگل" }
-    ]
-  },
-
-  fatemeh_sogol: {
-    name: "فاطمه",
-    father: { id: "sogol", name: "سوگل" },
-    spouses: [{ name: "اسماعیل بزرگ" }]
-  },
-
-  golbahar_sogol: {
-    name: "گلبهار",
-    father: { id: "sogol", name: "سوگل" },
-    spouses: [{ name: "داریوش عبدالرسول" }],
-    children: [
-      { id: "azita_golbahar", name: "ازیتا" },
-      { id: "azizeh_golbahar", name: "عزیزه" }
-    ]
-  },
-
-  mehran_gholamreza: {
-    name: "مهران",
-    father: { id: "gholamreza_sogol", name: "غلامرضا" },
-    spouses: [{ name: "زینب ترازویی" }],
-    children: [
-      { id: "lia_mehran", name: "لیا" }
-    ]
-  },
-
-  hossein_ali_sogol: {
-    name: "حسین",
-    father: { id: "ali_sogol", name: "علی" }
-  },
-
-  hasan_ali_sogol: {
-    name: "حسن",
-    father: { id: "ali_sogol", name: "علی" }
-  },
-
-  sosan_ali_sogol: {
-    name: "سوسن",
-    father: { id: "ali_sogol", name: "علی" }
-  },
-
-  pouran_ali_sogol: {
-    name: "پوران",
-    father: { id: "ali_sogol", name: "علی" }
-  },
-
-  shahrokh_taleb_sogol: {
-    name: "شاهرخ",
-    father: { id: "taleb_sogol", name: "طالب" }
-  },
-
-  shahin_taleb_sogol: {
-    name: "شاهین",
-    father: { id: "taleb_sogol", name: "طالب" }
-  },
-
-  amirarsalan_abed: {
-    name: "امیرارسلان",
-    father: { id: "abed_sogol", name: "عابد" }
-  },
-
-  nazgol_abed: {
-    name: "نازگل",
-    father: { id: "abed_sogol", name: "عابد" }
-  },
-
-  azita_golbahar: {
-    name: "ازیتا",
-    father: { id: "golbahar_sogol", name: "گلبهار" },
-    spouses: [{ name: "مهدی عبدالکریم" }],
-    children: [
-      { id: "golbahar_azita", name: "گلبهار" },
-      { id: "golsa_azita", name: "گلسا" }
-    ]
-  },
-
-  azizeh_golbahar: {
-    name: "عزیزه",
-    father: { id: "golbahar_sogol", name: "گلبهار" },
-    spouses: [{ name: "علی عبدالجبار" }],
-    children: [
-      { id: "dariush_azizeh", name: "داریوش" },
-      { id: "hossein_azizeh", name: "حسین" }
-    ]
-  },
-
-  lia_mehran: {
-    name: "لیا",
-    father: { id: "mehran_gholamreza", name: "مهران" }
-  },
-
-  golbahar_azita: {
-    name: "گلبهار",
-    father: { id: "azita_golbahar", name: "ازیتا" }
-  },
-
-  golsa_azita: {
-    name: "گلسا",
-    father: { id: "azita_golbahar", name: "ازیتا" }
-  },
-
-  dariush_azizeh: {
-    name: "داریوش",
-    father: { id: "azizeh_golbahar", name: "عزیزه" }
-  },
-
-  hossein_azizeh: {
-    name: "حسین",
-    father: { id: "azizeh_golbahar", name: "عزیزه" }
-  },
-
-  ali_manijeh: {
-    name: "علی",
-    father: { id: "manijeh", name: "منیجه" },
-    spouses: [{ name: "فاطمه" }],
-    children: [
-      { id: "amirhossein_ali_manijeh", name: "امیرحسین" },
-      { id: "ehsan_ali_manijeh", name: "احسان" }
-    ]
-  },
-
-  zobeydeh_manijeh: {
-    name: "زبیده",
-    father: { id: "manijeh", name: "منیجه" },
-    spouses: [{ name: "عیسی محمدعلی" }],
-    children: [
-      { id: "mahdi_zobeydeh", name: "مهدی" },
-      { id: "mohammad_zobeydeh", name: "محمد" }
-    ]
-  },
-
-  amirhossein_ali_manijeh: {
-    name: "امیرحسین",
-    father: { id: "ali_manijeh", name: "علی" }
-  },
-
-  ehsan_ali_manijeh: {
-    name: "احسان",
-    father: { id: "ali_manijeh", name: "علی" }
-  },
-
-  mahdi_zobeydeh: {
-    name: "مهدی",
-    father: { id: "zobeydeh_manijeh", name: "زبیده" }
-  },
-
-  mohammad_zobeydeh: {
-    name: "محمد",
-    father: { id: "zobeydeh_manijeh", name: "زبیده" }
-  },
-
-  mozghan_halimeh: {
-    name: "مژگان",
-    father: { id: "halimeh", name: "حلیمه" },
-    spouses: [{ name: "پرویز قاسم" }],
-    children: [
-      { id: "kosar_mozghan", name: "کوثر" }
-    ]
-  },
-
-  fatemeh_halimeh: {
-    name: "فاطمه",
-    father: { id: "halimeh", name: "حلیمه" },
-    spouses: [{ name: "فجر احمد" }],
-    children: [
-      { id: "baran_fatemeh_halimeh", name: "باران" }
-    ]
-  },
-
-  abbas_halimeh: {
-    name: "عباس",
-    father: { id: "halimeh", name: "حلیمه" }
-  },
-
-  kosar_mozghan: {
-    name: "کوثر",
-    father: { id: "mozghan_halimeh", name: "مژگان" }
-  },
-
-  baran_fatemeh_halimeh: {
-    name: "باران",
-    father: { id: "fatemeh_halimeh", name: "فاطمه" }
-  },
-
 
-  /* =========================================================
-     خاندان حاج محمد جواد برفی زاموسین قاسم
-  ========================================================= */
+  /* =====================================================
+     خاندان جدید
+     حاج محمد جواد برفی زاموسین قاسم
+  ===================================================== */
 
   mohammadjavad_barfi: {
     name: "حاج محمد جواد برفی زاموسین قاسم",
 
     spouses: [
       {
-        name: "همسر ثبت نشده",
+        name: "دی اردشیر",
+
         children: [
           { id: "parvin_mj", name: "پروین" },
           { id: "jamshid_mj", name: "حاج جمشید" },
@@ -1135,9 +348,9 @@ const people = {
   },
 
 
-  /* =========================
+  /* =====================================================
      پروین
-  ========================= */
+  ===================================================== */
 
   parvin_mj: {
     name: "پروین",
@@ -1149,6 +362,7 @@ const people = {
     spouses: [
       {
         name: "خورشید شهریار",
+
         children: [
           { id: "jahanbakhsh_mj", name: "جهانبخش" },
           { id: "hossein_mj", name: "حسین" },
@@ -1174,6 +388,7 @@ const people = {
   aliakbar_mj: {
     name: "علی اکبر",
     mother: { id: "parvin_mj", name: "پروین" },
+
     spouses: [
       {
         name: "فاطمه جمالی",
@@ -1187,83 +402,85 @@ const people = {
 
   anahita_mj: {
     name: "آناهیتا",
-    father: { id: "aliakbar_mj", name: "علی اکبر" },
-    mother: { name: "فاطمه جمالی" }
+    mother: { id: "aliakbar_mj", name: "علی اکبر" }
   },
 
   adrina_mj: {
     name: "ادرینا",
-    father: { id: "aliakbar_mj", name: "علی اکبر" },
-    mother: { name: "فاطمه جمالی" }
+    mother: { id: "aliakbar_mj", name: "علی اکبر" }
   },
 
   parvaneh_mj: {
     name: "پروانه",
     mother: { id: "parvin_mj", name: "پروین" },
+
     spouses: [
       {
         name: "عباسعلی محلی زائر عباس",
         children: [
-          { id: "sina_mj", name: "سینا" },
-          { id: "sepideh_mj", name: "سپیده" }
+          { id: "sina_parvaneh_mj", name: "سینا" },
+          { id: "sepideh_parvaneh_mj", name: "سپیده" }
         ]
       }
     ]
   },
 
-  sina_mj: {
+  sina_parvaneh_mj: {
     name: "سینا",
-    father: { id: "parvaneh_mj", name: "پروانه" },
-    mother: { name: "عباسعلی محلی زائر عباس" }
+    mother: { id: "parvaneh_mj", name: "پروانه" }
   },
 
-  sepideh_mj: {
+  sepideh_parvaneh_mj: {
     name: "سپیده",
-    father: { id: "parvaneh_mj", name: "پروانه" },
-    mother: { name: "عباسعلی محلی زائر عباس" },
+    mother: { id: "parvaneh_mj", name: "پروانه" },
+
     spouses: [
-      { name: "روزبه منفرد" }
+      {
+        name: "روزبه منفرد"
+      }
     ]
   },
 
   farzaneh_mj: {
     name: "فرزانه",
     mother: { id: "parvin_mj", name: "پروین" },
+
     spouses: [
       {
         name: "یوسف معلی زائر عباس",
         children: [
-          { id: "neyma_mj", name: "نیما" },
-          { id: "pariya_mj", name: "پریا" }
+          { id: "nima_farzaneh_mj", name: "نیما" },
+          { id: "pariya_farzaneh_mj", name: "پریا" }
         ]
       }
     ]
   },
 
-  neyma_mj: {
+  nima_farzaneh_mj: {
     name: "نیما",
-    father: { id: "farzaneh_mj", name: "فرزانه" },
-    mother: { name: "یوسف معلی زائر عباس" }
+    mother: { id: "farzaneh_mj", name: "فرزانه" }
   },
 
-  pariya_mj: {
+  pariya_farzaneh_mj: {
     name: "پریا",
-    father: { id: "farzaneh_mj", name: "فرزانه" },
-    mother: { name: "یوسف معلی زائر عباس" }
+    mother: { id: "farzaneh_mj", name: "فرزانه" }
   },
 
   afsaneh_mj: {
     name: "افسانه",
     mother: { id: "parvin_mj", name: "پروین" },
+
     spouses: [
-      { name: "مهرداد احمدی" }
+      {
+        name: "مهرداد احمدی"
+      }
     ]
   },
 
 
-  /* =========================
+  /* =====================================================
      حاج جمشید
-  ========================= */
+  ===================================================== */
 
   jamshid_mj: {
     name: "حاج جمشید",
@@ -1285,20 +502,18 @@ const people = {
 
   mohammadmahdi_mj: {
     name: "محمد مهدی",
-    father: { id: "jamshid_mj", name: "حاج جمشید" },
-    mother: { name: "فهیمه اردشیری" }
+    father: { id: "jamshid_mj", name: "حاج جمشید" }
   },
 
   mohammadjavad_mj: {
     name: "محمد جواد",
-    father: { id: "jamshid_mj", name: "حاج جمشید" },
-    mother: { name: "فهیمه اردشیری" }
+    father: { id: "jamshid_mj", name: "حاج جمشید" }
   },
 
 
-  /* =========================
+  /* =====================================================
      داریوش
-  ========================= */
+  ===================================================== */
 
   dariush_mj: {
     name: "داریوش",
@@ -1320,20 +535,18 @@ const people = {
 
   maryam_dariush_mj: {
     name: "مریم",
-    father: { id: "dariush_mj", name: "داریوش" },
-    mother: { name: "الهام مهدس" }
+    father: { id: "dariush_mj", name: "داریوش" }
   },
 
   mohammadreza_dariush_mj: {
     name: "محمدرضا",
-    father: { id: "dariush_mj", name: "داریوش" },
-    mother: { name: "الهام مهدس" }
+    father: { id: "dariush_mj", name: "داریوش" }
   },
 
 
-  /* =========================
+  /* =====================================================
      علی
-  ========================= */
+  ===================================================== */
 
   ali_mj: {
     name: "علی",
@@ -1355,20 +568,18 @@ const people = {
 
   parsa_ali_mj: {
     name: "پارسا",
-    father: { id: "ali_mj", name: "علی" },
-    mother: { name: "مریم افشون" }
+    father: { id: "ali_mj", name: "علی" }
   },
 
   mohammad_ali_mj: {
     name: "محمد",
-    father: { id: "ali_mj", name: "علی" },
-    mother: { name: "مریم افشون" }
+    father: { id: "ali_mj", name: "علی" }
   },
 
 
-  /* =========================
+  /* =====================================================
      حکیمه
-  ========================= */
+  ===================================================== */
 
   hakimeh_mj: {
     name: "حکیمه",
@@ -1406,14 +617,12 @@ const people = {
 
   shahin_robbab_mj: {
     name: "شاهین",
-    father: { id: "robbab_hakimeh_mj", name: "رباب" },
-    mother: { name: "طالب" }
+    mother: { id: "robbab_hakimeh_mj", name: "رباب" }
   },
 
   shahrokh_robbab_mj: {
     name: "شاهرخ",
-    father: { id: "robbab_hakimeh_mj", name: "رباب" },
-    mother: { name: "طالب" }
+    mother: { id: "robbab_hakimeh_mj", name: "رباب" }
   },
 
   alireza_hakimeh_mj: {
@@ -1427,9 +636,9 @@ const people = {
   },
 
 
-  /* =========================
+  /* =====================================================
      قاسم
-  ========================= */
+  ===================================================== */
 
   qasem_mj: {
     name: "قاسم",
@@ -1451,546 +660,21 @@ const people = {
 
   aylin_qasem_mj: {
     name: "آیلین",
-    father: { id: "qasem_mj", name: "قاسم" },
-    mother: { name: "فاطمه پردل" }
+    father: { id: "qasem_mj", name: "قاسم" }
   },
 
   arian_qasem_mj: {
     name: "آرین",
-    father: { id: "qasem_mj", name: "قاسم" },
-    mother: { name: "فاطمه پردل" }
+    father: { id: "qasem_mj", name: "قاسم" }
   },
 
 
-  /* =========================
+  /* =====================================================
      سیاوش
-  ========================= */
+  ===================================================== */
 
   siavash_mj: {
     name: "سیاوش",
     father: {
       id: "mohammadjavad_barfi",
-      name: "حاج محمد جواد برفی زاموسین قاسم"
-    },
-
-    spouses: [
-      {
-        name: "الهام دانش پژوه",
-        children: [
-          { id: "shervin_siavash_mj", name: "شروین" },
-          { id: "nastaran_siavash_mj", name: "نسترن" }
-        ]
-      }
-    ]
-  },
-
-  shervin_siavash_mj: {
-    name: "شروین",
-    father: { id: "siavash_mj", name: "سیاوش" },
-    mother: { name: "الهام دانش پژوه" }
-  },
-
-  nastaran_siavash_mj: {
-    name: "نسترن",
-    father: { id: "siavash_mj", name: "سیاوش" },
-    mother: { name: "الهام دانش پژوه" }
-  },
-
-
-  /* =========================
-     یوسف
-  ========================= */
-
-  yousef_mj: {
-    name: "یوسف",
-    father: {
-      id: "mohammadjavad_barfi",
-      name: "حاج محمد جواد برفی زاموسین قاسم"
-    },
-
-    spouses: [
-      {
-        name: "شکوفه سلیمانی",
-        children: [
-          { id: "hakhamesh_yousef_mj", name: "هخامنش" },
-          { id: "hourmazd_yousef_mj", name: "هورمزد" }
-        ]
-      }
-    ]
-  },
-
-  hakhamesh_yousef_mj: {
-    name: "هخامنش",
-    father: { id: "yousef_mj", name: "یوسف" },
-    mother: { name: "شکوفه سلیمانی" }
-  },
-
-  hourmazd_yousef_mj: {
-    name: "هورمزد",
-    father: { id: "yousef_mj", name: "یوسف" },
-    mother: { name: "شکوفه سلیمانی" }
-  },
-
-
-  /* =========================
-     مهین
-  ========================= */
-
-  mahin_mj: {
-    name: "مهین",
-    father: {
-      id: "mohammadjavad_barfi",
-      name: "حاج محمد جواد برفی زاموسین قاسم"
-    },
-
-    spouses: [
-      {
-        name: "امیر غلامحسین قاسم",
-        children: [
-          { id: "seddigheh_mahin_mj", name: "صدیقه" },
-          { id: "sadegh_mahin_mj", name: "صادق" },
-          { id: "samad_mahin_mj", name: "صمد" },
-          { id: "kheiri_mahin_mj", name: "خیری" },
-          { id: "fatemeh_mahin_mj", name: "فاطمه" },
-          { id: "maryam_mahin_mj", name: "مریم" }
-        ]
-      }
-    ]
-  },
-
-  seddigheh_mahin_mj: {
-    name: "صدیقه",
-    mother: { id: "mahin_mj", name: "مهین" },
-
-    spouses: [
-      {
-        name: "منصور محمد علی",
-        children: [
-          { id: "zhaleh_seddigheh_mj", name: "ژاله" },
-          { id: "mohammadali_seddigheh_mj", name: "محمد علی" },
-          { id: "yekta_seddigheh_mj", name: "یکتا" }
-        ]
-      }
-    ]
-  },
-
-  zhaleh_seddigheh_mj: {
-    name: "ژاله",
-    father: { id: "seddigheh_mahin_mj", name: "صدیقه" },
-    mother: { name: "منصور محمد علی" }
-  },
-
-  mohammadali_seddigheh_mj: {
-    name: "محمد علی",
-    father: { id: "seddigheh_mahin_mj", name: "صدیقه" },
-    mother: { name: "منصور محمد علی" }
-  },
-
-  yekta_seddigheh_mj: {
-    name: "یکتا",
-    father: { id: "seddigheh_mahin_mj", name: "صدیقه" },
-    mother: { name: "منصور محمد علی" },
-
-    spouses: [
-      { name: "علی پردل" }
-    ]
-  },
-
-  sadegh_mahin_mj: {
-    name: "صادق",
-    mother: { id: "mahin_mj", name: "مهین" },
-
-    spouses: [
-      {
-        name: "فریده احمد",
-        children: [
-          { id: "kamelia_sadegh_mj", name: "کاملیا" }
-        ]
-      }
-    ]
-  },
-
-  kamelia_sadegh_mj: {
-    name: "کاملیا",
-    father: { id: "sadegh_mahin_mj", name: "صادق" },
-    mother: { name: "فریده احمد" }
-  },
-
-  samad_mahin_mj: {
-    name: "صمد",
-    mother: { id: "mahin_mj", name: "مهین" },
-
-    spouses: [
-      {
-        name: "زهرا معلی زائر عباس",
-        children: [
-          { id: "marila_samad_mj", name: "مریلا" },
-          { id: "neyloofar_samad_mj", name: "نیلوفر" }
-        ]
-      }
-    ]
-  },
-
-  marila_samad_mj: {
-    name: "مریلا",
-    father: { id: "samad_mahin_mj", name: "صمد" },
-    mother: { name: "زهرا معلی زائر عباس" }
-  },
-
-  neyloofar_samad_mj: {
-    name: "نیلوفر",
-    father: { id: "samad_mahin_mj", name: "صمد" },
-    mother: { name: "زهرا معلی زائر عباس" }
-  },
-
-  kheiri_mahin_mj: {
-    name: "خیری",
-    mother: { id: "mahin_mj", name: "مهین" },
-
-    spouses: [
-      {
-        name: "وحید شیری فرد",
-        children: [
-          { id: "armina_kheiri_mj", name: "آرمینا" }
-        ]
-      }
-    ]
-  },
-
-  armina_kheiri_mj: {
-    name: "آرمینا",
-    father: { id: "kheiri_mahin_mj", name: "خیری" },
-    mother: { name: "وحید شیری فرد" }
-  },
-
-  fatemeh_mahin_mj: {
-    name: "فاطمه",
-    mother: { id: "mahin_mj", name: "مهین" }
-  },
-
-  maryam_mahin_mj: {
-    name: "مریم",
-    mother: { id: "mahin_mj", name: "مهین" }
-  }
-
-};
-
-
-/* =========================================================
-   توابع نمایش
-========================================================= */
-
-function escapeHTML(text) {
-  if (text === undefined || text === null) return "";
-
-  return String(text)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
-
-/* لینک دادن به شخص */
-
-function personLink(person) {
-
-  if (!person) return "";
-
-  if (person.id && people[person.id]) {
-
-    return `
-      <a class="person-link"
-         href="person.html?id=${encodeURIComponent(person.id)}">
-
-        ${escapeHTML(person.name)}
-
-      </a>
-    `;
-
-  }
-
-  return `
-    <div class="person-link">
-      ${escapeHTML(person.name)}
-    </div>
-  `;
-}
-
-
-/* =========================================================
-   نمایش فرد
-========================================================= */
-
-function renderPerson(id) {
-
-  const person = people[id];
-
-  if (!person) {
-
-    document.getElementById("content").innerHTML = `
-      <div class="error">
-
-        <h2>فرد موردنظر پیدا نشد</h2>
-
-        <p>
-          شناسه این فرد در شجره‌نامه ثبت نشده است.
-        </p>
-
-        <a class="back" href="members.html">
-          بازگشت به شجره‌نامه
-        </a>
-
-      </div>
-    `;
-
-    return;
-  }
-
-
-  /* =====================================================
-     اطلاعات اصلی
-  ===================================================== */
-
-  let html = `
-    <div class="profile">
-
-      <div class="name">
-        ${escapeHTML(person.name)}
-      </div>
-
-      <div class="info">
-
-        <div class="info-box">
-
-          <div class="label">
-            شغل
-          </div>
-
-          <div class="value">
-            اطلاعاتی ثبت نشده
-          </div>
-
-        </div>
-
-
-        <div class="info-box">
-
-          <div class="label">
-            تحصیلات
-          </div>
-
-          <div class="value">
-            اطلاعاتی ثبت نشده
-          </div>
-
-        </div>
-  `;
-
-
-  /* =====================================================
-     پدر
-  ===================================================== */
-
-  if (person.father) {
-
-    html += `
-      <div class="info-box">
-
-        <div class="label">
-          پدر
-        </div>
-
-        <div class="value">
-
-          ${personLink(person.father)}
-
-        </div>
-
-      </div>
-    `;
-  }
-
-
-  /* =====================================================
-     مادر
-  ===================================================== */
-
-  if (person.mother) {
-
-    html += `
-      <div class="info-box">
-
-        <div class="label">
-          مادر
-        </div>
-
-        <div class="value">
-
-          ${personLink(person.mother)}
-
-        </div>
-
-      </div>
-    `;
-  }
-
-
-  html += `
-      </div>
-
-    </div>
-  `;
-
-
-  /* =====================================================
-     همسران
-  ===================================================== */
-
-  if (person.spouses && person.spouses.length > 0) {
-
-    html += `
-      <div class="section">
-
-        <h2>
-          همسر
-        </h2>
-    `;
-
-    person.spouses.forEach(spouse => {
-
-      html += `
-        <div class="person-link">
-
-          ${escapeHTML(spouse.name)}
-
-        </div>
-      `;
-
-    });
-
-    html += `
-      </div>
-    `;
-  }
-
-
-  /* =====================================================
-     فرزندان مربوط به هر همسر
-  ===================================================== */
-
-  if (
-    person.spouses &&
-    person.spouses.some(spouse => spouse.children)
-  ) {
-
-    person.spouses.forEach(spouse => {
-
-      if (!spouse.children) return;
-
-      html += `
-        <div class="section">
-
-          <h2>
-            فرزندان از همسر
-            ${escapeHTML(spouse.name)}
-          </h2>
-      `;
-
-      spouse.children.forEach(child => {
-
-        html += personLink(child);
-
-      });
-
-      html += `
-        </div>
-      `;
-
-    });
-
-  }
-
-
-  /* =====================================================
-     فرزندان مستقیم
-  ===================================================== */
-
-  if (
-    person.children &&
-    person.children.length > 0
-  ) {
-
-    html += `
-      <div class="section">
-
-        <h2>
-          فرزندان
-        </h2>
-    `;
-
-    person.children.forEach(child => {
-
-      html += personLink(child);
-
-    });
-
-    html += `
-      </div>
-    `;
-
-  }
-
-
-  /* =====================================================
-     نمایش نهایی
-  ===================================================== */
-
-  document.getElementById("content").innerHTML = html;
-}
-
-
-/* =========================================================
-   دریافت ID از آدرس
-========================================================= */
-
-const params = new URLSearchParams(
-  window.location.search
-);
-
-const id = params.get("id");
-
-
-if (id) {
-
-  renderPerson(id);
-
-} else {
-
-  document.getElementById("content").innerHTML = `
-
-    <div class="error">
-
-      <h2>
-        فردی انتخاب نشده است
-      </h2>
-
-      <p>
-        لطفاً از صفحه شجره‌نامه یک نفر را انتخاب کنید.
-      </p>
-
-      <a class="back" href="members.html">
-        رفتن به شجره‌نامه
-      </a>
-
-    </div>
-
-  `;
-
-}
-
-</script>
-
-</body>
-</html>
+      name: "حاج
