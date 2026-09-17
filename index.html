@@ -82,6 +82,8 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 15px;
+      flex-wrap: wrap;
+      gap: 10px;
     }
     .back-btn {
       background-color: var(--primary);
@@ -115,20 +117,30 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 8px 14px;
+      padding: 6px 12px;
       background: #f1f5f9;
       border: 1px solid #cbd5e1;
       border-radius: 6px;
-      cursor: pointer;
       font-weight: bold;
       transition: background 0.2s;
     }
     .person-node:hover { background: #e2e8f0; }
-    .has-children::after {
-      content: " ➕";
-      font-size: 10px;
+    .person-name {
+      cursor: pointer;
+      color: var(--primary);
     }
-    .expanded > .person-node::after { content: " ➖"; }
+    .person-name:hover {
+      text-decoration: underline;
+    }
+    .toggle-btn {
+      cursor: pointer;
+      font-size: 11px;
+      background: #cbd5e1;
+      padding: 2px 6px;
+      border-radius: 4px;
+      user-select: none;
+    }
+    .toggle-btn:hover { background: #94a3b8; color: white; }
     
     .wife-section {
       margin-top: 10px;
@@ -155,6 +167,80 @@
     }
     .cross-link:hover { background: #c7d2fe; }
     .highlight { background: #fef08a !important; border-color: #facc15; }
+
+    /* مدال مشخصات فرد */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(3px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-card {
+      background: white;
+      border-radius: 16px;
+      width: 90%;
+      max-width: 400px;
+      padding: 25px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+      position: relative;
+      text-align: center;
+      animation: modalFadeIn 0.2s ease-out;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 12px;
+      left: 15px;
+      background: none;
+      border: none;
+      font-size: 22px;
+      cursor: pointer;
+      color: #64748b;
+    }
+    .modal-close:hover { color: #0f172a; }
+    .profile-avatar {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 15px auto;
+      border: 4px solid var(--secondary);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      background-color: #e2e8f0;
+      display: block;
+    }
+    .profile-name {
+      font-size: 18px;
+      color: var(--primary);
+      margin: 0 0 15px 0;
+    }
+    .info-list {
+      text-align: right;
+      border-top: 1px solid #f1f5f9;
+      padding-top: 15px;
+    }
+    .info-item {
+      display: flex;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .info-label {
+      font-weight: bold;
+      color: #475569;
+      width: 100px;
+      flex-shrink: 0;
+    }
+    .info-value {
+      color: #0f172a;
+      flex-grow: 1;
+    }
   </style>
 </head>
 <body>
@@ -179,26 +265,58 @@
     <div id="treeView"></div>
   </div>
 
+  <!-- پاپ‌آپ (مدال) مشخصات شخص -->
+  <div class="modal-overlay hidden" id="profileModal" onclick="closeProfileOnOverlay(event)">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeProfile()">✕</button>
+      <img id="mPhoto" src="" alt="عکس فرد" class="profile-avatar">
+      <h3 id="mName" class="profile-name"></h3>
+      <div class="info-list">
+        <div class="info-item">
+          <span class="info-label">🎓 تحصیلات:</span>
+          <span id="mEducation" class="info-value"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">💼 شغل:</span>
+          <span id="mJob" class="info-value"></span>
+        </div>
+        <div class="info-item">
+          <span class="info-label">📝 توضیحات:</span>
+          <span id="mBio" class="info-value"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    // تصویر پیش‌فرض در صورت نبود عکس
+    const DEFAULT_AVATAR = "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 24 24' fill='%2394a3b8'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z'/></svg>";
+
     const familiesData = [
       {
         id: "family1",
         title: "خاندان حاج محمد جواد برفی زاموسین قاسم",
         root: {
           name: "حاج محمد جواد برفی زاموسین قاسم (بزرگ خاندان)",
+          job: "بازاری / بازنشسته",
+          education: "مکتب‌خانه",
+          photo: "", 
+          bio: "بزرگ و ریش‌سفید خاندان قباکلکی",
           children: [
             {
               name: "۱. پروین (همسر: خورشید شهریار)",
+              job: "خانه‌دار",
+              education: "دیپلم",
               children: [
-                { name: "جهانبخش" },
+                { name: "جهانبخش", job: "آزاد", education: "لیسانس" },
                 { name: "حسین" },
-                { name: "علی اکبر (همسر: فاطمه جمالی)", children: [{ name: "آناهیتا" }, { name: "آدرینا" }] },
+                { name: "علی اکبر (همسر: فاطمه جمالی)", job: "مهندس عمران", education: "فوق لیسانس", children: [{ name: "آناهیتا" }, { name: "آدرینا" }] },
                 { name: "پروانه (همسر: عباسعلی محلی زائر عباس)", children: [{ name: "سینا" }, { name: "سپیده (همسر: روزبه منفرد)" }] },
                 { name: "فرزانه (همسر: یوسف معلی زائر عباس)", children: [{ name: "نیما" }, { name: "پریا" }] },
                 { name: "افسانه (همسر: مهرداد احمدی)" }
               ]
             },
-            { name: "۲. حاج جمشید (همسر: فهیمه اردشیری)", children: [{ name: "محمد مهدی" }, { name: "محمد جواد" }] },
+            { name: "۲. حاج جمشید (همسر: فهیمه اردشیری)", job: "کارمند", education: "فوق دیپلم", children: [{ name: "محمد مهدی" }, { name: "محمد جواد" }] },
             { name: "۳. داریوش (همسر: الهام مهدس)", children: [{ name: "مریم" }, { name: "محمدرضا" }] },
             { name: "۴. علی (همسر: مریم افشون)", children: [{ name: "پارسا" }, { name: "محمد" }] },
             {
@@ -370,6 +488,10 @@
       }
     ];
 
+    // حافظه موقت برای ذخیره نگاشت افراد جهت نمایش در مدال
+    const personsMap = {};
+    let idCounter = 1;
+
     function countMembers(node) {
       let count = 1;
       if (node.wives) {
@@ -422,14 +544,23 @@
     }
 
     function renderNode(node, isRoot = false) {
+      const pid = 'p_' + (idCounter++);
+      personsMap[pid] = node;
+
       const hasChildren = (node.children && node.children.length > 0) || (node.wives && node.wives.length > 0);
       let html = `<ul class="tree"><li>`;
       
-      let nodeClass = `person-node ${hasChildren ? 'has-children' : ''}`;
-      html += `<div class="${nodeClass}" onclick="toggleChildren(this)">${node.name}`;
+      html += `<div class="person-node">`;
+      html += `<span class="person-name" onclick="showProfile('${pid}')">${node.name}</span>`;
+
       if (node.linkedTo) {
         html += `<a href="#${node.linkedTo.familyId}" class="cross-link" onclick="event.stopPropagation(); selectFamily('${node.linkedTo.familyId}')">${node.linkedTo.text} 🔗</a>`;
       }
+
+      if (hasChildren) {
+        html += `<span class="toggle-btn" onclick="toggleChildren(this)">${isRoot ? '➖' : '➕'}</span>`;
+      }
+      
       html += `</div>`;
 
       if (hasChildren) {
@@ -454,31 +585,58 @@
     }
 
     function toggleChildren(element) {
-      const parentLi = element.parentElement;
+      const parentLi = element.closest('li');
       const group = parentLi.querySelector('.children-group');
       if (group) {
         group.classList.toggle('hidden');
-        parentLi.classList.toggle('expanded');
+        element.innerText = group.classList.contains('hidden') ? '➕' : '➖';
       }
     }
 
     function collapseAll() {
       document.querySelectorAll('.children-group').forEach(g => g.classList.add('hidden'));
-      document.querySelectorAll('.expanded').forEach(e => e.classList.remove('expanded'));
+      document.querySelectorAll('.toggle-btn').forEach(btn => btn.innerText = '➕');
+    }
+
+    /* مدیریت مدال مشخصات فرد */
+    function showProfile(pid) {
+      const person = personsMap[pid];
+      if (!person) return;
+
+      document.getElementById('mName').innerText = person.name || 'نامشخص';
+      document.getElementById('mEducation').innerText = person.education || 'ثبت نشده';
+      document.getElementById('mJob').innerText = person.job || 'ثبت نشده';
+      document.getElementById('mBio').innerText = person.bio || 'توضیحات بیشتری وارد نشده است.';
+      document.getElementById('mPhoto').src = person.photo && person.photo.trim() !== '' ? person.photo : DEFAULT_AVATAR;
+
+      document.getElementById('profileModal').classList.remove('hidden');
+    }
+
+    function closeProfile() {
+      document.getElementById('profileModal').classList.add('hidden');
+    }
+
+    function closeProfileOnOverlay(event) {
+      if (event.target.id === 'profileModal') {
+        closeProfile();
+      }
     }
 
     function searchPerson() {
       const query = document.getElementById('searchInput').value.trim().toLowerCase();
-      const nodes = document.querySelectorAll('.person-node');
+      const nameElements = document.querySelectorAll('.person-name');
       
-      nodes.forEach(n => {
-        n.classList.remove('highlight');
-        if (query && n.innerText.toLowerCase().includes(query)) {
-          n.classList.add('highlight');
-          let parent = n.parentElement;
+      nameElements.forEach(el => {
+        const nodeDiv = el.parentElement;
+        nodeDiv.classList.remove('highlight');
+        if (query && el.innerText.toLowerCase().includes(query)) {
+          nodeDiv.classList.add('highlight');
+          let parent = nodeDiv.parentElement;
           while (parent) {
             if (parent.classList && parent.classList.contains('children-group')) {
               parent.classList.remove('hidden');
+              const toggleBtn = parent.parentElement.querySelector('.toggle-btn');
+              if (toggleBtn) toggleBtn.innerText = '➖';
             }
             parent = parent.parentElement;
           }
@@ -486,7 +644,6 @@
       });
     }
 
-    // مدیریت ناوبری با دکمه بازگشت مرورگر
     window.addEventListener('hashchange', checkHash);
     
     function checkHash() {
