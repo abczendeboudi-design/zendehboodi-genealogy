@@ -3,582 +3,466 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>شجره‌نامه قباکلکی</title>
-
+  <title>شجره‌نامه جامع خاندان قباکلکی (زنده‌بودی‌ها)</title>
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --primary: #1e3a8a;
+      --secondary: #0d9488;
+      --accent: #d97706;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #0f172a;
     }
-
     body {
+      font-family: Tahoma, Vazir, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
       margin: 0;
-      font-family: Tahoma, Arial, sans-serif;
-      background: #f4f0e6;
-      color: #173f2b;
+      padding: 20px;
+      line-height: 1.6;
     }
-
     header {
-      background: #174d36;
-      color: white;
-      padding: 28px 18px;
       text-align: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      margin-bottom: 25px;
     }
-
-    header h1 {
-      margin: 0;
-      font-size: 25px;
-      line-height: 1.8;
-    }
-
-    header p {
-      margin: 8px 0 0;
-      color: #dcebdd;
-      font-size: 14px;
-    }
-
-    .container {
-      width: 92%;
-      max-width: 850px;
-      margin: 25px auto 50px;
-    }
-
     .search-box {
-      background: white;
-      padding: 18px;
-      border-radius: 18px;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.08);
-      margin-bottom: 22px;
-    }
-
-    .search-box label {
-      display: block;
-      margin-bottom: 10px;
-      font-weight: bold;
-      color: #174d36;
-    }
-
-    #searchInput {
       width: 100%;
-      padding: 15px 17px;
-      border: 2px solid #d7dfd5;
-      border-radius: 13px;
+      max-width: 450px;
+      padding: 12px 18px;
+      border: 2px solid #cbd5e1;
+      border-radius: 25px;
+      font-size: 15px;
       outline: none;
-      font-size: 16px;
-      font-family: inherit;
-      background: #fafbf8;
+      transition: border-color 0.2s;
     }
-
-    #searchInput:focus {
-      border-color: #43815f;
-      background: white;
-    }
-
-    .family-card {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      background: #fffdf8;
-      border: 1px solid #e2dfd2;
-      border-radius: 22px;
-      padding: 24px;
-      margin-bottom: 18px;
-      box-shadow: 0 7px 22px rgba(0,0,0,0.08);
-      transition: 0.2s;
-    }
-
-    .family-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 28px rgba(0,0,0,0.12);
-    }
-
-    .family-icon {
-      font-size: 42px;
-      margin-bottom: 8px;
-    }
-
-    .family-card h2 {
-      margin: 5px 0 10px;
-      font-size: 21px;
-      color: #174d36;
-      line-height: 1.8;
-    }
-
-    .family-card p {
-      margin: 6px 0;
-      color: #5e6d62;
-      line-height: 1.9;
-      font-size: 14px;
-    }
-
-    .open-button {
-      display: inline-block;
-      margin-top: 15px;
-      padding: 11px 20px;
-      border-radius: 12px;
-      background: #286747;
-      color: white;
-      font-size: 14px;
-    }
-
-    #searchResults {
-      display: none;
-      margin-bottom: 22px;
-    }
-
-    .results-title {
-      font-weight: bold;
-      margin: 0 0 12px;
-      color: #174d36;
-    }
-
-    .person-result {
+    .search-box:focus { border-color: var(--secondary); }
+    
+    .family-cards {
       display: flex;
-      align-items: center;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 20px;
+      width: 300px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.08);
+      transition: transform 0.2s, box-shadow 0.2s;
+      text-align: center;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.12);
+    }
+    .card h3 { margin: 0 0 10px 0; color: var(--primary); font-size: 18px; }
+    .badge {
+      background: var(--secondary);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+    }
+
+    /* درخت شجره‌نامه */
+    .tree-container {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .tree-header {
+      display: flex;
       justify-content: space-between;
-      gap: 12px;
-      background: white;
-      border-radius: 15px;
-      padding: 14px 16px;
-      margin-bottom: 10px;
-      text-decoration: none;
-      color: #173f2b;
-      border: 1px solid #e3e7df;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.06);
+      align-items: center;
+      border-bottom: 2px solid #f1f5f9;
+      padding-bottom: 15px;
+      margin-bottom: 20px;
     }
-
-    .person-result:hover {
-      background: #f7faf5;
-      border-color: #9ab69f;
+    ul.tree, ul.tree ul {
+      list-style: none;
+      padding-right: 20px;
+      margin: 0;
     }
-
-    .person-name {
+    ul.tree li {
+      margin: 10px 0;
+      position: relative;
+    }
+    .person-node {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      cursor: pointer;
       font-weight: bold;
-      font-size: 16px;
+      transition: background 0.2s;
     }
-
-    .person-type {
-      font-size: 12px;
-      color: #718076;
-      margin-top: 4px;
+    .person-node:hover { background: #e2e8f0; }
+    .has-children::after {
+      content: " ➕";
+      font-size: 10px;
     }
-
-    .arrow {
-      font-size: 20px;
-      color: #286747;
+    .expanded > .person-node::after { content: " ➖"; }
+    
+    .wife-section {
+      margin-top: 10px;
+      margin-right: 20px;
+      border-right: 3px solid var(--accent);
+      padding-right: 12px;
     }
-
-    .no-result {
-      background: white;
-      padding: 18px;
-      border-radius: 15px;
-      color: #777;
-      text-align: center;
-      border: 1px solid #e5e5e5;
+    .wife-title {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: bold;
+      margin: 8px 0;
     }
-
-    footer {
-      text-align: center;
-      color: #718076;
-      font-size: 12px;
-      margin-top: 35px;
+    .hidden { display: none; }
+    .cross-link {
+      font-size: 11px;
+      background: #e0e7ff;
+      color: #3730a3;
+      padding: 2px 8px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: normal;
+      margin-right: 6px;
     }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 21px;
-      }
-
-      .container {
-        width: 94%;
-      }
-
-      .family-card {
-        padding: 20px;
-      }
-    }
+    .cross-link:hover { background: #c7d2fe; }
+    .highlight { background: #fef08a !important; border-color: #facc15; }
   </style>
 </head>
-
 <body>
 
-<header>
-  <h1>🌳 شجره‌نامه خاندان غلامحسین قاسم زائر غلامحسین</h1>
-  <p>شجره‌نامه خاندان‌های روستای قباکلکی</p>
-</header>
+  <header>
+    <h1>شجره‌نامه جامع خاندان قباکلکی (زنده‌بودی‌ها)</h1>
+    <input type="text" id="searchInput" class="search-box" placeholder="جستجوی نام یا نام همسر..." oninput="searchPerson()">
+  </header>
 
-<div class="container">
+  <!-- کارت‌های انتخاب خاندان -->
+  <div class="family-cards" id="familyCards"></div>
 
-  <div class="search-box">
-    <label for="searchInput">🔎 جستجو در شجره‌نامه</label>
-
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="نام شخص یا خاندان را وارد کنید..."
-      autocomplete="off"
-    >
+  <!-- بخش نمایش درخت -->
+  <div class="tree-container hidden" id="treeContainer">
+    <div class="tree-header">
+      <h2 id="currentFamilyTitle" style="margin: 0; color: var(--primary);"></h2>
+      <button onclick="collapseAll()" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #ccc; cursor: pointer;">بستن همه شاخه‌ها</button>
+    </div>
+    <div id="treeView"></div>
   </div>
 
-  <div id="searchResults"></div>
+  <script>
+    const familiesData = [
+      {
+        id: "family1",
+        title: "خاندان حاج محمد جواد برفی زاموسین قاسم",
+        root: {
+          name: "حاج محمد جواد برفی زاموسین قاسم (بزرگ خاندان)",
+          children: [
+            {
+              name: "۱. پروین (همسر: خورشید شهریار)",
+              children: [
+                { name: "جهانبخش" },
+                { name: "حسین" },
+                { name: "علی اکبر (همسر: فاطمه جمالی)", children: [{ name: "آناهیتا" }, { name: "آدرینا" }] },
+                { name: "پروانه (همسر: عباسعلی محلی زائر عباس)", children: [{ name: "سینا" }, { name: "سپیده (همسر: روزبه منفرد)" }] },
+                { name: "فرزانه (همسر: یوسف معلی زائر عباس)", children: [{ name: "نیما" }, { name: "پریا" }] },
+                { name: "افسانه (همسر: مهرداد احمدی)" }
+              ]
+            },
+            { name: "۲. حاج جمشید (همسر: فهیمه اردشیری)", children: [{ name: "محمد مهدی" }, { name: "محمد جواد" }] },
+            { name: "۳. داریوش (همسر: الهام مهدس)", children: [{ name: "مریم" }, { name: "محمدرضا" }] },
+            { name: "۴. علی (همسر: مریم افشون)", children: [{ name: "پارسا" }, { name: "محمد" }] },
+            {
+              name: "۵. حکیمه (همسر: اصغر)",
+              linkedTo: { familyId: "family2", text: "پیوند با خاندان غلامحسین" },
+              children: [
+                { name: "رباب (همسر: طالب)", children: [{ name: "شاهین" }, { name: "شاهرخ" }] },
+                { name: "علیرضا" },
+                { name: "زینب" }
+              ]
+            },
+            { name: "۶. قاسم (همسر: فاطمه پردل)", children: [{ name: "آیلین" }, { name: "آرین" }] },
+            { name: "۷. سیاوش (همسر: الهام دانش پژوه)", children: [{ name: "شروین" }, { name: "نسترن" }] },
+            { name: "۸. یوسف (همسر: شکوفه سلیمانی)", children: [{ name: "هخامنش" }, { name: "هورمزد" }] },
+            {
+              name: "۹. مهین (همسر: امیر غلامحسین قاسم)",
+              linkedTo: { familyId: "family2", text: "پیوند با خاندان غلامحسین" },
+              children: [
+                { name: "صدیقه (همسر: منصور محمد علی)", children: [{ name: "ژاله" }, { name: "محمد علی" }, { name: "یکتا (همسر: علی پردل)" }] },
+                { name: "صادق (همسر: فریده احمد)", children: [{ name: "کاملیا" }] },
+                { name: "صمد (همسر: زهرا معلی زائر عباس)", children: [{ name: "مریلا" }, { name: "نیلوفر" }] },
+                { name: "خیری (همسر: وحید شیری فرد)", children: [{ name: "آرمینا" }] },
+                { name: "فاطمه" },
+                { name: "مریم" }
+              ]
+            }
+          ]
+        }
+      },
+      {
+        id: "family2",
+        title: "خاندان غلامحسین قاسم زائر غلامحسین",
+        root: {
+          name: "غلامحسین قاسم زائر غلامحسین (بزرگ خاندان)",
+          wives: [
+            {
+              wifeName: "همسر اول: پریزاد",
+              children: [
+                {
+                  name: "قاسم (همسر اول: ایران ولی | همسر دوم: سکینه حیدری)",
+                  children: [
+                    {
+                      name: "اصغر (همسر: حکیمه حاج محمد)",
+                      linkedTo: { familyId: "family1", text: "مشترک با خاندان حاج محمد" },
+                      children: [
+                        { name: "علی" },
+                        { name: "رباب (همسر: طالب بهادر)", children: [{ name: "شاهین" }, { name: "شاهرخ" }] },
+                        { name: "زینب" }
+                      ]
+                    },
+                    {
+                      name: "اکبر (همسر: روشن میش علی بهادر)",
+                      children: [
+                        { name: "علی (همسر: بهاره بهادر)" },
+                        { name: "لاله (همسر: موسی جعفر میش محمد علی)", children: [{ name: "مهراوه" }, { name: "محمد" }, { name: "مارال" }] },
+                        { name: "فاطمه (همسر: سعید امرالله)" }
+                      ]
+                    },
+                    { name: "پرویز (همسر: مژگان)", children: [{ name: "کوثر" }] },
+                    { name: "جهانگیر (همسر: ماه بگم جمالی)", children: [{ name: "محمد" }, { name: "قاسم" }] },
+                    { name: "شیرین" },
+                    { name: "غلامحسین (همسر: رباب کنگانی)", children: [{ name: "رضا" }, { name: "ساواش" }, { name: "رادمهر" }] },
+                    { name: "مریم (همسر: رضا حاج عبدالرشید)", children: [{ name: "ابراهیم" }, { name: "ریحانه" }] }
+                  ]
+                }
+              ]
+            },
+            {
+              wifeName: "همسر دوم: خیر محمد زائر عبدالرشید",
+              children: [
+                {
+                  name: "۱. امیر (همسر: مهین حاج محمد)",
+                  linkedTo: { familyId: "family1", text: "مشترک با خاندان حاج محمد" },
+                  children: [
+                    { name: "صدیقه (همسر: منصور محمد علی زائر عباس)", children: [{ name: "محمد علی" }, { name: "ژاله" }, { name: "یکتا (همسر: علی جبرئیل)" }] },
+                    { name: "صادق (همسر: فریده احمد)", children: [{ name: "کاملیا" }] },
+                    { name: "صمد (همسر: زهرا محمد علی زائرعباس)", children: [{ name: "نیلوفر" }, { name: "مریلا" }] },
+                    { name: "فاطمه" },
+                    { name: "مریم" },
+                    { name: "خیری (همسر: وحید شیری فرد)", children: [{ name: "آرمینا" }] }
+                  ]
+                },
+                {
+                  name: "۲. احمد (همسر: شیرین حاج عبدالرشید)",
+                  children: [
+                    { name: "فریده (همسر: صادق)", children: [{ name: "کاملیا" }] },
+                    { name: "فجر (همسر: فاطمه)", children: [{ name: "باران" }] },
+                    { name: "غلامحسین (همسر: سمیه عبدالکریم)", children: [{ name: "لیانا" }] },
+                    { name: "فیض (همسر: سمیه اسپرغم)" },
+                    { name: "پدرام" }
+                  ]
+                },
+                {
+                  name: "۳. ناصر (همسر اول: سکینه رحمت | همسر دوم: مریم غلامی)",
+                  children: [
+                    { name: "ساجد (همسر: فاطمه حسین معلی)", children: [{ name: "شاهرخ" }, { name: "سما" }] },
+                    { name: "محمد (همسر: فاطمه)", children: [{ name: "ناصر" }] },
+                    { name: "سعید (همسر: مریم جعفری)", children: [{ name: "ابراهیم" }, { name: "ناصر" }] },
+                    { name: "حسین (همسر: هما یوسف نوشاد)" },
+                    { name: "علی" },
+                    { name: "فاطمه (همسر: محمد)", children: [{ name: "هیراد" }, { name: "آراد" }] },
+                    { name: "ابوالفضل" }
+                  ]
+                },
+                {
+                  name: "۴. بگم (همسر: محمد علی عبدالله)",
+                  children: [
+                    {
+                      name: "فاطمه (همسر: غلامحسین علی مصطفی)",
+                      children: [
+                        { name: "علی (همسر: صدیقه نوربخش)", children: [{ name: "پوریا" }, { name: "محمد مهدی" }] },
+                        { name: "خیری (همسر: روح الله نوربخش)", children: [{ name: "بهار" }, { name: "نرجس" }] }
+                      ]
+                    },
+                    { name: "عبدالمجید (همسر: حکیمه جعفری)", children: [{ name: "علی" }, { name: "ماهان" }, { name: "مهرداد (همسر: زهرا موسی)" }] },
+                    { name: "عیسی (همسر: زبیده جعفر)", children: [{ name: "مهدی" }, { name: "محمد" }] },
+                    { name: "سکینه (همسر: غلامرضا نوربخش)", children: [{ name: "امیر حسین" }, { name: "عرفان" }, { name: "یلدا (همسر: خشایار بهادر)" }] },
+                    { name: "خدیجه" },
+                    { name: "موسی (همسر: مریم نوربخش)", children: [{ name: "هادی" }, { name: "زهرا (همسر: مهرداد عبدالله)" }] },
+                    { name: "راضیه (همسر: حسین نوربخش)", children: [{ name: "ابوالفضل" }, { name: "علی اصغر" }] },
+                    { name: "روح الله (همسر: فاطمه)", children: [{ name: "محمد علی" }] },
+                    { name: "زینب (همسر: حاج عبدالله زارعی)", children: [{ name: "میلاد" }, { name: "سارا" }, { name: "نازنین" }] }
+                  ]
+                },
+                {
+                  name: "۵. سوگل (همسر: حسین علی اکبر)",
+                  children: [
+                    {
+                      name: "غلامرضا (همسر: زینت معلی مصطفی)",
+                      children: [
+                        { name: "مهران (همسر: زینب ترازویی)", children: [{ name: "لیا" }] },
+                        { name: "بهاره (همسر: علی اکبر قاسم)" },
+                        { name: "لاله (همسر: جواد امیر احمدی)" },
+                        { name: "حسن" }
+                      ]
+                    },
+                    { name: "علی (همسر: شیرین قاسم)", children: [{ name: "حسین" }, { name: "حسن" }, { name: "سوسن" }, { name: "پوران" }] },
+                    { name: "طالب (همسر: رباب)", children: [{ name: "شاهرخ" }, { name: "شاهین" }] },
+                    { name: "عابد (همسر: صفیحه رحیم ارمات)", children: [{ name: "امیر ارسلان" }, { name: "نازگل" }] },
+                    { name: "فاطمه (همسر: اسماعیل بزرگ)" },
+                    {
+                      name: "گلبهار (همسر: داریوش عبدالرسول)",
+                      children: [
+                        { name: "آزیتا (همسر: مهدی عبدالکریم)", children: [{ name: "گلبهار" }, { name: "گلسا" }] },
+                        { name: "عزیزه (همسر: علی عبدالجبار)", children: [{ name: "داریوش" }, { name: "حسین" }] }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  name: "۶. منیجه (همسر: جعفر حاج عبدالرشید)",
+                  children: [
+                    { name: "علی (همسر: فاطمه)", children: [{ name: "امیرحسین" }, { name: "احسان" }] },
+                    { name: "زبیده (همسر: عیسی محمد علی)", children: [{ name: "مهدی" }, { name: "محمد" }] }
+                  ]
+                },
+                {
+                  name: "۷. حلیمه (همسر: خدابخش حاج جعفر عباس)",
+                  children: [
+                    { name: "مژگان (همسر: پرویز قاسم)", children: [{ name: "کوثر" }] },
+                    { name: "فاطمه (همسر: فجر احمد)", children: [{ name: "باران" }] },
+                    { name: "عباس" }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    ];
 
-  <div id="familyList">
-
-    <a
-      href="family.html"
-      class="family-card"
-      data-search="غلامحسین قاسم زائر غلامحسین پریزاد قاسم خیر محمد زائر عبدالرشید خاندان قباکلکی"
-    >
-
-      <div class="family-icon">🌳</div>
-
-      <h2>
-        خاندان غلامحسین قاسم زائر غلامحسین
-      </h2>
-
-      <p>
-        شجره‌نامه خاندان غلامحسین قاسم زائر غلامحسین
-      </p>
-
-      <p>
-        برای مشاهده شجره‌نامه و افراد این خاندان وارد شوید.
-      </p>
-
-      <span class="open-button">
-        مشاهده شجره‌نامه ←
-      </span>
-
-    </a>
-
-  </div>
-
-  <footer>
-    شجره‌نامه قباکلکی
-  </footer>
-
-</div>
-
-<script>
-  /*
-    فهرست نام‌های موجود در شجره‌نامه
-
-    نام‌ها عمداً بر اساس اطلاعات واردشده در پروژه نگه داشته شده‌اند.
-    در این مرحله هدف اصلی، پیدا کردن نام افراد از طریق جستجو است.
-  */
-
-  const people = [
-
-    "غلامحسین قاسم زائر غلامحسین",
-    "پریزاد",
-    "قاسم",
-    "ایران ولی",
-    "سکینه حیدری",
-
-    "اصغر",
-    "حکیمه حاج محمد",
-    "علی",
-    "رباب",
-    "زینب",
-    "طالب بهادر",
-    "شاهین",
-    "شاهرخ",
-
-    "اکبر",
-    "روشن میش علی بهادر",
-    "لاله",
-    "فاطمه",
-    "بهاره بهادر",
-    "موسی جعفر میش محمدعلی",
-    "مهراوه",
-    "محمد",
-    "مارال",
-    "سعید امرالله",
-
-    "پرویز",
-    "مژگان",
-    "کوثر",
-
-    "جهانگیر",
-    "ماه‌بگم جمالی",
-
-    "شیرین",
-
-    "غلامحسین",
-    "رباب کنگانی",
-    "رضا",
-    "ساواش",
-    "رادمهر",
-
-    "مریم",
-    "رضا حاج عبدالرشید",
-    "ابراهیم",
-    "ریحانه",
-
-    "خیر محمد زائر عبدالرشید",
-
-    "امیر",
-    "مهین حاج محمد",
-    "صدیقه",
-    "منصور محمدعلی زائرعباس",
-    "محمدعلی",
-    "ژاله",
-    "یکتا",
-    "علی جبرئیل",
-    "صادق",
-    "فریده احمد",
-    "کاملیا",
-    "صمد",
-    "زهرا محمدعلی زائرعباس",
-    "نیلوفر",
-    "مریلا",
-
-    "احمد",
-    "شیرین حاج عبدالرشید",
-    "فجر",
-    "باران",
-    "سمیه عبدالکریم",
-    "لیانا",
-    "فیض",
-    "سمیه اسپرغم",
-    "پدرام",
-
-    "ناصر",
-    "سکینه رحمت",
-    "ساجد",
-    "فاطمه حسین معلی",
-    "سما",
-    "فاطمه",
-    "سعید",
-    "مریم جعفری",
-    "حسین",
-    "هما یوسف نوشاد",
-    "مریم غلامی",
-    "محمد",
-    "هیراد",
-    "آراد",
-    "ابوالفضل",
-
-    "بگم",
-    "محمدعلی عبدالله",
-    "عبدالمجید",
-    "حکیمه جعفری",
-    "ماهان",
-    "مهرداد",
-    "زهرا موسی",
-    "عیسی",
-    "زبیده جعفر",
-    "مهدی",
-    "سکینه",
-    "غلامرضا نوربخش",
-    "امیرحسین",
-    "عرفان",
-    "یلدا",
-    "خشایار بهادر",
-    "خدیجه",
-    "موسی",
-    "مریم نوربخش",
-    "هادی",
-    "راضیه",
-    "حسین نوربخش",
-    "علی‌اصغر",
-    "روح‌الله",
-    "محمدعلی",
-    "زینب",
-    "حاج عبدالله زارعی",
-    "سارا",
-    "نازنین",
-    "میلاد",
-
-    "سوگل",
-    "حسین علی‌اکبر",
-    "غلامرضا",
-    "زینت معلی مصطفی",
-    "مهران",
-    "زینب ترازویی",
-    "لیا",
-    "علی",
-    "شیرین قاسم",
-    "حسن",
-    "سوسن",
-    "پوران",
-    "طالب",
-    "رباب",
-    "عابد",
-    "صفیحه رحیم ارمات",
-    "امیرارسلان",
-    "نازگل",
-    "اسماعیل بزرگ",
-    "گلبهار",
-    "داریوش عبدالرسول",
-    "ازیتا",
-    "مهدی عبدالکریم",
-    "گلسا",
-    "عزیزه",
-    "علی عبدالجبار",
-    "داریوش",
-
-    "منیجه",
-    "جعفر حاج عبدالرشید",
-    "علی",
-    "فاطمه",
-    "احسان",
-    "زبیده",
-    "عیسی محمدعلی",
-
-    "حلیمه",
-    "خدابخش حاج جعفر عباس",
-    "مژگان",
-    "پرویز قاسم",
-    "فاطمه",
-    "فجر احمد",
-    "عباس"
-  ];
-
-
-  /*
-    حذف نام‌های تکراری برای نمایش نتایج مرتب‌تر
-  */
-  const uniquePeople = [...new Set(people)];
-
-
-  const searchInput = document.getElementById("searchInput");
-  const searchResults = document.getElementById("searchResults");
-  const familyList = document.getElementById("familyList");
-
-
-  /*
-    چند نام اصلی که در person.html فعلاً صفحه اختصاصی دارند.
-    برای این نام‌ها لینک مستقیم ساخته می‌شود.
-  */
-  const profileNames = new Set([
-    "قاسم",
-    "اصغر",
-    "اکبر",
-    "پرویز",
-    "جهانگیر",
-    "شیرین",
-    "غلامحسین",
-    "مریم",
-    "امیر",
-    "احمد",
-    "ناصر",
-    "بگم",
-    "سوگل",
-    "منیجه",
-    "حلیمه"
-  ]);
-
-
-  function normalizeText(text) {
-    return text
-      .toLowerCase()
-      .replace(/ي/g, "ی")
-      .replace(/ى/g, "ی")
-      .replace(/ك/g, "ک")
-      .replace(/ۀ/g, "ه")
-      .replace(/\s+/g, " ")
-      .trim();
-  }
-
-
-  function createResult(person) {
-
-    const result = document.createElement("a");
-
-    result.className = "person-result";
-
-    /*
-      فقط افرادی که در person.html صفحه اختصاصی دارند
-      فعلاً قابل ورود مستقیم هستند.
-    */
-    if (profileNames.has(person)) {
-      result.href =
-        "person.html?name=" + encodeURIComponent(person);
-    } else {
-      result.href = "members.html";
+    // محاسبه دقیق تعداد اعضا
+    function countMembers(node) {
+      let count = 1;
+      if (node.wives) {
+        node.wives.forEach(w => {
+          if (w.children) w.children.forEach(c => count += countMembers(c));
+        });
+      }
+      if (node.children) {
+        node.children.forEach(c => count += countMembers(c));
+      }
+      return count;
     }
 
-    const textBox = document.createElement("div");
-
-    const name = document.createElement("div");
-    name.className = "person-name";
-    name.textContent = person;
-
-    const type = document.createElement("div");
-    type.className = "person-type";
-
-    if (profileNames.has(person)) {
-      type.textContent = "مشاهده صفحه این شخص";
-    } else {
-      type.textContent = "مشاهده در شجره‌نامه";
+    // رندر کارت‌های صفحه اصلی
+    function renderCards() {
+      const container = document.getElementById('familyCards');
+      container.innerHTML = '';
+      familiesData.forEach(fam => {
+        const count = countMembers(fam.root);
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.onclick = () => selectFamily(fam.id);
+        card.innerHTML = `
+          <h3>${fam.title}</h3>
+          <span class="badge">تعداد ثبت‌شده: ${count} نفر</span>
+        `;
+        container.appendChild(card);
+      });
     }
 
-    textBox.appendChild(name);
-    textBox.appendChild(type);
+    // انتخاب خاندان
+    function selectFamily(familyId) {
+      const fam = familiesData.find(f => f.id === familyId);
+      if (!fam) return;
 
-    const arrow = document.createElement("div");
-    arrow.className = "arrow";
-    arrow.textContent = "←";
-
-    result.appendChild(textBox);
-    result.appendChild(arrow);
-
-    return result;
-  }
-
-
-  searchInput.addEventListener("input", function () {
-
-    const query = normalizeText(this.value);
-
-    searchResults.innerHTML = "";
-
-    if (!query) {
-      searchResults.style.display = "none";
-      familyList.style.display = "block";
-      return;
+      document.getElementById('treeContainer').classList.remove('hidden');
+      document.getElementById('currentFamilyTitle').innerText = fam.title;
+      
+      const treeView = document.getElementById('treeView');
+      treeView.innerHTML = renderNode(fam.root, true);
     }
 
-    familyList.style.display = "none";
-    searchResults.style.display = "block";
+    // رندر درختی شاخه‌ها
+    function renderNode(node, isRoot = false) {
+      const hasChildren = (node.children && node.children.length > 0) || (node.wives && node.wives.length > 0);
+      let html = `<ul class="tree"><li>`;
+      
+      let nodeClass = `person-node ${hasChildren ? 'has-children' : ''}`;
+      html += `<div class="${nodeClass}" onclick="toggleChildren(this)">${node.name}`;
+      if (node.linkedTo) {
+        html += `<a href="#" class="cross-link" onclick="event.stopPropagation(); selectFamily('${node.linkedTo.familyId}')">${node.linkedTo.text} 🔗</a>`;
+      }
+      html += `</div>`;
 
-    const matches = uniquePeople.filter(function(person) {
-      return normalizeText(person).includes(query);
-    });
+      if (hasChildren) {
+        html += `<div class="children-group ${isRoot ? '' : 'hidden'}">`;
+        if (node.wives) {
+          node.wives.forEach(wife => {
+            html += `<div class="wife-section">`;
+            html += `<div class="wife-title">💍 ${wife.wifeName}</div>`;
+            if (wife.children) {
+              wife.children.forEach(child => html += renderNode(child));
+            }
+            html += `</div>`;
+          });
+        } else if (node.children) {
+          node.children.forEach(child => html += renderNode(child));
+        }
+        html += `</div>`;
+      }
 
-
-    const title = document.createElement("div");
-    title.className = "results-title";
-    title.textContent =
-      matches.length + " نتیجه برای جستجوی شما";
-
-    searchResults.appendChild(title);
-
-
-    if (matches.length === 0) {
-
-      const noResult = document.createElement("div");
-
-      noResult.className = "no-result";
-
-      noResult.textContent =
-        "شخصی با این نام پیدا نشد.";
-
-      searchResults.appendChild(noResult);
-
-      return;
+      html += `</li></ul>`;
+      return html;
     }
 
+    // باز و بسته‌کردن زیرمجموعه‌ها
+    function toggleChildren(element) {
+      const parentLi = element.parentElement;
+      const group = parentLi.querySelector('.children-group');
+      if (group) {
+        group.classList.toggle('hidden');
+        parentLi.classList.toggle('expanded');
+      }
+    }
 
-    matches.forEach(function(person) {
-      searchResults.appendChild(
-        createResult(person)
-      );
-    });
+    function collapseAll() {
+      document.querySelectorAll('.children-group').forEach(g => g.classList.add('hidden'));
+      document.querySelectorAll('.expanded').forEach(e => e.classList.remove('expanded'));
+    }
 
-  });
+    // جستجو در درخت
+    function searchPerson() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const nodes = document.querySelectorAll('.person-node');
+      
+      nodes.forEach(n => {
+        n.classList.remove('highlight');
+        if (query && n.innerText.toLowerCase().includes(query)) {
+          n.classList.add('highlight');
+          // باز کردن والدین گره پیدا شده
+          let parent = n.parentElement;
+          while (parent) {
+            if (parent.classList && parent.classList.contains('children-group')) {
+              parent.classList.remove('hidden');
+            }
+            parent = parent.parentElement;
+          }
+        }
+      });
+    }
 
-</script>
-
+    renderCards();
+  </script>
 </body>
 </html>
