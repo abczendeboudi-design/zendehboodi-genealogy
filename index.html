@@ -350,7 +350,6 @@
       }
     ];
 
-    // محاسبه دقیق تعداد اعضا
     function countMembers(node) {
       let count = 1;
       if (node.wives) {
@@ -364,7 +363,6 @@
       return count;
     }
 
-    // رندر کارت‌های صفحه اصلی
     function renderCards() {
       const container = document.getElementById('familyCards');
       container.innerHTML = '';
@@ -381,7 +379,6 @@
       });
     }
 
-    // انتخاب خاندان
     function selectFamily(familyId) {
       const fam = familiesData.find(f => f.id === familyId);
       if (!fam) return;
@@ -393,7 +390,6 @@
       treeView.innerHTML = renderNode(fam.root, true);
     }
 
-    // رندر درختی شاخه‌ها
     function renderNode(node, isRoot = false) {
       const hasChildren = (node.children && node.children.length > 0) || (node.wives && node.wives.length > 0);
       let html = `<ul class="tree"><li>`;
@@ -426,7 +422,6 @@
       return html;
     }
 
-    // باز و بسته‌کردن زیرمجموعه‌ها
     function toggleChildren(element) {
       const parentLi = element.parentElement;
       const group = parentLi.querySelector('.children-group');
@@ -441,7 +436,6 @@
       document.querySelectorAll('.expanded').forEach(e => e.classList.remove('expanded'));
     }
 
-    // جستجو در درخت
     function searchPerson() {
       const query = document.getElementById('searchInput').value.trim().toLowerCase();
       const nodes = document.querySelectorAll('.person-node');
@@ -450,7 +444,6 @@
         n.classList.remove('highlight');
         if (query && n.innerText.toLowerCase().includes(query)) {
           n.classList.add('highlight');
-          // باز کردن والدین گره پیدا شده
           let parent = n.parentElement;
           while (parent) {
             if (parent.classList && parent.classList.contains('children-group')) {
