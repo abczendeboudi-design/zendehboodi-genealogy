@@ -77,10 +77,27 @@
       max-width: 1100px;
       margin: 0 auto;
     }
-    .tree-header {
+    .tree-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 15px;
+    }
+    .back-btn {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: bold;
+      transition: background-color 0.2s;
+    }
+    .back-btn:hover { background-color: #1e40af; }
+
+    .tree-header {
       border-bottom: 2px solid #f1f5f9;
       padding-bottom: 15px;
       margin-bottom: 20px;
@@ -125,7 +142,7 @@
       font-weight: bold;
       margin: 8px 0;
     }
-    .hidden { display: none; }
+    .hidden { display: none !important; }
     .cross-link {
       font-size: 11px;
       background: #e0e7ff;
@@ -142,19 +159,22 @@
 </head>
 <body>
 
-  <header>
+  <header id="mainHeader">
     <h1>شجره‌نامه جامع خاندان قباکلکی (زنده‌بودی‌ها)</h1>
     <input type="text" id="searchInput" class="search-box" placeholder="جستجوی نام یا نام همسر..." oninput="searchPerson()">
   </header>
 
-  <!-- کارت‌های انتخاب خاندان -->
+  <!-- صفحه انتخاب خاندان -->
   <div class="family-cards" id="familyCards"></div>
 
-  <!-- بخش نمایش درخت -->
+  <!-- صفحه درخت خاندان انتخاب شده -->
   <div class="tree-container hidden" id="treeContainer">
+    <div class="tree-nav">
+      <button class="back-btn" onclick="goBack()">🔙 بازگشت به فهرست خاندان‌ها</button>
+      <button onclick="collapseAll()" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #ccc; cursor: pointer;">بستن همه شاخه‌ها</button>
+    </div>
     <div class="tree-header">
       <h2 id="currentFamilyTitle" style="margin: 0; color: var(--primary);"></h2>
-      <button onclick="collapseAll()" style="padding: 6px 12px; border-radius: 6px; border: 1px solid #ccc; cursor: pointer;">بستن همه شاخه‌ها</button>
     </div>
     <div id="treeView"></div>
   </div>
@@ -383,11 +403,22 @@
       const fam = familiesData.find(f => f.id === familyId);
       if (!fam) return;
 
+      document.getElementById('familyCards').classList.add('hidden');
       document.getElementById('treeContainer').classList.remove('hidden');
       document.getElementById('currentFamilyTitle').innerText = fam.title;
       
       const treeView = document.getElementById('treeView');
       treeView.innerHTML = renderNode(fam.root, true);
+      
+      location.hash = familyId;
+      window.scrollTo(0, 0);
+    }
+
+    function goBack() {
+      document.getElementById('treeContainer').classList.add('hidden');
+      document.getElementById('familyCards').classList.remove('hidden');
+      location.hash = '';
+      window.scrollTo(0, 0);
     }
 
     function renderNode(node, isRoot = false) {
@@ -397,7 +428,7 @@
       let nodeClass = `person-node ${hasChildren ? 'has-children' : ''}`;
       html += `<div class="${nodeClass}" onclick="toggleChildren(this)">${node.name}`;
       if (node.linkedTo) {
-        html += `<a href="#" class="cross-link" onclick="event.stopPropagation(); selectFamily('${node.linkedTo.familyId}')">${node.linkedTo.text} 🔗</a>`;
+        html += `<a href="#${node.linkedTo.familyId}" class="cross-link" onclick="event.stopPropagation(); selectFamily('${node.linkedTo.familyId}')">${node.linkedTo.text} 🔗</a>`;
       }
       html += `</div>`;
 
@@ -455,7 +486,20 @@
       });
     }
 
+    // مدیریت ناوبری با دکمه بازگشت مرورگر
+    window.addEventListener('hashchange', checkHash);
+    
+    function checkHash() {
+      const hash = location.hash.replace('#', '');
+      if (hash) {
+        selectFamily(hash);
+      } else {
+        goBack();
+      }
+    }
+
     renderCards();
+    checkHash();
   </script>
 </body>
 </html>
